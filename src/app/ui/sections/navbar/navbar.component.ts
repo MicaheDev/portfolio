@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,6 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  scrolled: boolean = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (window.pageYOffset > 10) {
+      this.scrolled = true;
+    } else {
+      this.scrolled = false;
+    }
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   routes = [
     {
       path: '/',
@@ -37,12 +52,12 @@ export class NavbarComponent {
 
   socialMedia = [
     {
-      path: '/',
+      path: 'https://linkedin.com/in/michellcastillo29',
       icon: 'ri-linkedin-line ',
       name: 'Linkedin',
     },
     {
-      path: '/',
+      path: 'https://github.com/MicaheDev',
       icon: 'ri-github-line',
       name: 'Github',
     },

@@ -30,7 +30,7 @@ export class SmokeBackgroundComponent implements AfterViewInit {
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(width, height);
-    renderer.setClearColor(0x000000, 1);
+    renderer.setClearColor(0x18181b, 1);
     this.rendererContainer.nativeElement.appendChild(renderer.domElement);
 
     const light = new THREE.DirectionalLight(0xffffff, 0.1);
