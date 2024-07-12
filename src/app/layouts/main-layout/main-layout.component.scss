@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  background-color: var(--white);
+}
+
+main {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.banner {
+  height: 100%;
+  position: fixed;
+  background: var(--green);
+  z-index: 10;
+  top: 0;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+  font-weight: var(--fw-bolder);
+}
+
+.banner:nth-child(1) {
+  left: 0;
+}
+.banner:nth-child(2) {
+  left: 25%;
+}
+.banner:nth-child(3) {
+  left: 50%;
+}
+.banner:nth-child(4) {
+  left: 75%;
+}

@@ -1,0 +1,50 @@
+<div class="nav-container" #menuContainer>
+  <nav>
+    <div class="logo">
+      <app-transition-link href="/" label="MicaheDev."/>
+    </div>
+
+    <div class="menu-open hover-effect" (click)="toggleMenu()">
+      <p>Open</p>
+    </div>
+  </nav>
+  <div class="menu-overlay">
+    <nav class="overlay-nav">
+      <div class="logo" (click)="toggleMenu()">
+        <app-transition-link href="/" label="MicaheDev."/>
+      </div>
+
+      <div class="menu-open hover-effect" (click)="toggleMenu()">
+        <p>Close</p>
+      </div>
+    </nav>
+
+    <menu>
+      @for (link of menuLinks; track link.path) {
+      <div class="link-item">
+        <div class="link-item-holder" (click)="toggleMenu()">
+          <app-transition-link [href]="link.path" [label]="link.label" />
+        </div>
+      </div>
+      }
+    </menu>
+
+    <div class="menu-info">
+      <div class="menu-close-icon hover-effect" (click)="toggleMenu()">
+        <p>&#x2715;</p>
+      </div>
+      <div class="menu-socials">
+        <a href="#" class="hover-effect">X &#8599;</a>
+        <a href="#" class="hover-effect">Instagram &#8599;</a>
+        <a href="#" class="hover-effect">LinkedIn &#8599;</a>
+      </div>
+      <div class="contact">
+        <p>{{ "webdev.michell@gmail.com" }}</p>
+        <p>+569 3875 8312</p>
+      </div>
+      <div class="menu-preview">
+        <p>View Showreel</p>
+      </div>
+    </div>
+  </div>
+</div>

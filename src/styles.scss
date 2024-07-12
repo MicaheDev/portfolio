@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --white: #fff;
+  --black: #09090b;
+  --green: #c5fb45;
+  --fw-bolder: 900;
+  --fw-bold: 700;
+  --fw-normal: 500;
+  --fw-thin: 300;
+  --ff-headers: "Satoshi", sans-serif;
+  --ff-info: "Azeret Mono", sans-serif;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
+}
+
+body {
+  font-family: var(--ff-info);
+  color: var(--black);
+}
+
+a,
+button {
+  font-family: var(--ff-info);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ff-headers);
+  font-weight: var(--fw-bolder);
+  color: var(--black);
+}
+
+
