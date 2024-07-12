@@ -17,6 +17,10 @@
   padding: 0;
   box-sizing: border-box;
   cursor: none;
+
+  @media screen and (max-width: 900px){
+    cursor: auto;
+  }
 }
 
 body {

@@ -66,8 +66,10 @@ export class CursorComponent {
   }
 
   ngAfterViewInit(): void {
+
     if (this.isBrowser) {
       this.ngZone.runOutsideAngular(() => {
+
         gsap.set(this.cursor.nativeElement, {
           xPercent: -50,
           yPercent: -50,
@@ -78,8 +80,10 @@ export class CursorComponent {
           yPercent: -50,
         });
         window.addEventListener('mousemove', this.moveCursor.bind(this));
+
       });
     }
+
   }
 
   moveCursor(event: MouseEvent) {

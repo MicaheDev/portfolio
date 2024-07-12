@@ -31,6 +31,8 @@ export class MainLayoutComponent {
   private routerSubscription!: Subscription;
 
   ngAfterViewInit(): void {
+    console.time('MainLayoutComponentInit');
+
     this.refService.contextRef = this.transitionDiv.nativeElement;
 
     // Ejecutar animación la primera vez
@@ -44,6 +46,8 @@ export class MainLayoutComponent {
         }
       }
     });
+    console.timeEnd('MainLayoutComponentInit');
+
   }
 
   ngOnDestroy(): void {

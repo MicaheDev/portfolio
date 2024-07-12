@@ -1,21 +1,25 @@
 <div class="nav-container" #menuContainer>
-  <nav>
+  <nav class="nav">
     <div class="logo">
-      <app-transition-link href="/" label="MicaheDev."/>
+      <app-transition-link href="/" label="MicaheDev." />
     </div>
 
-    <div class="menu-open hover-effect" (click)="toggleMenu()">
-      <p>Open</p>
+    <div>
+      <p>{{ formattedDate }}</p>
     </div>
+
+    <a class="menu-open hover-effect" (click)="toggleMenu()">
+      <ng-icon name="remixMenu4Fill" />
+    </a>
   </nav>
   <div class="menu-overlay">
     <nav class="overlay-nav">
       <div class="logo" (click)="toggleMenu()">
-        <app-transition-link href="/" label="MicaheDev."/>
+        <app-transition-link href="/" label="MicaheDev." />
       </div>
 
       <div class="menu-open hover-effect" (click)="toggleMenu()">
-        <p>Close</p>
+        <ng-icon name="remixCloseLine" />
       </div>
     </nav>
 
@@ -31,19 +35,25 @@
 
     <div class="menu-info">
       <div class="menu-close-icon hover-effect" (click)="toggleMenu()">
-        <p>&#x2715;</p>
+        <ng-icon name="remixCloseLine" />
       </div>
       <div class="menu-socials">
-        <a href="#" class="hover-effect">X &#8599;</a>
-        <a href="#" class="hover-effect">Instagram &#8599;</a>
-        <a href="#" class="hover-effect">LinkedIn &#8599;</a>
+        <a href="#" class="hover-effect"
+          >Instagram <ng-icon name="remixArrowRightUpLine"
+        /></a>
+        <a href="#" class="hover-effect"
+          >LinkedIn <ng-icon name="remixArrowRightUpLine"
+        /></a>
+        <a href="#" class="hover-effect"
+          >GitHub <ng-icon name="remixArrowRightUpLine"
+        /></a>
       </div>
       <div class="contact">
-        <p>{{ "webdev.michell@gmail.com" }}</p>
-        <p>+569 3875 8312</p>
+        <a href="#" class="hover-effect">Send me a email</a>
+        <a href="#" class="hover-effect">Call me</a>
       </div>
       <div class="menu-preview">
-        <p>View Showreel</p>
+        <a href="#" class="hover-effect">View Showreel</a>
       </div>
     </div>
   </div>

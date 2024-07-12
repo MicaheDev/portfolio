@@ -18,33 +18,12 @@ declare var grained: any;
   #wrapper {
     width: 100vw;
     height: 100vh; 
+    background: url('/noisy.gif') repeat;
+    position:fixed;
+    inset:0;
+    z-index: 0;
+    background-size: 300px;
   }
   `,
 })
-export class BackgroundComponent implements AfterViewInit {
-  private isBrowser: boolean;
-
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: object,
-    private ngZone: NgZone
-  ) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
-  }
-
-  ngAfterViewInit(): void {
-    if (this.isBrowser) {
-      this.ngZone.runOutsideAngular(() => {
-        var options = {
-          animate: true,
-          patternWidth: 500,
-          patternHeight: 500,
-          grainOpacity: 0.05,
-          grainDensity: 1,
-          grainWidth: 1,
-          grainHeight: 1,
-        };
-        grained('#wrapper', options);
-      });
-    }
-  }
-}
+export class BackgroundComponent {}

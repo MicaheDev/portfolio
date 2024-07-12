@@ -4,8 +4,7 @@ import {
   Component,
   ElementRef,
   inject,
-  OnChanges,
-  SimpleChanges,
+  OnInit,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -13,21 +12,27 @@ import { RouterModule } from '@angular/router';
 import { TransitionLinkComponent } from '../transition-link/transition-link.component';
 import gsap from 'gsap';
 import { TransitionRefService } from '../../../layouts/services/transition-ref.service';
+import { format } from 'date-fns';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import {remixArrowRightUpLine, remixCloseLine, remixHand, remixMenu4Fill} from "@ng-icons/remixicon"
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, TransitionLinkComponent],
+  imports: [RouterModule, TransitionLinkComponent, NgIconComponent],
+  providers: [provideIcons({remixMenu4Fill, remixCloseLine, remixArrowRightUpLine,remixHand})],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class NavbarComponent implements AfterViewInit, AfterViewChecked {
+export class NavbarComponent implements AfterViewInit, AfterViewChecked, OnInit {
   @ViewChild('menuContainer', { static: false }) menuContainer!: ElementRef;
   isMenuOpen = false;
   tl!: GSAPTimeline;
 
-  refService = inject(TransitionRefService)
+  refService = inject(TransitionRefService);
+  formattedDate!: string;
+
 
   menuLinks = [
     {
@@ -48,7 +53,15 @@ export class NavbarComponent implements AfterViewInit, AfterViewChecked {
     },
   ];
 
+
+  ngOnInit(): void {
+    const date = new Date();
+    this.formattedDate = format(date, 'dd/MM/yyyy'); // Formato DD/MM/YYYY
+  }
+
   ngAfterViewInit(): void {
+    console.time('NavbarComponentInit');
+
     gsap.context(() => {
       gsap.set('.link-item-holder', {
         y: 75,
@@ -83,11 +96,12 @@ export class NavbarComponent implements AfterViewInit, AfterViewChecked {
           delay: -0.75,
         });
     }, this.menuContainer.nativeElement);
+    console.timeEnd('NavbarComponentInit');
+
   }
 
   ngAfterViewChecked(): void {
     if (this.isMenuOpen) {
-      console.log('hola');
       this.tl.play();
     } else {
       this.tl.reverse();
@@ -98,6 +112,6 @@ export class NavbarComponent implements AfterViewInit, AfterViewChecked {
     console.log('first');
     this.isMenuOpen = !this.isMenuOpen;
     console.log(this.isMenuOpen);
-    this.refService.isMenuOpen = this.isMenuOpen
+    this.refService.isMenuOpen = this.isMenuOpen;
   }
 }
