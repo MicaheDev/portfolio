@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { BackgroundComponent } from '../../shared/components/background/background.component';
 
@@ -23,7 +23,7 @@ import { CursorComponent } from '../../shared/components/cursor/cursor.component
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',
 })
-export class MainLayoutComponent {
+export class MainLayoutComponent implements AfterViewInit, OnDestroy {
   @ViewChild('transitionDiv', { static: false }) transitionDiv!: ElementRef;
 
   refService = inject(TransitionRefService);
@@ -31,7 +31,6 @@ export class MainLayoutComponent {
   private routerSubscription!: Subscription;
 
   ngAfterViewInit(): void {
-    console.time('MainLayoutComponentInit');
 
     this.refService.contextRef = this.transitionDiv.nativeElement;
 
@@ -46,7 +45,6 @@ export class MainLayoutComponent {
         }
       }
     });
-    console.timeEnd('MainLayoutComponentInit');
 
   }
 
