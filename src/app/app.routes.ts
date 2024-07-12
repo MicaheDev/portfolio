@@ -4,6 +4,7 @@ import { HomeComponent } from './features/home/home.component';
 import { ProjectsComponent } from './features/projects/projects.component';
 import { SkillsComponent } from './features/skills/skills.component';
 import { ContactComponent } from './features/contact/contact.component';
+import { BlogComponent } from './features/blog/blog.component';
 
 export const routes: Routes = [
   {
@@ -21,7 +22,7 @@ export const routes: Routes = [
 
       {
         path: 'blog',
-        component: SkillsComponent,
+        component: BlogComponent,
       },
       {
         path: 'contact',
