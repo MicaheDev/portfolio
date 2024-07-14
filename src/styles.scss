@@ -1,14 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --white: #fff;
-  --black: #09090b;
-  --green: #c5fb45;
+  --white: hsl(210, 40%, 98%);
+  --bg: hsla(210, 40%, 98%, 1);
+  --black: hsl(240, 10%, 4%);
+  --green: hsl(78, 96%, 63%);
+  --gray: hsl(24, 6%, 83%);
+  --dark: hsl(30, 6%, 25%);
   --fw-bolder: 900;
   --fw-bold: 700;
   --fw-normal: 500;
   --fw-thin: 300;
   --ff-headers: "Satoshi", sans-serif;
   --ff-info: "Azeret Mono", sans-serif;
+  --ff-dramatic: "Boska", serif;
 }
 *,
 *::before,
@@ -18,7 +22,7 @@
   box-sizing: border-box;
   cursor: none;
 
-  @media screen and (max-width: 900px){
+  @media screen and (max-width: 900px) {
     cursor: auto;
   }
 }
@@ -29,12 +33,13 @@ body {
 }
 
 a,
-button {
+button,
+p {
   font-family: var(--ff-info);
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: var(--black);
+  color: var(--dark);
 }
 
 h1,
@@ -48,4 +53,12 @@ h6 {
   color: var(--black);
 }
 
+.bounce-hover {
+  transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 100ms,
+    opacity 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
+.bounce-hover:hover {
+  transform: translateY(10px);
+  opacity: 0.8;
+}

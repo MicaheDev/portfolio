@@ -1,20 +1,14 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
   Component,
   ElementRef,
   Inject,
-  inject,
   OnInit,
   PLATFORM_ID,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { TransitionLinkComponent } from '../transition-link/transition-link.component';
-import gsap from 'gsap';
-import { TransitionRefService } from '../../../layouts/services/transition-ref.service';
-import { format } from 'date-fns';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
   remixArrowRightUpLine,
@@ -22,12 +16,15 @@ import {
   remixHand,
   remixMenu4Fill,
 } from '@ng-icons/remixicon';
+import { format } from 'date-fns';
+import { TransitionRefService } from '../../../layouts/services/transition-ref.service';
 import { isPlatformBrowser } from '@angular/common';
+import gsap from 'gsap';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-navigation',
   standalone: true,
-  imports: [RouterModule, TransitionLinkComponent, NgIconComponent],
+  imports: [TransitionLinkComponent, NgIconComponent],
   providers: [
     provideIcons({
       remixMenu4Fill,
@@ -36,25 +33,23 @@ import { isPlatformBrowser } from '@angular/common';
       remixHand,
     }),
   ],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  templateUrl: './navigation.component.html',
+  styleUrl: './navigation.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class NavbarComponent
-  implements AfterViewInit, AfterViewChecked, OnInit
-{
-  @ViewChild('menuContainer', { static: false }) menuContainer!: ElementRef;
+export class NavigationComponent implements OnInit, AfterViewInit {
+  @ViewChild('gsapContainer', { static: false }) gsapContainer!: ElementRef;
+
+  date!: string;
   isMenuOpen = false;
   tl!: GSAPTimeline;
-
-  formattedDate!: string;
 
   constructor(
     private refService: TransitionRefService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  menuLinks = [
+  menuItems = [
     {
       path: '/',
       label: 'Home',
@@ -75,45 +70,52 @@ export class NavbarComponent
 
   ngOnInit(): void {
     const date = new Date();
-    this.formattedDate = format(date, 'dd/MM/yyyy'); // Formato DD/MM/YYYY
+    this.date = format(date, 'dd/MM/yyyy'); // Formato DD/MM/YYYY
   }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       gsap.context(() => {
-        gsap.set('.link-item-holder', {
+        gsap.set(['.close-btn', '.menu-item'], {
           y: 75,
         });
-        gsap.set('.overlay-nav', {
+
+        gsap.set('.col', {
+          y: 200,
+          opacity: 0
+        });
+
+        gsap.set('.nav-menu', {
           opacity: 0,
         });
-        gsap.set('.menu-info', {
-          y: 75,
-        });
+
         this.tl = gsap
           .timeline({ paused: true })
-
-          .to('.menu-overlay', {
+          .to('.fullscreen-menu', {
             duration: 0.75,
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
             ease: 'power4.inOut',
           })
-          .to('.overlay-nav', { opacity: 1, duration: 0.3 })
-          .to('.link-item-holder', {
+          .to('.nav-menu', { opacity: 1, duration: 0.3 })
+          .to(['.menu-item', '.close-btn'], {
             y: 0,
             duration: 1,
             stagger: 0.1,
             ease: 'power4.inOut',
             delay: -0.75,
-          })
-          .to('.menu-info', {
+          }).to('.col', {
             y: 0,
             duration: 1,
             stagger: 0.1,
+            opacity: 1,
             ease: 'power4.inOut',
             delay: -0.75,
           });
-      }, this.menuContainer.nativeElement);
+
+  
+      }, this.gsapContainer.nativeElement);
+
+  
     }
   }
 

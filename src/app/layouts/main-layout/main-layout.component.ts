@@ -1,13 +1,21 @@
-import { AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { BackgroundComponent } from '../../shared/components/background/background.component';
 
 import { TransitionRefService } from '../services/transition-ref.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { animatePageIn } from '../utils/animation';
-import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
-import { CursorComponent } from '../../shared/components/cursor/cursor.component';
+import {
+  CursorComponent,
+  NavigationComponent,
+} from '../../shared';
 
 @Component({
   selector: 'app-main-layout',
@@ -15,10 +23,9 @@ import { CursorComponent } from '../../shared/components/cursor/cursor.component
   imports: [
     CommonModule,
     RouterModule,
-    BackgroundComponent,
-    NavbarComponent,
     CursorComponent,
-  ],
+    NavigationComponent,
+],
   providers: [TransitionRefService],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',
@@ -31,7 +38,6 @@ export class MainLayoutComponent implements AfterViewInit, OnDestroy {
   private routerSubscription!: Subscription;
 
   ngAfterViewInit(): void {
-
     this.refService.contextRef = this.transitionDiv.nativeElement;
 
     // Ejecutar animación la primera vez
@@ -45,7 +51,6 @@ export class MainLayoutComponent implements AfterViewInit, OnDestroy {
         }
       }
     });
-
   }
 
   ngOnDestroy(): void {

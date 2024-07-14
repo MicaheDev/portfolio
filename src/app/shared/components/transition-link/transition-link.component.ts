@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-transition-link',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  template: `<a (click)="transitionClick()" class="hover-effect">
+  template: `<a (click)="transitionClick()" class="bounce-hover">
     {{ label }}
   </a> `,
   styles: [``],

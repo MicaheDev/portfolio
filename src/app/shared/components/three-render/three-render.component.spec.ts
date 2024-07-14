@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BackgroundComponent } from './background.component';
+import { ThreeRenderComponent } from './three-render.component';
 
-describe('BackgroundComponent', () => {
-  let component: BackgroundComponent;
-  let fixture: ComponentFixture<BackgroundComponent>;
+describe('ThreeRenderComponent', () => {
+  let component: ThreeRenderComponent;
+  let fixture: ComponentFixture<ThreeRenderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BackgroundComponent]
+      imports: [ThreeRenderComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BackgroundComponent);
+    fixture = TestBed.createComponent(ThreeRenderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
