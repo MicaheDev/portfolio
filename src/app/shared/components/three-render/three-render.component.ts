@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   Inject,
   PLATFORM_ID,
   ViewChild,
@@ -35,6 +36,8 @@ export class ThreeRenderComponent implements AfterViewInit {
   ngAfterViewInit() {
     if (this.isBrowser) {
       this.initThreeJS();
+      this.onWindowResize();
+
     }
   }
 
@@ -73,12 +76,12 @@ export class ThreeRenderComponent implements AfterViewInit {
 
     // Cargar y añadir el modelo 3D
     const loader = new OBJLoader();
-    loader.load('/tower.obj', (obj) => {
+    loader.load('/computer.obj', (obj) => {
       // Escalar el objeto
-      obj.scale.set(0.4, 0.4, 0.4); // Ajusta el factor de escala según sea necesario
+      obj.scale.set(0.35, 0.35, 0.35); // Ajusta el factor de escala según sea necesario
 
       // Posicionar el objeto si es necesario
-      obj.position.set(0, -2, 0);
+      obj.position.set(0, -1.7, 0);
 
       this.objModel = obj;
       this.scene.add(this.objModel);
@@ -95,5 +98,17 @@ export class ThreeRenderComponent implements AfterViewInit {
     }
 
     this.renderer.render(this.scene, this.camera);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    const container = this.containerRef.nativeElement;
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
+
+    this.renderer.setSize(width, height);
   }
 }
