@@ -24,10 +24,11 @@ import gsap from 'gsap';
         height: 10px;
         border-radius: 50%;
         position: fixed;
-        background-color: var(--black);
+        background-color: var(--white);
         z-index: 999;
         inset: 0;
         pointer-events: none;
+        mix-blend-mode: difference;
 
         @media screen and (max-width: 768px) {
           display: none;
@@ -39,11 +40,12 @@ import gsap from 'gsap';
         height: 30px;
         border-radius: 50%;
         background-color: transparent;
-        border: 1px solid var(--black);
+        border: 1px solid var(--white);
         position: fixed;
         z-index: 999;
         inset: 0;
         pointer-events: none;
+        mix-blend-mode: difference;
 
         @media screen and (max-width: 768px) {
           display: none;
@@ -66,10 +68,8 @@ export class CursorComponent {
   }
 
   ngAfterViewInit(): void {
-
     if (this.isBrowser) {
       this.ngZone.runOutsideAngular(() => {
-
         gsap.set(this.cursor.nativeElement, {
           xPercent: -50,
           yPercent: -50,
@@ -79,10 +79,38 @@ export class CursorComponent {
           xPercent: -50,
           yPercent: -50,
         });
-        window.addEventListener('mousemove', this.moveCursor.bind(this));
+        const anchors = window.document.querySelectorAll('a');
+        const buttons = window.document.querySelectorAll('button');
 
+    
+        anchors.forEach((anchor) => {
+          anchor.addEventListener('mouseenter', this.hoverCursor.bind(this));
+          anchor.addEventListener('mouseleave', this.leaveCursor.bind(this));
+        });
+
+        buttons.forEach((button) => {
+          button.addEventListener('mouseenter', this.hoverCursor.bind(this));
+          button.addEventListener('mouseleave', this.leaveCursor.bind(this));
+        });
+        window.addEventListener('mousemove', this.moveCursor.bind(this));
       });
     }
+  }
+
+  hoverCursor() {
+    gsap.to(this.cursor.nativeElement, {
+      scale: 4,
+      duration: 0.3,
+    });
+
+
+  }
+
+  leaveCursor() {
+    gsap.to(this.cursor.nativeElement, {
+      scale: 1,
+      duration: 0.3,
+    });
 
   }
 

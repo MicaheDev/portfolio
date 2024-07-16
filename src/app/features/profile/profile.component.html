@@ -1,16 +1,24 @@
 <section>
   <div class="container">
     <div class="profile-image">
-        <img class="clip" src="/me.jpeg" alt="">
+      <!--
+      <img class="clip" src="/me.jpeg" alt="">
+      -->
 
-      </div>
-      <div class="me">
-        <h3>Who I am?</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga laudantium
-          perferendis, inventore ab ea a voluptatum. Enim repudiandae ad a dolores
-          repellendus, accusamus, itaque velit quis animi eligendi eum iure.
-        </p>
-      </div>
+      <app-three-render
+        urlBase="thinker"
+        [scale]="{ x: 0.3, y: 0.3, z: 0.3 }"
+        [position]="{ x: 0, y: -1, z: 0 }"
+        [rotation]="{ direction: 'right', velocity: 0.005 }"
+      />
+    </div>
+    <div class="me">
+      <h3>Who I am?</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga laudantium
+        perferendis, inventore ab ea a voluptatum. Enim repudiandae ad a dolores
+        repellendus, accusamus, itaque velit quis animi eligendi eum iure.
+      </p>
+    </div>
   </div>
 </section>

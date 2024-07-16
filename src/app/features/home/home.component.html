@@ -4,11 +4,15 @@
       <div class="welcome">welcome <ng-icon name="remixHand" /></div>
       <h1>Develop your ideas</h1>
       <h2>Design your dreams</h2>
-      <app-transition-link href="projects" label="See Projects"/>
+      <app-transition-link href="projects" label="See Projects" />
     </div>
 
     <div class="float">
-      <app-three-render />
+      <app-three-render
+        urlBase="computer"
+        [scale]="{ x: 0.35, y: 0.35, z: 0.35 }"
+        [position]="{ x: 0, y: -1.7, z: 0 }"
+      />
     </div>
   </div>
 
@@ -30,8 +34,8 @@
   </div>
 </section>
 
-<app-profile/>
-<app-projects/>
+<app-profile />
+<app-projects />
 <!--
 
 

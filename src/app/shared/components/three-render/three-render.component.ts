@@ -5,23 +5,41 @@ import {
   ElementRef,
   HostListener,
   Inject,
+  Input,
   PLATFORM_ID,
   ViewChild,
 } from '@angular/core';
 import * as THREE from 'three';
-import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
+
+type Coordinates = {
+  x: number;
+  y: number;
+  z: number;
+};
+
+type Rotation = {
+  direction: Directions;
+  velocity: number;
+};
+
+type Directions = 'left' | 'right';
 
 @Component({
   selector: 'app-three-render',
   standalone: true,
   imports: [],
   templateUrl: './three-render.component.html',
-  styleUrl: './three-render.component.scss',
+  styleUrls: ['./three-render.component.scss'],
 })
 export class ThreeRenderComponent implements AfterViewInit {
+  @Input() urlBase!: string;
+  @Input() position!: Coordinates;
+  @Input() scale!: Coordinates;
+  @Input() rotation: Rotation = { direction: 'left', velocity: 0.005 };
   @ViewChild('canvas') private canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('container') private containerRef!: ElementRef<HTMLDivElement>;
-
 
   private renderer!: THREE.WebGLRenderer;
   private scene!: THREE.Scene;
@@ -37,7 +55,6 @@ export class ThreeRenderComponent implements AfterViewInit {
     if (this.isBrowser) {
       this.initThreeJS();
       this.onWindowResize();
-
     }
   }
 
@@ -58,12 +75,7 @@ export class ThreeRenderComponent implements AfterViewInit {
     this.scene = new THREE.Scene();
 
     // Configurar la cámara
-    this.camera = new THREE.PerspectiveCamera(
-      75,
-      width / height,
-      0.1,
-      1000
-    );
+    this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     this.camera.position.z = 5;
 
     // Añadir iluminación
@@ -75,18 +87,46 @@ export class ThreeRenderComponent implements AfterViewInit {
     this.scene.add(directionalLight);
 
     // Cargar y añadir el modelo 3D
-    const loader = new OBJLoader();
-    loader.load('/computer.obj', (obj) => {
-      // Escalar el objeto
-      obj.scale.set(0.35, 0.35, 0.35); // Ajusta el factor de escala según sea necesario
+    const mtlLoader = new MTLLoader();
+    const mtlURL = `/${this.urlBase}.mtl`;
+    console.log('MTL URL:', mtlURL);
 
-      // Posicionar el objeto si es necesario
-      obj.position.set(0, -1.7, 0);
+    mtlLoader.load(
+      mtlURL,
+      (materials) => {
+        materials.preload();
+        const objLoader = new OBJLoader();
+        objLoader.setMaterials(materials);
+        const objURL = `/${this.urlBase}.obj`;
+        console.log('OBJ URL:', objURL);
 
-      this.objModel = obj;
-      this.scene.add(this.objModel);
-      this.animate();
-    });
+        objLoader.load(
+          objURL,
+          (obj) => {
+            // Escalar el objeto
+            obj.scale.set(this.scale.x, this.scale.y, this.scale.z);
+            // Posicionar el objeto
+            obj.position.set(this.position.x, this.position.y, this.position.z);
+
+            this.objModel = obj;
+            this.scene.add(this.objModel);
+            this.animate();
+          },
+          (xhr) => {
+            console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+          },
+          (error) => {
+            console.error('Error loading OBJ file:', error);
+          }
+        );
+      },
+      (xhr) => {
+        console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+      },
+      (error) => {
+        console.error('Error loading MTL file:', error);
+      }
+    );
   }
 
   private animate() {
@@ -94,7 +134,10 @@ export class ThreeRenderComponent implements AfterViewInit {
 
     // Rotar el objeto sobre su base
     if (this.objModel) {
-      this.objModel.rotation.y += 0.01; // Ajusta la velocidad de rotación según sea necesario
+      const direction = this.rotation.direction;
+      direction === 'left'
+        ? (this.objModel.rotation.y -= this.rotation.velocity)
+        : (this.objModel.rotation.y += this.rotation.velocity);
     }
 
     this.renderer.render(this.scene, this.camera);
