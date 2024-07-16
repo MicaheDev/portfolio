@@ -5,6 +5,7 @@ import { ProjectsComponent } from './features/projects/projects.component';
 import { SkillsComponent } from './features/skills/skills.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { BlogComponent } from './features/blog/blog.component';
+import { ProfileComponent } from './features/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -16,10 +17,13 @@ export const routes: Routes = [
         component: HomeComponent,
       },
       {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
         path: 'projects',
         component: ProjectsComponent,
       },
-
       {
         path: 'blog',
         component: BlogComponent,

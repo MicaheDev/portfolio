@@ -3,11 +3,20 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { remixHand } from '@ng-icons/remixicon';
 import { ThreeRenderComponent } from '../../shared/components/three-render/three-render.component';
 import { SanityService } from '../../shared/services/sanity.service';
+import { ProfileComponent } from '../profile/profile.component';
+import { TransitionLinkComponent } from '../../shared/components/transition-link/transition-link.component';
+import { ProjectsComponent } from "../projects/projects.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgIconComponent, ThreeRenderComponent],
+  imports: [
+    NgIconComponent,
+    ThreeRenderComponent,
+    TransitionLinkComponent,
+    ProfileComponent,
+    ProjectsComponent
+],
   providers: [
     provideIcons({
       remixHand,

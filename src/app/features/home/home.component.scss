@@ -35,13 +35,13 @@ section {
     }
 
     h1 {
-      font-size: 5rem;
+      font-size: 6rem;
       text-transform: uppercase;
       font-weight: var(--fw-normal);
     }
 
     h2 {
-      font-size: 3.5rem;
+      font-size: 4rem;
       text-transform: uppercase;
       font-weight: var(--fw-thin);
     }
@@ -94,6 +94,26 @@ app-three-render {
       font-size: 4rem;
     }
   }
+}
+
+@media screen and (max-width: 1400px) {
+  .content {
+    .titles {
+      .welcome {
+        font-size: 3rem;
+      }
+
+      h1 {
+        font-size: 4rem;
+      }
+
+      h2 {
+        font-size: 3rem;
+      }
+    }
+  }
+  
+  
 }
 
 @media screen and (max-width: 900px) {

@@ -55,6 +55,10 @@ export class NavigationComponent implements OnInit, AfterViewInit {
       label: 'Home',
     },
     {
+      path: '/profile',
+      label: 'profile',
+    },
+    {
       path: '/projects',
       label: 'Projects',
     },

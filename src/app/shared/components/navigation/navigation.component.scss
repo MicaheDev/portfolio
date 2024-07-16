@@ -7,7 +7,6 @@
   width: 100%;
   background: transparent;
 
-
   .nav-logo app-transition-link a {
     display: block;
   }
@@ -27,12 +26,6 @@
 
     font-size: clamp(0.5em, 4vw + 1rem, 2em);
   }
-
-  @media screen and (max-width: 900px) {
-    .nav-info {
-      display: none;
-    }
-  }
 }
 
 .nav-container {
@@ -41,18 +34,12 @@
   width: 100%;
   height: 100px;
   z-index: 5;
-
-  @media screen and (max-width: 900px) {
-    .nav-info {
-      display: none;
-    }
-  }
+  background-color: var(--bg);
 }
 
 .nav-container,
 .fullscreen-menu {
-    padding: 0 clamp(20px, 5vw, 40px);
-
+  padding: 0 40px;
 }
 
 .fullscreen-menu {
@@ -65,7 +52,6 @@
   height: 100%;
   z-index: 10;
 
-
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -73,8 +59,12 @@
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
 
   menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     app-transition-link a {
-      font-size: 4rem;
+      font-size: 5rem;
       color: var(--black);
     }
 
@@ -83,12 +73,6 @@
       background-color: transparent;
       color: var(--black);
       font-size: clamp(5rem, 8vw, 10rem);
-    }
-
-    @media screen and (max-width: 900px) {
-      .close-btn {
-        display: none;
-      }
     }
   }
 
@@ -106,5 +90,25 @@
       gap: 5px;
       align-items: flex-start;
     }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .fullscreen-menu menu app-transition-link a {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .close-btn {
+    display: none;
+  }
+
+  .nav-info {
+    display: none;
+  }
+
+  .fullscreen-menu menu app-transition-link a {
+    font-size: 3.5rem;
   }
 }
