@@ -1,12 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  Inject,
-  NgZone,
-  PLATFORM_ID,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Inject, NgZone, PLATFORM_ID, ViewChild } from '@angular/core';
 import gsap from 'gsap';
 
 @Component({
@@ -60,10 +53,7 @@ export class CursorComponent {
 
   private isBrowser: boolean;
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: object,
-    private ngZone: NgZone
-  ) {
+  constructor(@Inject(PLATFORM_ID) private platformId: object, private ngZone: NgZone) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
@@ -81,20 +71,19 @@ export class CursorComponent {
         });
         const anchors = window.document.querySelectorAll('a');
         const buttons = window.document.querySelectorAll('button');
-        const paragraphs = window.document.querySelectorAll('.paragraph')
+        const paragraphs = window.document.querySelectorAll('.paragraph');
 
-    
-        anchors.forEach((anchor) => {
+        anchors.forEach(anchor => {
           anchor.addEventListener('mouseenter', this.hoverCursor.bind(this));
           anchor.addEventListener('mouseleave', this.leaveCursor.bind(this));
         });
 
-        buttons.forEach((button) => {
+        buttons.forEach(button => {
           button.addEventListener('mouseenter', this.hoverCursor.bind(this));
           button.addEventListener('mouseleave', this.leaveCursor.bind(this));
         });
 
-        paragraphs.forEach((p) => {
+        paragraphs.forEach(p => {
           p.addEventListener('mouseenter', this.hoverParagraphCursor.bind(this));
           p.addEventListener('mouseleave', this.leaveParagraphCursor.bind(this));
         });
@@ -110,11 +99,9 @@ export class CursorComponent {
     });
 
     gsap.to(this.followerCursor.nativeElement, {
-      scale: 5,
+      opacity: 0,
       duration: 0.3,
     });
-
-
   }
 
   leaveParagraphCursor() {
@@ -124,10 +111,9 @@ export class CursorComponent {
     });
 
     gsap.to(this.followerCursor.nativeElement, {
-      scale: 1,
+      opacity: 1,
       duration: 0.3,
     });
-
   }
 
   hoverCursor() {
@@ -135,8 +121,6 @@ export class CursorComponent {
       scale: 4,
       duration: 0.3,
     });
-
-
   }
 
   leaveCursor() {
@@ -144,7 +128,6 @@ export class CursorComponent {
       scale: 1,
       duration: 0.3,
     });
-
   }
 
   moveCursor(event: MouseEvent) {
