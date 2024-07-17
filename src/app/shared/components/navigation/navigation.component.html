@@ -1,13 +1,3 @@
-<!--
-
-<button class="menu-btn bounce-hover" (click)="toggleMenu()">
-  <ng-icon name="remixMenu4Fill" />
-</button>
-<button class="menu-btn bounce-hover" (click)="toggleMenu()">
-  <ng-icon name="remixCloseLine" />
-</button>
--->
-
 <nav class="nav" #gsapContainer>
   <div class="logo">
     <div>Micahe</div>
@@ -22,14 +12,14 @@
       <div class="list">
         @for (item of menuItems; track item.path) {
         <div class="item-holder bounce-hover" (click)="toggleMenu()">
-          <app-transition-link [href]="item.path" [label]="item.label"/>
+          <app-transition-link [href]="item.path" [label]="item.label" />
         </div>
         }
       </div>
     </div>
   </div>
 
-  <div (click)="toggleMenu()" class="button">
+  <button (click)="toggleMenu()" class="button">
     <div class="slider">
       <div class="el">
         <div class="perspective-text">
@@ -44,6 +34,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </button>
 </nav>
 <div style="height: 80px"></div>
