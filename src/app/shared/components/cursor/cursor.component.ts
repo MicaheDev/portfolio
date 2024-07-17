@@ -81,6 +81,7 @@ export class CursorComponent {
         });
         const anchors = window.document.querySelectorAll('a');
         const buttons = window.document.querySelectorAll('button');
+        const paragraphs = window.document.querySelectorAll('.paragraph')
 
     
         anchors.forEach((anchor) => {
@@ -92,9 +93,41 @@ export class CursorComponent {
           button.addEventListener('mouseenter', this.hoverCursor.bind(this));
           button.addEventListener('mouseleave', this.leaveCursor.bind(this));
         });
+
+        paragraphs.forEach((p) => {
+          p.addEventListener('mouseenter', this.hoverParagraphCursor.bind(this));
+          p.addEventListener('mouseleave', this.leaveParagraphCursor.bind(this));
+        });
         window.addEventListener('mousemove', this.moveCursor.bind(this));
       });
     }
+  }
+
+  hoverParagraphCursor() {
+    gsap.to(this.cursor.nativeElement, {
+      scale: 40,
+      duration: 0.3,
+    });
+
+    gsap.to(this.followerCursor.nativeElement, {
+      scale: 5,
+      duration: 0.3,
+    });
+
+
+  }
+
+  leaveParagraphCursor() {
+    gsap.to(this.cursor.nativeElement, {
+      scale: 1,
+      duration: 0.3,
+    });
+
+    gsap.to(this.followerCursor.nativeElement, {
+      scale: 1,
+      duration: 0.3,
+    });
+
   }
 
   hoverCursor() {
