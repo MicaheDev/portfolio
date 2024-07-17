@@ -5,5 +5,4 @@ import { Injectable } from '@angular/core';
 })
 export class TransitionRefService {
   contextRef!: Element;
-  isMenuOpen!: boolean
 }

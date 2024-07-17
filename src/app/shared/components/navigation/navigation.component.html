@@ -1,66 +1,49 @@
-<div #gsapContainer>
-  <nav class="nav-container">
-    <div class="nav-logo">
-      <div>Micahe</div>
-      <div>Dev.</div>
-    </div>
-    <div class="nav-info">
-      <div class="date">
-        <p>{{ date }}</p>
-      </div>
-      <div class="based"><p>Based in Chile</p></div>
-    </div>
-    <button class="menu-btn bounce-hover" (click)="toggleMenu()">
-      <ng-icon name="remixMenu4Fill" />
-    </button>
-  </nav>
+<!--
 
-  <div class="fullscreen-menu">
-    <nav class="nav-menu">
-      <div class="nav-logo">
-        <app-transition-link href="/" label="Micahe" />
-        <app-transition-link href="/" label="Dev" />
-      </div>
-      <div class="nav-info">
-        <div class="date">
-          <p>{{ date }}</p>
+<button class="menu-btn bounce-hover" (click)="toggleMenu()">
+  <ng-icon name="remixMenu4Fill" />
+</button>
+<button class="menu-btn bounce-hover" (click)="toggleMenu()">
+  <ng-icon name="remixCloseLine" />
+</button>
+-->
+
+<nav class="nav" #gsapContainer>
+  <div class="logo">
+    <div>Micahe</div>
+    <div>Dev.</div>
+  </div>
+  <div class="date">
+    <p>{{ date }}</p>
+  </div>
+  <div style="width: 60px"></div>
+  <div class="menu">
+    <div class="menu-items">
+      <div class="list">
+        @for (item of menuItems; track item.path) {
+        <div class="item-holder bounce-hover" (click)="toggleMenu()">
+          <app-transition-link [href]="item.path" [label]="item.label"/>
         </div>
-        <div class="based"><p>Based in Chile</p></div>
-      </div>
-      <button class="menu-btn bounce-hover" (click)="toggleMenu()">
-        <ng-icon name="remixCloseLine" />
-      </button>
-    </nav>
-    <menu>
-      @for (item of menuItems; track item.path) {
-      <div class="menu-item" (click)="toggleMenu()">
-        <app-transition-link [href]="item.path" [label]="item.label" />
-      </div>
-      }
-      <button class="close-btn" (click)="toggleMenu()">
-        <ng-icon name="remixCloseLine" class="bounce-hover" />
-      </button>
-    </menu>
-    <div class="footer-menu">
-      <div class="socials col">
-        <a href="#" class="bounce-hover"
-          >Instagram <ng-icon name="remixArrowRightUpLine"
-        /></a>
-        <a href="#" class="bounce-hover"
-          >LinkedIn <ng-icon name="remixArrowRightUpLine"
-        /></a>
-        <a href="#" class="bounce-hover"
-          >GitHub <ng-icon name="remixArrowRightUpLine"
-        /></a>
-      </div>
-      <div class="contact col">
-        <a href="#" class="bounce-hover">Send me a email</a>
-        <a href="#" class="bounce-hover">Call me</a>
-      </div>
-      <div class="more col">
-        <a href="#" class="bounce-hover">(>w<)</a>
+        }
       </div>
     </div>
   </div>
-</div>
-<div style="height: 100px;"></div>
+
+  <div (click)="toggleMenu()" class="button">
+    <div class="slider" #slider>
+      <div class="el">
+        <div class="perspective-text">
+          <p><ng-icon name="remixMenu4Fill" /></p>
+          <p><ng-icon name="remixMenu4Fill" /></p>
+        </div>
+      </div>
+      <div class="el">
+        <div class="perspective-text">
+          <p><ng-icon name="remixCloseLine" /></p>
+          <p><ng-icon name="remixCloseLine" /></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div style="height: 80px"></div>

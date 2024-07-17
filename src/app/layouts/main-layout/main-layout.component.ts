@@ -12,20 +12,12 @@ import { TransitionRefService } from '../services/transition-ref.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { animatePageIn } from '../utils/animation';
-import {
-  CursorComponent,
-  NavigationComponent,
-} from '../../shared';
+import { CursorComponent, NavigationComponent } from '../../shared';
 
 @Component({
   selector: 'app-main-layout',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    CursorComponent,
-    NavigationComponent,
-],
+  imports: [CommonModule, RouterModule, CursorComponent, NavigationComponent],
   providers: [TransitionRefService],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',
@@ -46,9 +38,7 @@ export class MainLayoutComponent implements AfterViewInit, OnDestroy {
     // Suscribirse a eventos de navegación
     this.routerSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        if (!this.refService.isMenuOpen) {
-          animatePageIn(this.transitionDiv.nativeElement);
-        }
+        animatePageIn(this.transitionDiv.nativeElement);
       }
     });
   }

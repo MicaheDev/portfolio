@@ -1,113 +1,158 @@
-.nav-container,
-.nav-menu {
-  height: 100px;
+.menu-btn {
+  background-color: var(--black);
+  color: var(--white);
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 20px;
+
+  font-size: clamp(0.5em, 4vw + 1rem, 2em);
+}
+
+.button {
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  z-index: 100;
+
+  .slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .el {
+      height: 100%;
+      width: 100%;
+      background-color: var(--green);
+      text-transform: uppercase;
+      color: var(--black);
+
+      &:nth-of-type(2) {
+        position: absolute;
+        top: 100%;
+        background-color: var(--black);
+
+        .perspective-text {
+          p {
+            color: var(--white);
+          }
+        }
+      }
+
+      &:hover {
+        .perspective-text {
+          transform: rotateX(90deg);
+          p {
+            &:nth-of-type(1) {
+              transform: translateY(-100%);
+              opacity: 0;
+            }
+
+            &:nth-of-type(2) {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .perspective-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+    transform-style: preserve-3d;
+
+    p {
+      font-size: 2rem;
+
+      transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1),
+        opacity 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+
+      &:nth-of-type(2) {
+        position: absolute;
+        transform: rotateX(-90deg) translateY(15px);
+        transform-origin: bottom center;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.menu {
+  width: 400px;
+  height: 650px;
+  background-color: var(--green);
+  border-radius: 20px;
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  z-index: 99;
+}
+
+.nav {
+  width: 100%;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  background: transparent;
-
-  .nav-logo app-transition-link a {
-    display: block;
-  }
-
-  .menu-btn {
-    background-color: var(--black);
-    color: var(--white);
-
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 10px 20px;
-
-    border: none;
-    border-radius: 20px;
-
-    font-size: clamp(0.5em, 4vw + 1rem, 2em);
-  }
-}
-
-.nav-container {
   position: fixed;
   top: 0;
-  width: 100%;
-  height: 100px;
-  z-index: 5;
-}
-
-.nav-container,
-.fullscreen-menu {
+  left: 0;
   padding: 0 40px;
+  z-index: 98;
 }
 
-.fullscreen-menu {
-  background-color: var(--green);
-
-  position: fixed;
-  inset: 0;
-
-  width: 100%;
+.menu-items {
   height: 100%;
-  z-index: 10;
+  padding: 100px 40px 50px 40px;
+  box-sizing: border-box;
 
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
-
-  menu {
+  .list {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+
     app-transition-link a {
-      font-size: 5rem;
       color: var(--black);
+      text-decoration: none;
+      font-size: 3rem;
+      display: inline;
+      transition: transform 150ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      &:hover {
+        transform: translateY(10px);
+      }
     }
-
-    .close-btn {
-      border: none;
-      background-color: transparent;
-      color: var(--black);
-      font-size: clamp(5rem, 8vw, 10rem);
-    }
-  }
-
-  .footer-menu {
-    display: flex;
-    justify-content: space-between;
-
-    height: min-content;
-
-    margin: auto 0;
-
-    .col {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      align-items: flex-start;
-    }
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .fullscreen-menu menu app-transition-link a {
-    font-size: 3.5rem;
   }
 }
 
 @media screen and (max-width: 900px) {
-  .close-btn {
-    display: none;
+  .nav {
+    padding: 0 20px;
   }
 
-  .nav-info {
-    display: none;
+  .menu {
+    width: 100%;
+    height: 100%;
   }
 
-  .fullscreen-menu menu app-transition-link a {
-    font-size: 3.5rem;
+  .button {
+    right: 20px;
   }
 }
+
+

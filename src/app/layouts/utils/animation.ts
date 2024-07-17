@@ -10,8 +10,8 @@ export const animatePageIn = (context: Element) => {
     }).to(['#banner-1', '#banner-2', '#banner-3', '#banner-4'], {
       yPercent: '100',
       stagger: 0.2,
-      delay: 1.2,
-      duration: 2,
+      delay: 0.5,
+      duration: 1,
 
 
     });

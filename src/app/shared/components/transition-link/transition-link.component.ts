@@ -26,11 +26,7 @@ export class TransitionLinkComponent {
     if (this.router.url !== this.href) {
       console.log(this.router.url === this.href);
       const context = this.refService.contextRef;
-      if (!this.refService.isMenuOpen) {
-        animatePageOut(context, this.href, this.router);
-      } else {
-        this.router.navigate([this.href]);
-      }
+      animatePageOut(context, this.href, this.router);
     }
   }
 }

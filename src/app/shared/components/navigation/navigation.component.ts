@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   Inject,
   OnInit,
   PLATFORM_ID,
@@ -37,8 +38,9 @@ import gsap from 'gsap';
   styleUrl: './navigation.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class NavigationComponent implements OnInit, AfterViewInit {
+export class NavigationComponent implements OnInit {
   @ViewChild('gsapContainer', { static: false }) gsapContainer!: ElementRef;
+  @ViewChild('slider', { static: false }) slider!: ElementRef;
 
   date!: string;
   isMenuOpen = false;
@@ -76,50 +78,52 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     const date = new Date();
     this.date = format(date, 'dd/MM/yyyy'); // Formato DD/MM/YYYY
   }
-
+  @HostListener('window:resize', ['$event'])
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       gsap.context(() => {
-        gsap.set(['.close-btn', '.menu-item'], {
-          y: 75,
+        gsap.set('.slider', {
+          top: 0,
+        });
+        gsap.set('.menu', {
+          width: 60,
+          height: 60,
+          right: window.innerWidth < 900 ? '20px' : '40px',
+          top: '20px',
         });
 
-        gsap.set('.col', {
-          y: 200,
-          opacity: 0
-        });
-
-        gsap.set('.nav-menu', {
+        gsap.set('.item-holder', {
           opacity: 0,
+          visibility: 'hidden',
         });
+
+        console.log(window.innerWidth);
 
         this.tl = gsap
           .timeline({ paused: true })
-          .to('.fullscreen-menu', {
-            duration: 0.75,
-            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          .to('.menu', {
+            width: window.innerWidth < 900 ? window.innerWidth : 400,
+            height: window.innerWidth < 900 ? window.innerHeight : 650,
+
+            right: window.innerWidth < 900 ? '0px' : '30px',
+            top: window.innerWidth < 900 ? '0px' : '10px',
+            borderRadius: window.innerWidth < 900 ? '0px' : '20px',
+            duration: 0.5,
             ease: 'power4.inOut',
           })
-          .to('.nav-menu', { opacity: 1, duration: 0.3 })
-          .to(['.menu-item', '.close-btn'], {
-            y: 0,
-            duration: 1,
-            stagger: 0.1,
-            ease: 'power4.inOut',
-            delay: -0.75,
-          }).to('.col', {
-            y: 0,
-            duration: 1,
-            stagger: 0.1,
+          .to('.item-holder', {
+            visibility: 'visible',
             opacity: 1,
+            stagger: 0.1,
+            duration: 0.5,
+          })
+
+          .to('.slider', {
+            duration: 0.4,
+            top: '-100%',
             ease: 'power4.inOut',
-            delay: -0.75,
           });
-
-  
       }, this.gsapContainer.nativeElement);
-
-  
     }
   }
 
@@ -136,7 +140,6 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   toggleMenu() {
     if (isPlatformBrowser(this.platformId)) {
       this.isMenuOpen = !this.isMenuOpen;
-      this.refService.isMenuOpen = this.isMenuOpen;
     }
   }
 }
