@@ -79,7 +79,7 @@ export class NavigationComponent implements OnInit {
   updateGsap() {
     const isMobile = window.innerWidth < 900;
     const menuWidth = isMobile ? window.innerWidth : 400;
-    const menuHeight = isMobile ? window.innerHeight : 650;
+    const menuHeight = isMobile ? window.innerHeight : 600;
     const menuRight = isMobile ? '0px' : '30px';
     const menuTop = isMobile ? '0px' : '10px';
     const borderRadius = isMobile ? '0px' : '20px';
