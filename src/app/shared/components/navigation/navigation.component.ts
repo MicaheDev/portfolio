@@ -84,19 +84,19 @@ export class NavigationComponent implements OnInit {
     const menuTop = isMobile ? '0px' : '10px';
     const borderRadius = isMobile ? '0px' : '20px';
 
-      this.tl = gsap
-        .timeline({ paused: true })
-        .to('.menu', {
-          width: menuWidth,
-          height: menuHeight,
-          right: menuRight,
-          top: menuTop,
-          borderRadius,
-          duration: 0.5,
-          ease: 'power4.inOut',
-        })
-        .to('.item-holder', { visibility: 'visible', opacity: 1, stagger: 0.1, duration: 0.5 })
-        .to('.slider', { duration: 0.4, top: '-100%', ease: 'power4.inOut' });
+    this.tl = gsap
+      .timeline({ paused: true })
+      .to('.menu', {
+        width: menuWidth,
+        height: menuHeight,
+        right: menuRight,
+        top: menuTop,
+        borderRadius,
+        duration: 0.5,
+        ease: 'power4.inOut',
+      })
+      .to('.slider', { duration: 0.4, top: '-100%', ease: 'power4.inOut' })
+      .to('.item-holder', { visibility: 'visible', opacity: 1, stagger: 0.1, duration: 0.5 });
   }
 
   ngAfterViewInit(): void {

@@ -10,8 +10,9 @@ import {
   ViewChild,
 } from '@angular/core';
 import * as THREE from 'three';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
-import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 type Coordinates = {
   x: number;
@@ -45,7 +46,8 @@ export class ThreeRenderComponent implements AfterViewInit {
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
   private isBrowser!: boolean;
-  private objModel!: THREE.Object3D;
+  private gltfModel!: THREE.Object3D;
+  private controls!: OrbitControls;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -63,68 +65,92 @@ export class ThreeRenderComponent implements AfterViewInit {
     const width = container.clientWidth;
     const height = container.clientHeight;
 
-    // Configurar el renderizador con fondo transparente
+    // Configurar el renderizador con fondo transparente y habilitar sombras
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvasRef.nativeElement,
       alpha: true,
+      antialias: true,
     });
     this.renderer.setSize(width, height);
     this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     // Crear la escena
     this.scene = new THREE.Scene();
 
     // Configurar la cámara
-    this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    this.camera.position.z = 5;
+    const fov = 75; // Campo de visión
+    const aspect = width / height; // Relación de aspecto
+    const near = 0.1; // Plano cercano
+    const far = 1000; // Plano lejano
+    this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
-    // Añadir iluminación
-    const ambientLight = new THREE.AmbientLight(0xffffff); // Luz blanca
+    const initialCameraPosition = new THREE.Vector3(
+      20 * Math.sin(0.2 * Math.PI),
+      10,
+      20 * Math.cos(0.2 * Math.PI)
+    );
+    const target = new THREE.Vector3(-0.5, 1.2, 0);
+
+    this.camera.position.copy(initialCameraPosition);
+    this.camera.lookAt(target);
+
+    // Añadir iluminación con sombras
+    const ambientLight = new THREE.AmbientLight(0xcccccc, Math.PI); // Luz ambiental suave
     this.scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 5, 5).normalize();
-    this.scene.add(directionalLight);
+    // Añadir los controles orbitales
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.controls.autoRotate = true;
+    this.controls.target = target;
 
-    // Cargar y añadir el modelo 3D
-    const mtlLoader = new MTLLoader();
-    const mtlURL = `/${this.urlBase}.mtl`;
-    console.log('MTL URL:', mtlURL);
+    // Añadir un plano para recibir la sombra
+    const planeGeometry = new THREE.PlaneGeometry(500, 500);
+    const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.5 });
+    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    plane.rotation.x = -Math.PI / 2;
+    plane.position.y = -1; // Ajusta la posición según sea necesario
+    plane.receiveShadow = true;
+    this.scene.add(plane);
 
-    mtlLoader.load(
-      mtlURL,
-      (materials) => {
-        materials.preload();
-        const objLoader = new OBJLoader();
-        objLoader.setMaterials(materials);
-        const objURL = `/${this.urlBase}.obj`;
-        console.log('OBJ URL:', objURL);
+    // Cargar y añadir el modelo GLB usando DRACOLoader
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderConfig({ type: 'js' });
+    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
 
-        objLoader.load(
-          objURL,
-          (obj) => {
-            // Escalar el objeto
-            obj.scale.set(this.scale.x, this.scale.y, this.scale.z);
-            // Posicionar el objeto
-            obj.position.set(this.position.x, this.position.y, this.position.z);
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.setDRACOLoader(dracoLoader);
+    const gltfURL = `/${this.urlBase}.glb`;
+    console.log('GLTF URL:', gltfURL);
 
-            this.objModel = obj;
-            this.scene.add(this.objModel);
-            this.animate();
-          },
-          (xhr) => {
-            console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-          },
-          (error) => {
-            console.error('Error loading OBJ file:', error);
+    gltfLoader.load(
+      gltfURL,
+      (gltf) => {
+        this.gltfModel = gltf.scene;
+
+        // Escalar el objeto
+        this.gltfModel.scale.set(this.scale.x, this.scale.y, this.scale.z);
+        // Posicionar el objeto
+        this.gltfModel.position.set(this.position.x, this.position.y, this.position.z);
+
+        // Configurar sombras y hacer la base invisible
+        this.gltfModel.traverse((child) => {
+          if ((child as THREE.Mesh).isMesh) {
+            
+            child.castShadow = false;
+            child.receiveShadow = false;
           }
-        );
+        });
+
+        this.scene.add(this.gltfModel);
+        this.animate();
       },
       (xhr) => {
         console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
       },
       (error) => {
-        console.error('Error loading MTL file:', error);
+        console.error('Error loading GLTF file:', error);
       }
     );
   }
@@ -133,13 +159,14 @@ export class ThreeRenderComponent implements AfterViewInit {
     requestAnimationFrame(() => this.animate());
 
     // Rotar el objeto sobre su base
-    if (this.objModel) {
+    if (this.gltfModel) {
       const direction = this.rotation.direction;
       direction === 'left'
-        ? (this.objModel.rotation.y -= this.rotation.velocity)
-        : (this.objModel.rotation.y += this.rotation.velocity);
+        ? (this.gltfModel.rotation.y -= this.rotation.velocity)
+        : (this.gltfModel.rotation.y += this.rotation.velocity);
     }
 
+    this.controls.update();
     this.renderer.render(this.scene, this.camera);
   }
 
