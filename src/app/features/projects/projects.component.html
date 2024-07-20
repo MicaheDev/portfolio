@@ -1,0 +1,49 @@
+<div class="project-band">
+  <ul>
+    <li class="thin">Projects</li>
+    <li class="bold">React</li>
+    <li class="thin">Angular</li>
+    <li class="bold">Node</li>
+    <li class="thin">Express</li>
+    <li class="bold">MongoDB</li>
+    <li class="thin">NextJS</li>
+    <li class="bold">Freelance</li>
+    <li class="thin">Gsap</li>
+  </ul>
+  <ul aria-hidden="true">
+    <li class="thin">Projects</li>
+    <li class="bold">React</li>
+    <li class="thin">Angular</li>
+    <li class="bold">Node</li>
+    <li class="thin">Express</li>
+    <li class="bold">MongoDB</li>
+    <li class="thin">NextJS</li>
+    <li class="bold">Freelance</li>
+    <li class="thin">Gsap</li>
+  </ul>
+</div>
+<section>
+  <div class="projects-list">
+    @for (project of projects; track $index) {
+
+    <div class="project">
+      <div class="preview" (click)="toggleContent($index)">
+        <div class="left">
+          <h4 class="title">{{ project.title }}</h4>
+          <p class="desc">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, quam? Alias quaerat, ea cum repudiandae
+            incidunt aperiam reiciendis in modi?
+          </p>
+        </div>
+        <p class="date">24/25/2024</p>
+      </div>
+      <div
+        class="content"
+        [style.maxHeight]="selectedProject.index === $index && selectedProject.isOpen ? '500px' : '0px'"
+      >
+        <img class="image" [src]="project.src" alt="" />
+      </div>
+    </div>
+    }
+  </div>
+</section>
