@@ -22,8 +22,11 @@ import gsap from 'gsap';
         inset: 0;
         pointer-events: none;
         mix-blend-mode: difference;
+        display: flex;
+        justify-conetnt: center;
+        align-items: center;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 900px) {
           display: none;
         }
       }
@@ -40,7 +43,7 @@ import gsap from 'gsap';
         pointer-events: none;
         mix-blend-mode: difference;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 900px) {
           display: none;
         }
       }
@@ -72,10 +75,16 @@ export class CursorComponent {
         const anchors = window.document.querySelectorAll('a');
         const buttons = window.document.querySelectorAll('button');
         const paragraphs = window.document.querySelectorAll('.paragraph');
+        const projects = window.document.querySelectorAll('.preview');
 
         anchors.forEach(anchor => {
           anchor.addEventListener('mouseenter', this.hoverCursor.bind(this));
           anchor.addEventListener('mouseleave', this.leaveCursor.bind(this));
+        });
+
+        projects.forEach(project => {
+          project.addEventListener('mouseenter', this.hoverProjectCursor.bind(this));
+          project.addEventListener('mouseleave', this.leaveProjectCursor.bind(this));
         });
 
         buttons.forEach(button => {
@@ -90,6 +99,32 @@ export class CursorComponent {
         window.addEventListener('mousemove', this.moveCursor.bind(this));
       });
     }
+  }
+
+  hoverProjectCursor() {
+    gsap.to(this.cursor.nativeElement, {
+      scale: 10,
+      background: "var(--green)",
+      duration: 0.3,
+    });
+
+    gsap.to(this.followerCursor.nativeElement, {
+      opacity: 0,
+      duration: 0.3,
+    });
+  }
+
+  leaveProjectCursor() {
+    gsap.to(this.cursor.nativeElement, {
+      scale: 1,
+      background: "var(--white)",
+      duration: 0.3,
+    });
+
+    gsap.to(this.followerCursor.nativeElement, {
+      opacity: 1,
+      duration: 0.3,
+    });
   }
 
   hoverParagraphCursor() {

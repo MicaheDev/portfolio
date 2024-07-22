@@ -20,7 +20,6 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        cursor: pointer;
 
         .left {
           display: flex;
@@ -50,10 +49,6 @@ section {
           border-radius: 20px;
         }
       }
-
-      &:first-child {
-        border-top: 4px solid var(--dark);
-      }
     }
   }
 }
@@ -69,7 +64,6 @@ section {
   user-select: none;
   background-color: var(--black);
   color: var(--white);
-
 }
 
 .project-band ul {
@@ -95,11 +89,10 @@ section {
   }
 }
 
-
 .thin {
-    font-weight: var(--fw-thin);
+  font-weight: var(--fw-thin);
 }
 
 .bold {
-    font-weight: var(--fw-bolder);
+  font-weight: var(--fw-bolder);
 }
