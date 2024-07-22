@@ -30,7 +30,6 @@ type Directions = 'left' | 'right';
 @Component({
   selector: 'app-three-render',
   standalone: true,
-  imports: [],
   templateUrl: './three-render.component.html',
   styleUrls: ['./three-render.component.scss'],
 })
@@ -57,6 +56,7 @@ export class ThreeRenderComponent implements AfterViewInit {
     if (this.isBrowser) {
       this.initThreeJS();
       this.onWindowResize();
+      window.addEventListener('resize', this.onWindowResize.bind(this), false);
     }
   }
 
@@ -137,7 +137,6 @@ export class ThreeRenderComponent implements AfterViewInit {
         // Configurar sombras y hacer la base invisible
         this.gltfModel.traverse((child) => {
           if ((child as THREE.Mesh).isMesh) {
-            
             child.castShadow = false;
             child.receiveShadow = false;
           }

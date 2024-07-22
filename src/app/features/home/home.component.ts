@@ -1,25 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { remixHand } from '@ng-icons/remixicon';
+import { remixDribbbleLine, remixGithubLine, remixHand, remixLinkedinLine, remixTwitterXFill } from '@ng-icons/remixicon';
 import { ThreeRenderComponent } from '../../shared/components/three-render/three-render.component';
 import { SanityService } from '../../shared/services/sanity.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { TransitionLinkComponent } from '../../shared/components/transition-link/transition-link.component';
-import { ProjectsComponent } from "../projects/projects.component";
+import { ProjectsComponent } from '../projects/projects.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    NgIconComponent,
-    ThreeRenderComponent,
-    TransitionLinkComponent,
-    ProfileComponent,
-    ProjectsComponent
-],
+  imports: [NgIconComponent, ThreeRenderComponent, TransitionLinkComponent, ProfileComponent, ProjectsComponent],
   providers: [
     provideIcons({
       remixHand,
+      remixGithubLine,
+      remixLinkedinLine,
+      remixDribbbleLine,
+      remixTwitterXFill
     }),
   ],
   templateUrl: './home.component.html',

@@ -1,32 +1,46 @@
-<section>
-  <div class="render">
+<!--
+-->
+<div class="container">
+  <section>
     <app-three-render urlBase="computer" [scale]="{ x: 1.2, y: 1.2, z: 1.2 }" [position]="{ x: 0, y: -8, z: 0 }" />
-  </div>
-  <div class="content">
+
     <div class="headers">
-      <div class="welcome">Welcome <ng-icon name="remixHand" /></div>
-      <h1 class="title">Design your dreams</h1>
-      <h3 class="subtitle">Develop your ideas</h3>
-    </div>
-
-    <div class="info">
-      <div class="exp"><span class="year">8</span> <span class="unit">months</span> <label>experience</label></div>
-
-      <div class="positions">
-        <ul>
-          <li>Freelancer</li>
-          <li>UI/UX Designer</li>
-          <li>Full Stack Developer</li>
-        </ul>
+      <div class="welcome">
+        Welcome
+        <ng-icon name="remixHand" />
       </div>
-
-      <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, impedit.</div>
-
+      <h1 class="title">To My Portfolio</h1>
+      <h2 class="subtitle">I'm <span>Michell Castillo</span></h2>
     </div>
-  </div>
-</section>
-<app-profile />
-<app-projects />
+
+    <div class="exp block">
+      <img class="year" src="/exp.svg" alt="" />
+      <h5>Experience</h5>
+      <p>months</p>
+    </div>
+
+    <div class="services block">
+    <img src="/banner.png" alt="">
+    </div>
+
+    <div class="desc">
+      <a href="https://github.com/MicaheDev" target="_blank" class="github sub-block bounce-hover">
+        <ng-icon name="remixGithubLine" />
+      </a>
+      <a href="https://www.linkedin.com/in/michellcastillo29/" target="_blank" class="linkedin sub-block bounce-hover">
+        <ng-icon name="remixLinkedinLine" />
+      </a>
+      <a class="dribble sub-block bounce-hover">
+        <ng-icon name="remixDribbbleLine" />
+      </a>
+      <a href="https://x.com/Michell01256463" target="_blank" class="x sub-block bounce-hover">
+        <ng-icon name="remixTwitterXFill" />
+      </a>
+    </div>
+  </section>
+  <app-profile />
+  <app-projects />
+</div>
 <!--
 
 
