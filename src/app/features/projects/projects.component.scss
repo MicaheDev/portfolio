@@ -14,12 +14,12 @@ section {
     .project {
       width: 100%;
       border-bottom: 4px solid var(--dark);
-      padding: 20px;
 
       .preview {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 20px;
 
         .left {
           display: flex;
@@ -53,46 +53,3 @@ section {
   }
 }
 
-.project-band {
-  font-size: 15px;
-  padding-block: 20px;
-  border-block: 1px solid #000;
-  display: flex;
-  --gap: 20px;
-  gap: var(--gap);
-  overflow: hidden;
-  user-select: none;
-  background-color: var(--black);
-  color: var(--white);
-}
-
-.project-band ul {
-  list-style: none;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--gap);
-  min-width: 100%;
-  animation: scroll 20s linear infinite;
-  font-size: 3rem;
-  text-transform: uppercase;
-}
-
-.project-band:hover ul {
-  animation-play-state: paused;
-}
-
-@keyframes scroll {
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
-  }
-}
-
-.thin {
-  font-weight: var(--fw-thin);
-}
-
-.bold {
-  font-weight: var(--fw-bolder);
-}

@@ -1,27 +1,4 @@
-<div class="project-band">
-  <ul>
-    <li class="thin">Projects</li>
-    <li class="bold">React</li>
-    <li class="thin">Angular</li>
-    <li class="bold">Node</li>
-    <li class="thin">Express</li>
-    <li class="bold">MongoDB</li>
-    <li class="thin">NextJS</li>
-    <li class="bold">Freelance</li>
-    <li class="thin">Gsap</li>
-  </ul>
-  <ul aria-hidden="true">
-    <li class="thin">Projects</li>
-    <li class="bold">React</li>
-    <li class="thin">Angular</li>
-    <li class="bold">Node</li>
-    <li class="thin">Express</li>
-    <li class="bold">MongoDB</li>
-    <li class="thin">NextJS</li>
-    <li class="bold">Freelance</li>
-    <li class="thin">Gsap</li>
-  </ul>
-</div>
+<app-infinite-band [bandList]="projectBand" background="#000" color="#fff"/>
 <section>
   <div class="projects-list">
     @for (project of projects; track $index) {

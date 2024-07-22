@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { AfterViewChecked, AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
+import { InfiniteBandComponent } from "../../shared/components/infinite-band/infinite-band.component";
 
 type SelectedProject = {
   index: number | null;
@@ -8,12 +9,47 @@ type SelectedProject = {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [],
+  imports: [InfiniteBandComponent],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent implements AfterViewInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  projectBand = [
+    {
+      name: "Angular",
+      weight: 900,
+    },
+    {
+      name: "TailwindCSS",
+      weight: 500,
+    },
+    {
+      name: "Gsap",
+      weight: 900,
+    },
+    {
+      name: "Typescript",
+      weight: 500,
+    }
+    , {
+      name: "React",
+      weight: 900,
+    },
+    {
+      name: "Docker",
+      weight: 500,
+    },
+    {
+      name: "NextJS",
+      weight: 900,
+    },
+    {
+      name: "Python",
+      weight: 500,
+    }
+  ]
 
   projects = [
     { title: 'C2 Montreal', src: '/images/c2montreal.png', color: '#000000' },

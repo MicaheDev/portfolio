@@ -1,0 +1,12 @@
+<div class="band" [style]="{background, color}">
+  <ul>
+    @for (item of bandList; track $index) {
+    <li [style]="{ 'font-weight': item.weight }">{{ item.name }}</li>
+    }
+  </ul>
+  <ul aria-hidden="true">
+    @for (item of bandList; track $index) {
+    <li [style]="{ 'font-weight': item.weight }">{{ item.name }}</li>
+    }
+  </ul>
+</div>

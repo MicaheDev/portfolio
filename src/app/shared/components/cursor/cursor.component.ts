@@ -8,7 +8,7 @@ import gsap from 'gsap';
   imports: [],
   template: `<div>
     <div class="cursor" #cursor></div>
-    <div class="follower-cursor" #followerCursor></div>
+    <div class="follower-cursor" #followerCursor><p #followerText>Click</p></div>
   </div> `,
   styles: [
     `
@@ -22,9 +22,6 @@ import gsap from 'gsap';
         inset: 0;
         pointer-events: none;
         mix-blend-mode: difference;
-        display: flex;
-        justify-conetnt: center;
-        align-items: center;
 
         @media screen and (max-width: 900px) {
           display: none;
@@ -43,6 +40,16 @@ import gsap from 'gsap';
         pointer-events: none;
         mix-blend-mode: difference;
 
+        display: flex;
+        justify-conetnt: center;
+        align-items: center;
+
+        p {
+          color: var(--white);
+          text-align: center;
+          margin: auto;
+        }
+
         @media screen and (max-width: 900px) {
           display: none;
         }
@@ -53,6 +60,7 @@ import gsap from 'gsap';
 export class CursorComponent {
   @ViewChild('cursor', { static: false }) cursor!: ElementRef;
   @ViewChild('followerCursor', { static: false }) followerCursor!: ElementRef;
+  @ViewChild('followerText', { static: false }) followerText!: ElementRef;
 
   private isBrowser: boolean;
 
@@ -63,15 +71,22 @@ export class CursorComponent {
   ngAfterViewInit(): void {
     if (this.isBrowser) {
       this.ngZone.runOutsideAngular(() => {
+
+   
         gsap.set(this.cursor.nativeElement, {
           xPercent: -50,
           yPercent: -50,
+        });
+
+        gsap.to(this.followerText.nativeElement, {
+          opacity: 0,
         });
 
         gsap.set(this.followerCursor.nativeElement, {
           xPercent: -50,
           yPercent: -50,
         });
+
         const anchors = window.document.querySelectorAll('a');
         const buttons = window.document.querySelectorAll('button');
         const paragraphs = window.document.querySelectorAll('.paragraph');
@@ -104,27 +119,39 @@ export class CursorComponent {
   hoverProjectCursor() {
     gsap.to(this.cursor.nativeElement, {
       scale: 10,
-      background: "var(--green)",
+      duration: 0.3,
+    });
+
+    gsap.to(this.followerText.nativeElement, {
+      opacity: 1,
       duration: 0.3,
     });
 
     gsap.to(this.followerCursor.nativeElement, {
-      opacity: 0,
+      width: '80px',
+      height: '80px',
       duration: 0.3,
     });
+
   }
 
   leaveProjectCursor() {
     gsap.to(this.cursor.nativeElement, {
       scale: 1,
-      background: "var(--white)",
+      duration: 0.3,
+    });
+
+    gsap.to(this.followerText.nativeElement, {
+      opacity: 0,
       duration: 0.3,
     });
 
     gsap.to(this.followerCursor.nativeElement, {
-      opacity: 1,
+      width: '30px',
+      height: '30px',
       duration: 0.3,
     });
+
   }
 
   hoverParagraphCursor() {
