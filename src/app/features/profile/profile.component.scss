@@ -4,7 +4,7 @@ section {
   margin: 0 auto;
   overflow: hidden;
   padding: 20px 0;
-  //background-color: var(--black);
+  border: 2px solid red;
 
   display: flex;
   justify-content: center;
@@ -42,6 +42,8 @@ section {
         align-items: center;
         border-radius: 10px;
         height: 100px;
+        text-decoration: none;
+
 
         &:nth-of-type(1) {
           background-color: var(--black);
@@ -114,9 +116,10 @@ section {
     gap: 10px;
 
     .options {
-      &:nth-of-type(1) {
 
+      &:nth-of-type(1) {
         grid-column: 1/2;
+
 
         span {
           font-size: 1.2rem;

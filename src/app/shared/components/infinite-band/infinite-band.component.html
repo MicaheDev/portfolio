@@ -1,4 +1,4 @@
-<div class="band" [style]="{background, color}">
+<div class="band" [style]="{background, color, transform}">
   <ul>
     @for (item of bandList; track $index) {
     <li [style]="{ 'font-weight': item.weight }">{{ item.name }}</li>

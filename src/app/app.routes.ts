@@ -22,7 +22,16 @@ export const routes: Routes = [
       },
       {
         path: 'projects',
-        component: ProjectsComponent,
+        children: [
+          {
+            path: "",
+            component: ProjectsComponent,
+          },
+          {
+            path: ":slug",
+            component: SkillsComponent
+          }
+        ]
       },
       {
         path: 'blog',

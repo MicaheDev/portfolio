@@ -8,7 +8,7 @@ import gsap from 'gsap';
   imports: [],
   template: `<div>
     <div class="cursor" #cursor></div>
-    <div class="follower-cursor" #followerCursor><p #followerText>Click</p></div>
+    <div class="follower-cursor" #followerCursor><p #followerText>View</p></div>
   </div> `,
   styles: [
     `
@@ -41,7 +41,7 @@ import gsap from 'gsap';
         mix-blend-mode: difference;
 
         display: flex;
-        justify-conetnt: center;
+        justify-content: center;
         align-items: center;
 
         p {
@@ -71,8 +71,6 @@ export class CursorComponent {
   ngAfterViewInit(): void {
     if (this.isBrowser) {
       this.ngZone.runOutsideAngular(() => {
-
-   
         gsap.set(this.cursor.nativeElement, {
           xPercent: -50,
           yPercent: -50,
@@ -90,16 +88,16 @@ export class CursorComponent {
         const anchors = window.document.querySelectorAll('a');
         const buttons = window.document.querySelectorAll('button');
         const paragraphs = window.document.querySelectorAll('.paragraph');
-        const projects = window.document.querySelectorAll('.preview');
-
-        anchors.forEach(anchor => {
-          anchor.addEventListener('mouseenter', this.hoverCursor.bind(this));
-          anchor.addEventListener('mouseleave', this.leaveCursor.bind(this));
-        });
+        const projects = window.document.querySelectorAll('.project');
 
         projects.forEach(project => {
           project.addEventListener('mouseenter', this.hoverProjectCursor.bind(this));
           project.addEventListener('mouseleave', this.leaveProjectCursor.bind(this));
+        });
+
+        anchors.forEach(anchor => {
+          anchor.addEventListener('mouseenter', this.hoverCursor.bind(this));
+          anchor.addEventListener('mouseleave', this.leaveCursor.bind(this));
         });
 
         buttons.forEach(button => {
@@ -132,7 +130,6 @@ export class CursorComponent {
       height: '80px',
       duration: 0.3,
     });
-
   }
 
   leaveProjectCursor() {
@@ -151,7 +148,6 @@ export class CursorComponent {
       height: '30px',
       duration: 0.3,
     });
-
   }
 
   hoverParagraphCursor() {

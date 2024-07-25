@@ -1,55 +1,71 @@
 section {
+  height: 85vh;
   width: 90%;
-  min-height: 100vh;
   margin: 0 auto;
-  overflow: hidden;
+  padding: 40px 0;
 
-  .projects-list {
-    width: 100%;
+  border: 2px solid red;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+
+  grid-gap: 20px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .project {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    border-radius: 20px;
+    padding: 15px;
 
-    .project {
+    .cover {
       width: 100%;
-      border-bottom: 4px solid var(--dark);
-
-      .preview {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-
-        .left {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          align-items: flex-start;
-
-          .title {
-            font-size: 3rem;
-          }
-
-          .desc {
-            max-width: 500px;
-          }
-        }
-      }
-
-      .content {
-        overflow: hidden;
-        max-height: 0px;
-        transition: max-height 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
-
-        .image {
-          width: 500px;
-          height: 400px;
-          object-fit: cover;
-          border-radius: 20px;
-        }
-      }
+      height: 100%;
+      object-fit: contain;
     }
+  }
+
+  .wide {
+    grid-column: span 2;
+  }
+
+  .tall {
+    grid-row: span 2;
+  }
+
+  .big {
+    grid-column: span 2;
+    grid-row: span 2;
   }
 }
 
+@media screen and (max-width: 900px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+
+    .wide {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  
+    .tall {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  
+    .big {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+  }
+}

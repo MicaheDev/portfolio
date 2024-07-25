@@ -17,4 +17,5 @@ export class InfiniteBandComponent {
   @Input() bandList!: bandList[];
   @Input() background!: string;
   @Input() color!: string;
+  @Input() transform!: string
 }
