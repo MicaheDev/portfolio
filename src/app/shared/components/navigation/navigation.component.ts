@@ -1,5 +1,5 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
@@ -9,40 +9,35 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { TransitionLinkComponent } from '../transition-link/transition-link.component';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { remixArrowRightUpLine, remixCloseLine, remixHand, remixMenu4Fill } from '@ng-icons/remixicon';
-import { format } from 'date-fns';
-import { TransitionRefService } from '../../../layouts/services/transition-ref.service';
-import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
+import { format } from 'date-fns';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { remixCloseFill, remixMenu5Line, remixMenuLine } from '@ng-icons/remixicon';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [TransitionLinkComponent, NgIconComponent],
-  providers: [
-    provideIcons({
-      remixMenu4Fill,
-      remixCloseLine,
-      remixArrowRightUpLine,
-      remixHand,
-    }),
-  ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
+  imports: [NgIconComponent],
+  providers: [
+    provideIcons({
+      remixMenu5Line,
+      remixCloseFill,
+      remixMenuLine
+    }),
+  ],
   encapsulation: ViewEncapsulation.None,
 })
 export class NavigationComponent implements OnInit {
-  @ViewChild('gsapContainer', { static: false })
-  gsapContainer!: ElementRef;
+  @ViewChild('motionContainer', { static: false })
+  motionContainer!: ElementRef;
 
   date!: string;
   isMenuOpen = false;
   tl!: GSAPTimeline;
 
   constructor(
-    private refService: TransitionRefService,
     @Inject(PLATFORM_ID)
     private platformId: Object
   ) {}
@@ -66,37 +61,31 @@ export class NavigationComponent implements OnInit {
   }
 
   initializeGsap(): void {
-    const isMobile = window.innerWidth < 900;
-    const menuRight = isMobile ? '20px' : '40px';
-
     gsap.context(() => {
-      gsap.set('.slider', { top: 0 });
-      gsap.set('.menu', { width: 60, height: 60, right: menuRight, top: '20px' });
-      gsap.set('.item-holder', { opacity: 0, visibility: 'hidden' });
-    }, this.gsapContainer.nativeElement);
+      gsap.set('.close-icon', {
+        translateY: '-100%',
+        opacity: 0,
+      });
+    }, this.motionContainer.nativeElement);
   }
 
   updateGsap() {
-    const isMobile = window.innerWidth < 900;
-    const menuWidth = isMobile ? window.innerWidth : 400;
-    const menuHeight = isMobile ? window.innerHeight : 600;
-    const menuRight = isMobile ? '0px' : '30px';
-    const menuTop = isMobile ? '0px' : '10px';
-    const borderRadius = isMobile ? '0px' : '20px';
-
     this.tl = gsap
       .timeline({ paused: true })
-      .to('.menu', {
-        width: menuWidth,
-        height: menuHeight,
-        right: menuRight,
-        top: menuTop,
-        borderRadius,
-        duration: 0.5,
-        ease: 'power4.inOut',
+      .to('.open-icon', {
+        opacity: 0,
+        duration: 0.3,
+        translateY: '100%',
       })
-      .to('.slider', { duration: 0.4, top: '-100%', ease: 'power4.inOut' })
-      .to('.item-holder', { visibility: 'visible', opacity: 1, stagger: 0.1, duration: 0.5 });
+      .to('.menu', {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        duration: 0.5,
+      })
+      .to('.close-icon', {
+        opacity: 1,
+        duration: 0.3,
+        translateY: '0%',
+      });
   }
 
   ngAfterViewInit(): void {

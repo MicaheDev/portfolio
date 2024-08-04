@@ -1,12 +1,18 @@
-<div class="band" [style]="{background, color, transform}">
-  <ul>
-    @for (item of bandList; track $index) {
-    <li [style]="{ 'font-weight': item.weight }">{{ item.name }}</li>
-    }
+<div class="flex px-2 py-4 gap-5 overflow-hidden select-none border-b border-gray-400 band">
+  <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular">
+    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, quo?</li>
+    <li class="text-4xl uppercase">SEO</li>
+    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos nemo velit illum assumenda voluptas animi?</li>
+    <li class="text-4xl uppercase">UI/UX Designer</li>
+    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+    <li class="text-4xl uppercase">Development</li>
   </ul>
-  <ul aria-hidden="true">
-    @for (item of bandList; track $index) {
-    <li [style]="{ 'font-weight': item.weight }">{{ item.name }}</li>
-    }
+  <ul aria-hidden="true" class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular">
+    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, quo?</li>
+    <li class="text-4xl uppercase">SEO</li>
+    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos nemo velit illum assumenda voluptas animi?</li>
+    <li class="text-4xl uppercase">UI/UX Designer</li>
+    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+    <li class="text-4xl uppercase">Development</li>
   </ul>
 </div>
