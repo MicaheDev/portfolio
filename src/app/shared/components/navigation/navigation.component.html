@@ -5,17 +5,17 @@
       class="w-[100px] h-full bg-black font-extrabold text-white inline-flex justify-center items-center text-5xl"
       ><img class="w-[90%]" src="/logo.png" alt=""
     /></a>
-  
-    <div class="h-full border-x border-x-gray-400 flex items-center justify-center w-1/3">01/08/2024</div>
-  
+
+    <div class="h-full border-x border-x-gray-400 flex items-center justify-center w-1/3">{{ date }}</div>
+
     <button class="h-full px-8 inline-flex items-center gap-5 bg-black open-btn" (click)="toggleMenu()">
       <div class="flex flex-col gap-3 open-icon text-white text-4xl">
-        <ng-icon name="remixMenuLine"/>
+        <ng-icon name="remixMenuLine" />
       </div>
       <span class="text-2xl text-white font-extrabold uppercase">Menu</span>
     </button>
   </nav>
-  
+
   <menu class="fixed w-full h-full inset-0 z-10 bg-black menu">
     <div class="w-[95%] m-auto h-full border-x border-x-gray-400">
       <nav class="h-[100px] flex justify-between items-center border-b border-b-gray-400">
@@ -24,23 +24,29 @@
           class="w-[100px] h-full bg-black font-extrabold text-white inline-flex justify-center items-center text-5xl"
           ><img class="w-[90%]" src="/logo.png" alt=""
         /></a>
-  
-        <div class="h-full border-x border-x-gray-400 text-white flex items-center justify-center w-1/3">01/08/2024</div>
-  
+
+        <div class="h-full border-x border-x-gray-400 text-white flex items-center justify-center w-1/3">
+          {{ date }}
+        </div>
+
         <button class="h-full px-8 inline-flex items-center gap-5 bg-black close-btn" (click)="toggleMenu()">
           <div class="flex flex-col gap-3 close-icon text-white text-5xl">
-            <ng-icon name="remixCloseFill"/>
+            <ng-icon name="remixCloseFill" />
           </div>
           <span class="text-2xl text-white font-extrabold uppercase">Menu</span>
         </button>
       </nav>
       <div class="h-[95vh] border-b border-b-gray-400 text-white text-8xl uppercase font-extrabold flex flex-col">
-        <a class="p-4 border-b border-b-gray-400 text-right transition-colors hover:bg-violet-500 cursor-pointer"> Home </a>
-        <a class="p-4 border-b border-b-gray-400 text-right transition-colors hover:bg-violet-500 cursor-pointer"> Profile </a>
-        <a class="p-4 border-b border-b-gray-400 text-right transition-colors hover:bg-violet-500 cursor-pointer"> Projects </a>
-        <a class="p-4 border-b border-b-gray-400 text-right transition-colors hover:bg-violet-500 cursor-pointer"> Contact </a>
+        @for (item of menuItems; track item.path) {
+        <a
+          [routerLink]="item.path"
+          (click)="toggleMenu()"
+          class="p-4 border-b border-b-gray-400 text-right transition-colors hover:bg-violet-500 cursor-pointer ease-linear"
+        >
+          {{ item.label }}
+        </a>
+        }
       </div>
     </div>
   </menu>
-  
 </div>

@@ -13,13 +13,14 @@ import gsap from 'gsap';
 import { format } from 'date-fns';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { remixCloseFill, remixMenu5Line, remixMenuLine } from '@ng-icons/remixicon';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
-  imports: [NgIconComponent],
+  imports: [NgIconComponent, RouterModule],
   providers: [
     provideIcons({
       remixMenu5Line,
