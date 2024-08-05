@@ -1,82 +1,75 @@
-<!--
--->
-<div class="container">
-  <section>
-    <app-three-render urlBase="computer" [scale]="{ x: 1.2, y: 1.2, z: 1.2 }" [position]="{ x: 0, y: -8, z: 0 }" />
+<section class="flex flex-col w-full h-[85vh] border-b border-b-gray-400 overflow-hidden">
+  <app-infinite-band />
 
-    <div class="headers">
-      <div class="welcome">
-        Welcome
-        <ng-icon name="remixHand" />
+  <div class="w-full flex flex-col border-b border-b-gray-400">
+    <div class="border-b border-b-gray-400 border-r border-r-gray-400 w-1/2 flex justify-center items-center p-4">
+      <div class="flex items-center gap-4">
+        <span class="relative flex h-4 w-4">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-4 w-4 bg-violet-500"></span>
+        </span>
+        <p>Quillota, Chile</p>
       </div>
-      <h1 class="title">To My Portfolio</h1>
-      <h2 class="subtitle">I'm <span>Michell Castillo</span></h2>
     </div>
-
-    <div class="exp block">
-      <img class="year" src="/exp.svg" alt="" />
-      <h5>Experience</h5>
-      <p>months</p>
+    <div class="w-full flex justify-center items-center">
+      <h1 class="text-9xl font-extrabold uppercase">Michell Castillo</h1>
     </div>
-
-    <div class="services block">
-    <img src="/banner.png" alt="">
-    </div>
-
-    <div class="desc">
-      <a href="https://github.com/MicaheDev" target="_blank" class="github sub-block bounce-hover">
-        <ng-icon name="remixGithubLine" />
-      </a>
-      <a href="https://www.linkedin.com/in/michellcastillo29/" target="_blank" class="linkedin sub-block bounce-hover">
-        <ng-icon name="remixLinkedinLine" />
-      </a>
-      <a class="dribble sub-block bounce-hover">
-        <ng-icon name="remixDribbbleLine" />
-      </a>
-      <a href="https://x.com/Michell01256463" target="_blank" class="x sub-block bounce-hover">
-        <ng-icon name="remixTwitterXFill" />
-      </a>
-    </div>
-  </section>
-  <app-profile />
-  <app-projects />
-</div>
-<!--
-
-
-
-Sanity API
-
-
-<section>
-  <div class="content">
-    <div class="titles">
-      <div class="welcome">welcome <ng-icon name="remixHand" /></div>
-      <h1>{{ data.title1 }}</h1>
-
-      <h2>{{ data.title2 }}</h2>
-    </div>
-
-    <div class="float">
-      <app-three-render />
+    <div
+      class="border-t border-t-gray-400 border-l border-l-gray-400 w-1/2 flex justify-center items-center py-2 self-end"
+    >
+      <div class="flex p-2 gap-5 overflow-hidden select-none band">
+        <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse">
+          <li>Fullstack Developer</li>
+          <li>
+            <span class="w-5 h-5 block bg-black"></span>
+          </li>
+          <li>UI/UX Designer</li>
+          <li>
+            <span class="w-5 h-5 block bg-black"></span>
+          </li>
+          <li>Artist</li>
+          <li>
+            <span class="w-5 h-5 block bg-black"></span>
+          </li>
+        </ul>
+        <ul
+          aria-hidden="true"
+          class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse"
+        >
+          <li>Fullstack Developer</li>
+          <li>
+            <span class="w-5 h-5 block bg-black"></span>
+          </li>
+          <li>UI/UX Designer</li>
+          <li>
+            <span class="w-5 h-5 block bg-black"></span>
+          </li>
+          <li>Artist</li>
+          <li>
+            <span class="w-5 h-5 block bg-black"></span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="info">
-    <div class="desc">
-      <p>
-        {{ data.description }}
-      </p>
+  <div class="w-full h-full flex flex-1">
+    <div class="w-1/2 h-full overflow-hidden">
+      <app-three-render urlBase="dog" [scale]="{ x: 4, y: 4, z: 4 }" [position]="{ x: 0, y: -5, z: 0 }" />
     </div>
+    <div class="w-1/2 h-full border-l border-l-gray-400 grid grid-cols-2 grid-rows-2">
+      <button class="col-start-1 col-end-2 row-start-1 row-end-2 bg-black text-white text-6xl font-extrabold uppercase">
+        Github
+      </button>
+      <button
+        class="col-start-2 col-end-3 row-start-1 row-end-2 shadow-sm text-violet-500 text-6xl font-extrabold uppercase"
+      >
+        Linkedin
+      </button>
 
-    <div class="exp"><span>{{data.expNumber}}</span>{{data.expUnit}} of exp</div>
-
-    <div class="skills">
-      @for (skill of data.skills; track skill) {
-      <p>{{ skill }}</p>
-      }
+      <button class="col-span-3 row-start-2 row-end-3 bg-violet-500 text-white text-6xl font-extrabold uppercase">
+        Resume
+      </button>
     </div>
   </div>
 </section>
-
--->
