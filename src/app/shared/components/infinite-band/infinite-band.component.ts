@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-infinite-band',
@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './infinite-band.component.html',
   styleUrl: './infinite-band.component.scss',
 })
-export class InfiniteBandComponent {}
+export class InfiniteBandComponent {
+  @Input() colorMode: string = 'light';
+}

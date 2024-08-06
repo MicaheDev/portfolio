@@ -41,7 +41,7 @@ import gsap from 'gsap';
         mix-blend-mode: difference;
 
         display: flex;
-        justify-conetnt: center;
+        justify-content: center;
         align-items: center;
 
         p {

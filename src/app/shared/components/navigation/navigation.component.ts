@@ -27,8 +27,7 @@ import { RouterModule } from '@angular/router';
       remixCloseFill,
       remixMenuLine
     }),
-  ],
-  encapsulation: ViewEncapsulation.None,
+  ]
 })
 export class NavigationComponent implements OnInit {
   @ViewChild('motionContainer', { static: false })
