@@ -1,63 +1,108 @@
-import { isPlatformBrowser } from '@angular/common';
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  HostListener,
-  Inject,
-  OnInit,
-  PLATFORM_ID,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
-import gsap from 'gsap';
-import { format } from 'date-fns';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { remixCloseFill, remixMenu5Line, remixMenuLine } from '@ng-icons/remixicon';
-import { RouterModule } from '@angular/router';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AfterViewChecked, AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
 
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { remixCloseFill, remixExternalLinkLine, remixGithubLine, remixLinkedinLine, remixMenu5Line, remixMenuLine } from '@ng-icons/remixicon';
+import { RouterModule } from '@angular/router';
+import gsap from 'gsap';
 @Component({
   selector: 'app-navigation',
   standalone: true,
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
-  imports: [NgIconComponent, RouterModule],
+  imports: [NgIconComponent, RouterModule, CommonModule],
   providers: [
     provideIcons({
-      remixMenu5Line,
       remixCloseFill,
-      remixMenuLine
+      remixMenuLine,
+      remixExternalLinkLine,
+      remixGithubLine,
+      remixLinkedinLine
     }),
-  ]
+  ],
 })
-export class NavigationComponent implements AfterViewInit {
-
-
+export class NavigationComponent implements AfterViewInit, AfterViewChecked {
   date!: string;
   isMenuOpen = false;
   tl!: GSAPTimeline;
 
-  constructor(
-    @Inject(PLATFORM_ID)
-    private platformId: Object
-  ) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   menuItems = [
-    { path: '/', label: 'Home' },
-    { path: '/profile', label: 'Profile' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/blog', label: 'Blog' },
-    { path: '/contact', label: 'Contact' },
+    {
+      path: '/',
+      label: 'Home',
+      color: 'violet',
+    },
+    {
+      path: '/profile',
+      label: 'profile',
+      color: 'red',
+    },
+    {
+      path: '/projects',
+      label: 'Projects',
+      color: 'blue',
+    },
+    {
+      path: '/blog',
+      label: 'Blog',
+      color: 'neutral',
+    },
+    {
+      path: '/contact',
+      label: 'Contact',
+      class: 'neutral',
+    },
   ];
 
   ngAfterViewInit(): void {
-    if(isPlatformBrowser(this.platformId)){
-      
+    if (isPlatformBrowser(this.platformId)) {
+      gsap.set('.slider', {
+        top: 0,
+      });
+      gsap.set('.menu', {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+      });
+      gsap.set(['.me', '.menu-items', '.link'], {
+        opacity: 0,
+        scale: 1,
+      });
+
+      this.tl = gsap
+        .timeline({ paused: true })
+        .to('.slider', {
+          translateY: "-100%",
+          duration: 0.4,
+          ease: 'power4.inOut',
+        })
+        .to('.menu', {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          duration: 0.5,
+        })
+        .to(['.me', '.menu-items', '.link'], {
+          opacity: 1,
+          duration: 0.3,
+          stagger: 0.1,
+          ease: 'power4.inOut',
+        })
+  
     }
   }
 
+  ngAfterViewChecked(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.isMenuOpen) {
+        this.tl.play();
+      } else {
+        this.tl.reverse();
+      }
+    }
+  }
 
-
-
-  
+  toggleMenu() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.isMenuOpen = !this.isMenuOpen;
+    }
+  }
 }

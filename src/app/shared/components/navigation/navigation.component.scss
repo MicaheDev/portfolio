@@ -1,7 +1,35 @@
-.menu {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+.curve-l {
+  box-shadow: -10px -10px 0 #0a0a0a;
 }
 
-.curve {
-  box-shadow: -10px -10px 0 #0a0a0a;
+.curve-r {
+  box-shadow: 10px -10px 0 #0a0a0a;
+}
+
+.rotate-x-90 {
+  transform: rotateX(90deg);
+}
+
+.el:hover {
+  .perspective {
+    transform: rotateX(90deg);
+  }
+}
+
+.perspective {
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+
+
+  p {
+
+    transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1),
+      opacity 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+
+    &:nth-of-type(2) {
+      position: absolute;
+      transform: rotateX(-90deg) translateY(20px);
+      transform-origin: bottom center;
+    }
+  }
 }
