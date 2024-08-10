@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
@@ -29,9 +30,8 @@ import { RouterModule } from '@angular/router';
     }),
   ]
 })
-export class NavigationComponent implements OnInit {
-  @ViewChild('motionContainer', { static: false })
-  motionContainer!: ElementRef;
+export class NavigationComponent implements AfterViewInit {
+
 
   date!: string;
   isMenuOpen = false;
@@ -50,64 +50,14 @@ export class NavigationComponent implements OnInit {
     { path: '/contact', label: 'Contact' },
   ];
 
-  ngOnInit(): void {
-    const date = new Date();
-    this.date = format(date, 'dd/MM/yyyy'); // Formato DD/MM/YYYY
-  }
-  @HostListener('window:resize')
-  onResize() {
-    this.initializeGsap();
-    this.updateGsap();
-  }
-
-  initializeGsap(): void {
-    gsap.context(() => {
-      gsap.set('.close-icon', {
-        translateY: '-100%',
-        opacity: 0,
-      });
-    }, this.motionContainer.nativeElement);
-  }
-
-  updateGsap() {
-    this.tl = gsap
-      .timeline({ paused: true })
-      .to('.open-icon', {
-        opacity: 0,
-        duration: 0.3,
-        translateY: '100%',
-      })
-      .to('.menu', {
-        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-        duration: 0.5,
-      })
-      .to('.close-icon', {
-        opacity: 1,
-        duration: 0.3,
-        translateY: '0%',
-      });
-  }
-
   ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.initializeGsap();
-      this.updateGsap();
+    if(isPlatformBrowser(this.platformId)){
+      
     }
   }
 
-  ngAfterViewChecked(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      if (this.isMenuOpen) {
-        this.tl.play();
-      } else {
-        this.tl.reverse();
-      }
-    }
-  }
 
-  toggleMenu() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.isMenuOpen = !this.isMenuOpen;
-    }
-  }
+
+
+  
 }

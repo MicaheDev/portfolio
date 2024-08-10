@@ -1,63 +1,13 @@
-<section class="flex flex-col w-full h-[85vh] max-md:h-auto border-b border-b-gray-400 overflow-hidden">
-  <app-infinite-band />
+<div class="font-clash flex flex-col gap-4">
+  <div class="h-[85vh] w-full bg-noise rounded-3xl overflow-hidden">
+    <div class="w-full h-full relative bg-violet-400 bg-opacity-95">
+      <app-navigation />
 
-  <div class="w-full flex flex-col border-b border-b-gray-400">
-    <div
-      class="border-b border-b-gray-400 max-md:border-r-0 border-r border-r-gray-400 w-1/2 max-md:w-full flex justify-center items-center p-4"
-    >
-      <div class="flex items-center gap-4">
-        <span class="relative flex h-4 w-4">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-4 w-4 bg-violet-500"></span>
-        </span>
-        <p>Quillota, Chile</p>
-      </div>
-    </div>
-    <div class="w-full flex justify-center items-center">
-      <h1 class="text-9xl max-md:text-5xl text-center font-extrabold uppercase">Michell Castillo</h1>
-    </div>
-    <div
-      class="border-t max-md:border-l-0 border-t-gray-400 border-l border-l-gray-400 w-1/2 max-md:w-full flex justify-center items-center py-2 self-end"
-    >
-      <div class="flex p-2 gap-5 overflow-hidden select-none band">
-        <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse">
-          @for (item of skills; track item.name) {
-          <li [ngClass]="item.styles">{{ item.name }}</li>
-          }
-        </ul>
-        <ul
-          aria-hidden="true"
-          class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse"
-        >
-          @for (item of skills; track $index) {
-          <li [ngClass]="item.styles">{{ item.name }}</li>
-          }
-        </ul>
+      <div class="absolute w-full h-full inset-0">
+        <app-three-render urlBase="dog" [scale]="{ x: 4, y: 4, z: 4 }" [position]="{ x: 0, y: -5, z: 0 }" />
       </div>
     </div>
   </div>
 
-  <div class="w-full h-full flex max-md:flex-col">
-    <div class="w-1/2 h-full max-md:w-full max-md:border-b max-md:border-b-gray-400">
-      <app-three-render urlBase="dog" [scale]="{ x: 4, y: 4, z: 4 }" [position]="{ x: 0, y: -5, z: 0 }" />
-    </div>
-    <div class="w-1/2 h-full max-md:h-60 border-l border-l-gray-400 grid grid-cols-2 grid-rows-2 max-md:w-full">
-      <button
-        class="col-start-1 col-end-2 row-start-1 row-end-2 bg-black text-white text-6xl max-md:text-3xl font-extrabold uppercase"
-      >
-        Github
-      </button>
-      <button
-        class="col-start-2 col-end-3 row-start-1 row-end-2 shadow-sm text-violet-500 text-6xl max-md:text-2xl font-extrabold uppercase"
-      >
-        Linkedin
-      </button>
-
-      <button
-        class="col-span-3 row-start-2 row-end-3 bg-violet-500 text-white text-6xl max-md:text-3xl font-extrabold uppercase"
-      >
-        Resume
-      </button>
-    </div>
-  </div>
-</section>
+  <div class="h-[85vh] w-full"></div>
+</div>
