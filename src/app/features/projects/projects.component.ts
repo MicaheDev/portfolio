@@ -64,6 +64,17 @@ export class ProjectsComponent implements AfterViewInit {
     },
 
     {
+      title: 'Humble',
+      date: new Date(),
+      category: ['Web Application'],
+      desc: '',
+      slug: 'sort',
+      preview: '/project2.jpg',
+      color: '#4822',
+      position: 'right',
+    },
+
+    {
       title: 'Street Devs',
       date: new Date(),
       category: ['Web Application'],
