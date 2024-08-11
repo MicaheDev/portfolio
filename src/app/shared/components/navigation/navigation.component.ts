@@ -61,9 +61,6 @@ export class NavigationComponent implements AfterViewInit, AfterViewChecked {
       gsap.set('.slider', {
         top: 0,
       });
-      gsap.set('.menu', {
-        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
-      });
       gsap.set(['.me', '.menu-items', '.link'], {
         opacity: 0,
         scale: 1,
