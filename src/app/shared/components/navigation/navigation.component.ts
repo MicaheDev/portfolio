@@ -2,7 +2,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AfterViewChecked, AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
 
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { remixCloseFill, remixExternalLinkLine, remixGithubLine, remixLinkedinLine, remixMenu5Line, remixMenuLine } from '@ng-icons/remixicon';
+import { remixCloseFill, remixExternalLinkLine, remixGithubLine, remixLinkedinBoxLine,remixMenuLine, remixProfileLine } from '@ng-icons/remixicon';
 import { RouterModule } from '@angular/router';
 import gsap from 'gsap';
 @Component({
@@ -17,7 +17,8 @@ import gsap from 'gsap';
       remixMenuLine,
       remixExternalLinkLine,
       remixGithubLine,
-      remixLinkedinLine
+      remixLinkedinBoxLine,
+      remixProfileLine
     }),
   ],
 })

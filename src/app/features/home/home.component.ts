@@ -113,48 +113,7 @@ export class HomeComponent {
     },
   ];
 
-  skills: BandItem[] = [
-    {
-      name: 'HTML',
-      styles: 'uppercase font-bold bg-black text-white px-4 py-2',
-    },
-    {
-      name: 'React',
-      styles: '',
-    },
-    {
-      name: 'CSS',
-      styles: 'uppercase font-bold bg-black text-white px-4 py-2',
-    },
-    {
-      name: 'Angular',
-      styles: '',
-    },
-    {
-      name: 'JavaScript',
-      styles: 'uppercase font-bold bg-black text-white px-4 py-2',
-    },
-    {
-      name: 'Nextjs',
-      styles: '',
-    },
-    {
-      name: 'Python',
-      styles: 'uppercase font-bold bg-black text-white px-4 py-2',
-    },
-    {
-      name: 'Redux',
-      styles: '',
-    },
-    {
-      name: 'TypeScript',
-      styles: 'uppercase font-bold bg-black text-white px-4 py-2',
-    },
-    {
-      name: 'TailwindCSS',
-      styles: '',
-    },
-  ];
+
 
   /**
    * 

@@ -49,58 +49,69 @@
     <span class="text-2xl px-4 font-extrabold uppercase">Menu</span>
   </button>
 
-  <menu class="bg-neutral-950 menu fixed w-full h-full inset-0 z-40 rounded-3xl flex p-4 gap-4">
-    <div class="flex-1 h-full grid grid-rows-3 grid-cols-1 gap-4 text-5xl font-extrabold uppercase">
+  <menu class="bg-neutral-950 menu fixed w-full h-full inset-0 z-40 flex p-4 gap-4 max-md:flex-col-reverse">
+    <div
+      class="flex-1 max-md:h-[100px] max-md:flex-auto h-full grid grid-rows-3 grid-cols-1 gap-4 text-5xl max-md:text-3xl max-sm:text-2xl font-extrabold uppercase max-md:grid-rows-1 max-md:grid-cols-3"
+    >
       <a
         href=""
-        class="me overflow-hidden relative group bg-neutral-950 border border-neutral-700 rounded-3xl text-white flex justify-center items-center"
+        class="me overflow-hidden relative group bg-neutral-950 border border-neutral-700 rounded-3xl max-md:rounded-2xl text-white flex justify-center items-center"
       >
         <div
-          class="absolute w-full h-full flex justify-center transition-transform items-center bg-neutral-900 top-0 left-0 -translate-x-[100%] group-hover:translate-x-0 duration-300 rounded-3xl"
+          class="absolute w-full h-full flex justify-center transition-transform items-center bg-neutral-900 top-0 left-0 -translate-x-[100%] group-hover:translate-x-0 duration-500 rounded-3xl max-md:rounded-2xl"
         >
-          <div class="text-8xl aboslute bottom-0 right-0">
+          <div class="text-8xl max-md:text-4xl aboslute bottom-0 right-0">
             <ng-icon name="remixExternalLinkLine" />
           </div>
         </div>
-        <span> Github </span>
+        <span class="flex max-md:hidden"> Github </span>
+
+        <div class="hidden max-md:flex">
+          <ng-icon class="text-4xl" name="remixGithubLine" />
+        </div>
       </a>
       <a
         href=""
-        class="me overflow-hidden relative group bg-white text-neutral-950 rounded-3xl flex justify-center items-center"
+        class="me overflow-hidden relative group bg-white text-neutral-950 rounded-3xl max-md:rounded-2xl flex justify-center items-center"
       >
         <div
-          class="absolute w-full h-full flex justify-center transition-transform items-center bg-neutral-300 top-0 left-0 -translate-x-[100%] group-hover:translate-x-0 duration-300 rounded-3xl"
+          class="absolute w-full h-full flex justify-center transition-transform items-center bg-neutral-300 top-0 left-0 translate-y-[100%] group-hover:translate-y-0 duration-500 rounded-3xl max-md:rounded-2xl"
         >
-          <div class="text-8xl aboslute bottom-0 right-0">
+          <div class="text-8xl max-md:text-4xl aboslute bottom-0 right-0">
             <ng-icon name="remixExternalLinkLine" />
           </div>
         </div>
-        <span>Linkedin</span>
+        <span class="flex max-md:hidden">Linkedin</span>
+        <div class="hidden max-md:flex">
+          <ng-icon class="text-4xl" name="remixLinkedinBoxLine" />
+        </div>
       </a>
       <a
         href=""
-        class="me overflow-hidden relative group bg-violet-500 text-white rounded-3xl flex justify-center items-center"
+        class="me overflow-hidden relative group bg-violet-500 text-white rounded-3xl max-md:rounded-2xl flex justify-center items-center"
       >
         <div
-          class="absolute w-full h-full flex justify-center transition-transform items-center bg-violet-600 top-0 left-0 -translate-x-[100%] group-hover:translate-x-0 duration-300 rounded-3xl"
+          class="absolute w-full h-full flex justify-center transition-transform items-center bg-violet-600 top-0 left-0 translate-x-[100%] group-hover:translate-x-0 duration-500 rounded-3xl max-md:rounded-2xl"
         >
-          <div class="text-8xl aboslute bottom-0 right-0">
+          <div class="text-8xl max-md:text-4xl aboslute bottom-0 right-0">
             <ng-icon name="remixExternalLinkLine" />
           </div>
         </div>
-        <span> Resume </span></a
-      >
+        <span class="flex max-md:hidden"> Resume </span>
+        <div class="hidden max-md:flex">
+          <ng-icon class="text-4xl" name="remixProfileLine" />
+        </div>
+      </a>
     </div>
 
     <div
-      class="w-2/3 h-full flex flex-col justify-center items-center border border-neutral-700 rounded-3xl menu-items"
+      class="w-2/3 max-md:w-full max-md:h-full max-md:items-start max-md:p-8 h-full flex flex-col justify-center items-center border border-neutral-700 rounded-3xl menu-items"
     >
       @for (item of menuItems; track $index) {
-
       <a
         (click)="toggleMenu()"
         [routerLink]="item.path"
-        class="text-8xl transition-colors text-white font-extrabold uppercase link hover:text-violet-500"
+        class="text-8xl max-md:text-5xl flex justify-center items-center transition-colors duration-300 text-white font-extrabold uppercase link hover:text-violet-500"
       >
         {{ item.label }}
       </a>

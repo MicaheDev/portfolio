@@ -2,9 +2,13 @@ import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } 
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { remixArrowLeftWideLine, remixArrowRightUpLine, remixArrowRightWideLine } from '@ng-icons/remixicon';
-import gsap from 'gsap';
-import { clipping } from 'three/examples/jsm/nodes/accessors/ClippingNode.js';
+import { remixArrowLeftWideLine, remixArrowRightUpLine, remixArrowRightWideLine, remixExternalLinkLine } from '@ng-icons/remixicon';
+import { InfiniteBandComponent } from '../../shared/components/infinite-band/infinite-band.component';
+
+type BandItem = {
+  name: string;
+  styles: string;
+};
 
 type Project = {
   title: string;
@@ -14,17 +18,19 @@ type Project = {
   slug: string;
   preview: string;
   color: string;
+  position: string;
 };
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, RouterModule, NgIconComponent],
+  imports: [CommonModule, RouterModule, NgIconComponent, InfiniteBandComponent],
   providers: [
     provideIcons({
       remixArrowRightUpLine,
       remixArrowRightWideLine,
       remixArrowLeftWideLine,
+      remixExternalLinkLine
     }),
   ],
   templateUrl: './projects.component.html',
@@ -44,6 +50,7 @@ export class ProjectsComponent implements AfterViewInit {
       slug: 'ez_jpn',
       preview: '/project1.png',
       color: '#5254',
+      position: 'left',
     },
     {
       title: 'Sort',
@@ -53,6 +60,7 @@ export class ProjectsComponent implements AfterViewInit {
       slug: 'sort',
       preview: '/project2.png',
       color: '#4852',
+      position: 'right',
     },
 
     {
@@ -63,11 +71,79 @@ export class ProjectsComponent implements AfterViewInit {
       slug: 'street_devs',
       preview: '/project3.png',
       color: '#8563',
+      position: 'left',
     },
-
   ];
 
- ngAfterViewInit(): void {
-   
- }
+  texts: BandItem[] = [
+    {
+      name: 'HTML',
+      styles: 'text-violet-500',
+    },
+    {
+      name: 'React',
+      styles: '',
+    },
+    {
+      name: 'CSS',
+      styles: 'text-violet-500',
+    },
+    {
+      name: 'Angular',
+      styles: '',
+    },
+    {
+      name: 'JavaScript',
+      styles: 'text-violet-500',
+    },
+    {
+      name: 'Nextjs',
+      styles: '',
+    },
+    {
+      name: 'Python',
+      styles: 'text-violet-500',
+    },
+    {
+      name: 'Redux',
+      styles: '',
+    },
+    {
+      name: 'TypeScript',
+      styles: 'text-violet-500',
+    },
+    {
+      name: 'TailwindCSS',
+      styles: '',
+    },
+  ];
+
+  services: BandItem[] = [
+    {
+      name: "Works",
+      styles: ""
+    },
+    {
+      name: "/",
+      styles: "font-bold"
+    },
+    {
+      name: "projects",
+      styles: ""
+    },
+    {
+      name: "/",
+      styles: "font-bold"
+    },
+    {
+      name: "side projects",
+      styles: ""
+    },
+    {
+      name: "/",
+      styles: "font-bold"
+    },
+  ];
+
+  ngAfterViewInit(): void {}
 }

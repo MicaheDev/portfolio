@@ -1,0 +1,96 @@
+<div class="font-clash flex flex-col gap-4">
+  <div
+    class="flex h-[40vh] rounded-3xl px-2 capitalize py-4 gap-5 text-neutral-950 text-8xl delay-100 bg-violet-200 overflow-hidden select-none band"
+  >
+    <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse">
+      @for (item of services; track item.name + 'original' + $index) {
+      <li [ngClass]="item.styles">{{ item.name }}</li>
+      }
+    </ul>
+    <ul aria-hidden="true" class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse">
+      @for (item of services; track item.name + $index) {
+      <li [ngClass]="item.styles">{{ item.name }}</li>
+
+      }
+    </ul>
+  </div>
+
+  <div
+    class="flex h-[40vh] rounded-3xl px-2 py-4 gap-5 text-neutral-950 text-8xl delay-100 bg-white overflow-hidden select-none band"
+  >
+    <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular">
+      @for (item of texts; track item.name) {
+      <li [ngClass]="item.styles">{{ item.name }}</li>
+      }
+    </ul>
+    <ul aria-hidden="true" class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular">
+      @for (item of texts; track item.name + $index) {
+      <li [ngClass]="item.styles">{{ item.name }}</li>
+
+      }
+    </ul>
+  </div>
+
+  @for (item of projects; track item.slug + $index) {
+
+  <div class="my-4">
+    <div class="bg-noise h-[60vh] w-full overflow-hidden rounded-3xl">
+      <div class="w-full h-full bg-neutral-900 bg-opacity-90 flex">
+        <div class="w-full h-full p-8 relative" [style]="{ background: item.color }">
+          <img
+            class="w-full object-contain h-full hover:scale-75 hover:rotate-2 duration-300 transition-transform"
+            [src]="item.preview"
+            alt=""
+          />
+
+          <div
+            class="absolute bottom-0 left-0 bg-neutral-950 text-white rounded-tr-[60px] flex justify-start items-center p-8"
+          >
+            <h1 class="text-8xl max-md:text-4xl text-wrap max-md:max-w-[150px] font-extrabold uppercase">
+              {{ item.title }}
+            </h1>
+
+            <div
+              class="absolute bg-white w-[50px] h-[50px] bg-opacity-0 content-normal bottom-0 left-[100%] rounded-bl-[30px] curve-l"
+            ></div>
+            <div
+              class="absolute bg-white w-[50px] h-[50px] bg-opacity-0 content-normal bottom-[100%] left-0 rounded-bl-[30px] curve-l"
+            ></div>
+          </div>
+
+          <a
+            [routerLink]="item.slug"
+            class="absolute flex justify-center group overflow-hidden text-4xl duration-300 items-center w-[100px] h-[100px] top-0 right-0 m-5 rounded-3xl text-white p-8 bg-neutral-950"
+          >
+            <ng-icon name="remixArrowRightUpLine" />
+
+            <div
+              class="absolute inset-0 text-neutral-950 transition-transform rounded-3xl -translate-x-[100%] group-hover:translate-x-0 bg-white flex justify-center text-4xl items-center"
+            >
+              <ng-icon name="remixArrowRightUpLine" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex gap-4 items-center text-white max-md:flex-col max-md:items-start max-md:gap-0">
+        <p class="text-white">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid labore voluptatum assumenda! Minus
+          voluptatem dolores nesciunt rem obcaecati ea earum?
+        </p>
+      <div class="flex flex-col py-8 w-full gap-4">
+        <h4 class="text-nowrap text-right">{{ item.date | date : 'short' }}</h4>
+        <div class="flex justify-end items-center">
+            @for (category of item.category; track $index) {
+            <span class="px-8 py-2 rounded-lg bg-neutral-700 text-white">{{ category }}</span>
+            }
+          </div>
+      </div>
+    </div>
+
+   
+  </div>
+
+  }
+</div>
