@@ -1,0 +1,17 @@
+.curve-l {
+  box-shadow: -10px 10px 0 #0a0a0a;
+}
+
+.curve-r {
+  box-shadow: 10px -10px 0 #0a0a0a;
+}
+.truncated-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Número de líneas a mostrar */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em; /* Ajusta según el tamaño de la fuente y el número de líneas */
+    line-height: 1.5em; /* Ajusta según el tamaño de la fuente */
+  }
+  

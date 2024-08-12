@@ -1,16 +1,26 @@
-import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { remixArrowLeftWideLine, remixArrowRightUpLine, remixArrowRightWideLine, remixExternalLinkLine } from '@ng-icons/remixicon';
+import {
+  remixArrowLeftWideLine,
+  remixArrowRightUpLine,
+  remixArrowRightWideLine,
+  remixExternalLinkLine,
+} from '@ng-icons/remixicon';
 import { InfiniteBandComponent } from '../../shared/components/infinite-band/infinite-band.component';
+import { SanityService } from '../../shared/services/sanity.service';
+import { adaptProjects } from './adapters/all-projects.adapter';
+import { ProjectLoaderComponent } from './components/project-loader/project-loader.component';
+import { ProjectErrorComponent } from './components/project-error/project-error.component';
+import { ProjectItemComponent } from './components/project-item/project-item.component';
 
 type BandItem = {
   name: string;
   styles: string;
 };
 
-type Project = {
+export type Project = {
   title: string;
   date: Date;
   category: string[];
@@ -18,28 +28,57 @@ type Project = {
   slug: string;
   preview: string;
   color: string;
-  position: string;
 };
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, RouterModule, NgIconComponent, InfiniteBandComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgIconComponent,
+    InfiniteBandComponent,
+    ProjectLoaderComponent,
+    ProjectErrorComponent,
+    ProjectItemComponent,
+  ],
   providers: [
     provideIcons({
-      remixArrowRightUpLine,
       remixArrowRightWideLine,
       remixArrowLeftWideLine,
-      remixExternalLinkLine
+      remixExternalLinkLine,
     }),
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
-export class ProjectsComponent implements AfterViewInit {
+export class ProjectsComponent implements OnInit {
   //@ViewChild('ProjectContainer', { static: false }) ProjectContainer!: ElementRef;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, public sanity: SanityService) {}
+
+  uploadedProjects: Project[] = [];
+  error: any = { isError: false, msg: '' };
+  isLoading = false;
+
+  ngOnInit(): void {
+    this.loadProjects();
+  }
+
+  async loadProjects(): Promise<void> {
+    this.isLoading = true;
+    try {
+      const query = '*[_type == "project"] | order(date desc)';
+
+      const projects = await this.sanity.get(query);
+      this.uploadedProjects = adaptProjects(projects, this.sanity);
+    } catch (error) {
+      console.error('Error loading projects:', error);
+      this.error = { isError: true, msg: 'Sorry, We have a error, try again.' };
+    } finally {
+      this.isLoading = false;
+    }
+  }
 
   projects: Project[] = [
     {
@@ -50,7 +89,6 @@ export class ProjectsComponent implements AfterViewInit {
       slug: 'ez_jpn',
       preview: '/project1.png',
       color: '#5254',
-      position: 'left',
     },
     {
       title: 'Sort',
@@ -60,7 +98,6 @@ export class ProjectsComponent implements AfterViewInit {
       slug: 'sort',
       preview: '/project2.png',
       color: '#4852',
-      position: 'right',
     },
 
     {
@@ -71,7 +108,6 @@ export class ProjectsComponent implements AfterViewInit {
       slug: 'sort',
       preview: '/project2.jpg',
       color: '#4822',
-      position: 'right',
     },
 
     {
@@ -82,7 +118,6 @@ export class ProjectsComponent implements AfterViewInit {
       slug: 'street_devs',
       preview: '/project3.png',
       color: '#8563',
-      position: 'left',
     },
   ];
 
@@ -131,28 +166,28 @@ export class ProjectsComponent implements AfterViewInit {
 
   services: BandItem[] = [
     {
-      name: "Works",
-      styles: ""
+      name: 'Works',
+      styles: '',
     },
     {
-      name: "/",
-      styles: "font-bold"
+      name: '/',
+      styles: 'font-bold',
     },
     {
-      name: "projects",
-      styles: ""
+      name: 'projects',
+      styles: '',
     },
     {
-      name: "/",
-      styles: "font-bold"
+      name: '/',
+      styles: 'font-bold',
     },
     {
-      name: "side projects",
-      styles: ""
+      name: 'side projects',
+      styles: '',
     },
     {
-      name: "/",
-      styles: "font-bold"
+      name: '/',
+      styles: 'font-bold',
     },
   ];
 

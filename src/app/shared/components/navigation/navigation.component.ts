@@ -45,7 +45,8 @@ export class NavigationComponent implements AfterViewInit, AfterViewChecked {
       label: 'Projects',
       color: 'blue',
     },
-    {
+    /**
+     * {
       path: '/blog',
       label: 'Blog',
       color: 'neutral',
@@ -55,6 +56,7 @@ export class NavigationComponent implements AfterViewInit, AfterViewChecked {
       label: 'Contact',
       class: 'neutral',
     },
+     */
   ];
 
   ngAfterViewInit(): void {

@@ -1,16 +1,27 @@
 <div class="flex flex-col gap-4">
-  <div class="font-clash flex gap-4">
-    <div class="h-[85vh] w-1/3 bg-noise rounded-3xl overflow-hidden">
-      <img class="w-full h-full object-cover opacity-90" src="/profile1.jpg" alt="" />
+  <div class="font-clash flex max-md:flex-col flex-row-reverse gap-4">
+    <div class="h-[85vh] w-1/3 max-md:w-full bg-noise rounded-3xl overflow-hidden relative">
+      <img class="w-full h-full object-contain object-bottom bg-white opacity-90" src="/profile.jpeg" alt="" />
     </div>
+
     <div class="w-full relative bg-noise h-[85vh] p-8 text-white rounded-3xl overflow-hidden">
       <img class="w-full absolute inset-0 z-0 object-cover h-full opacity-80" src="/profile2.jpg" alt="" />
-      <div class="relative z-10 m-auto h-full flex justify-center items-center flex-col w-3/4">
-        <h1 class="text-8xl font-extrabold uppercase text-neutral-950">Michell Castillo</h1>
-        <p class="text-2xl font-medium text-neutral-950">
+
+      <div
+        class="absolute bottom-0 right-0 bg-neutral-950 w-3/4 flex flex-col justify-center items-start p-8 text-white rounded-tl-[30px]"
+      >
+        <h1 class="text-4xl font-extrabold uppercase max-md:text-lg">Michell Castillo</h1>
+        <p class="text-2xl max-md:text-sm">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur iusto illo asperiores architecto odit
           doloribus mollitia, temporibus voluptatibus sequi velit.
         </p>
+
+        <div
+          class="absolute bg-white w-[50px] h-[50px] bg-opacity-0 content-normal bottom-0 right-[100%] rounded-br-[30px] curve-r"
+        ></div>
+        <div
+          class="absolute bg-white w-[50px] h-[50px] bg-opacity-0 content-normal bottom-[100%] right-0 rounded-br-[30px] curve-r"
+        ></div>
       </div>
     </div>
   </div>
