@@ -12,7 +12,7 @@ import { NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, NgIconComponent, NgOptimizedImage],
+  imports: [CommonModule, RouterModule, NgIconComponent],
   providers: provideIcons({
     remixArrowLeftLine,
     remixArrowRightUpLine,
@@ -24,7 +24,7 @@ export class ProjectDetailComponent implements OnInit {
   @ViewChild('container', { static: false }) container!: ElementRef;
   isLoading = false;
   error: any = { isError: false, msg: '' };
-  currentProject!: ProjectDetails;
+  currentProject: ProjectDetails | null = null;
   isBrowser: boolean;
 
   constructor(
