@@ -4,7 +4,10 @@ export type Project = {
   category: string[];
   desc: string;
   slug: string;
-  preview: string;
+  preview: {
+    url: string;
+    alt: string;
+  };
   color: string;
   projectUrl?: string | null
 };
@@ -12,8 +15,14 @@ export type Project = {
 export type Projects = Project[];
 
 export type ProjectDetails = Project & {
-  image?: string | null;
-  image2?: string | null ;
+  image?: {
+    url: string;
+    alt: string;
+  } | null;
+  image2?: {
+    url: string;
+    alt: string;
+  } | null;
   detail?: string ; 
   technologies?: string[]; 
 };

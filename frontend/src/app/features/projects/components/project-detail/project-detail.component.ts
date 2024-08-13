@@ -1,19 +1,26 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { ProjectDetails } from '../../models/Projects';
 import { SanityService } from '../../../../shared/services/sanity.service';
 import { adaptProject } from '../../adapters/project-detail.adapter';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { remixArrowLeftLine, remixArrowRightUpLine } from '@ng-icons/remixicon';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, NgIconComponent, NgOptimizedImage],
+  providers: provideIcons({
+    remixArrowLeftLine,
+    remixArrowRightUpLine,
+  }),
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss'],
 })
-export class ProjectDetailComponent implements OnInit{
+export class ProjectDetailComponent implements OnInit {
   @ViewChild('container', { static: false }) container!: ElementRef;
   isLoading = false;
   error: any = { isError: false, msg: '' };
@@ -36,7 +43,6 @@ export class ProjectDetailComponent implements OnInit{
       }
     });
   }
-
 
   loadAnimation() {
     if (this.isBrowser) {
@@ -87,7 +93,7 @@ export class ProjectDetailComponent implements OnInit{
       this.isLoading = false;
       setTimeout(() => {
         this.loadAnimation();
-      }, 1000)
+      }, 1000);
     }
   }
 }
