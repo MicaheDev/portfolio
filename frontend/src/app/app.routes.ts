@@ -5,6 +5,7 @@ import { SkillsComponent } from './features/skills/skills.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { BlogComponent } from './features/blog/blog.component';
 import { ProfileComponent } from './features/profile/profile.component';
+import { ProjectDetailComponent } from './features/projects/components/project-detail/project-detail.component';
 
 export const routes: Routes = [
   {
@@ -27,7 +28,7 @@ export const routes: Routes = [
           },
           {
             path: ":slug",
-            component: SkillsComponent
+            component: ProjectDetailComponent
           }
         ]
       },

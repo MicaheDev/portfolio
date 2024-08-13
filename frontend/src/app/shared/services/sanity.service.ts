@@ -32,7 +32,7 @@ export class SanityService {
     return this.imageUrlBuilder.image(source);
   }
 
-  async get(query: string): Promise<any> {
-    return await this.sanityClient().fetch(query);
+  async get(query: string, params: { [key: string]: any } = {}): Promise<any> {
+    return await this.sanityClient().fetch(query, params);
   }
 }

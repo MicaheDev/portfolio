@@ -1,0 +1,87 @@
+<div class="font-clash flex flex-col gap-4">
+  @if (currentProject && !isLoading) {
+  <div class="h-[85vh] w-full bg-noise rounded-3xl overflow-hidden preview opacity-0 translate-y-10 max-md:h-[60vh]">
+    <div class="w-full h-full p-8 relative" [style]="{ background: currentProject.color }" #container>
+      <img class="w-full object-contain h-full" [src]="currentProject.preview" #image alt="" />
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4 info opacity-0 translate-y-10 max-md:gap-2">
+    <h1 class="text-8xl max-md:text-4xl uppercase font-extrabold text-white py-4 max-md:py-0">{{ currentProject.title }}</h1>
+    <div class="flex gap-4 projects-center text-white max-md:flex-col max-md:projects-start max-md:gap-0">
+      <div class="py-8 max-md:py-0">
+        <p class="text-white truncated-text text-2xl">
+          {{ currentProject.desc }}
+        </p>
+      </div>
+      <div class="flex flex-col py-8  w-full gap-4 ">
+        <h4 class="text-nowrap text-right text-2xl">{{ currentProject.date | date : 'short' }}</h4>
+        <div class="flex gap-2 justify-end projects-center">
+          @for (category of currentProject.category.slice(0,3); track $index) {
+          <span
+            class="px-8 max-md:max-w-[300px] max-md:px-2 max-md:overflow-hidden max-md:overflow-ellipsis text-nowrap py-2 rounded-lg bg-neutral-700 text-white"
+            >{{ category }}</span
+          >
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full flex flex-col justify-between items-start gap-4">
+      @if (currentProject.image) {
+      <img class="w-full rounded-3xl h-full object-cover" [src]="currentProject.image" alt="" />
+      }
+
+      <div class="my-8">
+        <p class="text-white text-2xl">{{ currentProject.detail }}</p>
+      </div>
+      @if (currentProject.technologies) {
+      <div class="bg-noise w-full h-[20vh] overflow-hidden rounded-3xl select-none band">
+        <div
+          class="w-full h-full flex uppercase font-extrabold bg-opacity-90 bg-neutral-900 px-2 py-4 gap-5 text-white text-8xl delay-100 "
+        >
+          <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse">
+            @for (item of currentProject.technologies; track item) {
+            <li>{{ item }}</li>
+            }
+          </ul>
+          <ul
+            aria-hidden="true"
+            class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse"
+          >
+            @for (item of currentProject.technologies; track item + $index) {
+            <li>{{ item }}</li>
+
+            }
+          </ul>
+        </div>
+      </div>
+      } @if(currentProject.image2){
+      <img class="w-full rounded-3xl h-full object-cover" [src]="currentProject.image2" alt="" />
+
+      }
+    </div>
+  </div>
+
+  } @else if (isLoading) {
+  <div class="h-[85vh] w-full bg-transparent rounded-3xl overflow-hidden">
+    <div class="w-full flex justify-center items-center h-full p-8 relative ">
+      <div class="w-[40px] h-[40px] bg-white rounded-full animate-bounce duration-75"></div>
+    </div>
+  </div>
+
+  }@else {
+  <div class="h-[85vh] w-full bg-noise rounded-3xl overflow-hidden preview opacity-0 translate-y-10" >
+    <div class="w-full h-full p-8 relative bg-neutral-500 bg-opacity-90" #container>
+      <img
+        class="w-full object-contain h-full hover:scale-75 hover:rotate-2 duration-300 transition-transform"
+        src="/notload.png"
+        #image 
+        alt=""
+      />
+    </div>
+  </div>
+  <h1 class="text-8xl opacity-0 translate-y-10 max-md:text-4xl info uppercase font-extrabold text-white py-4">Sorry, Try Again more later.</h1>
+
+  }
+</div>

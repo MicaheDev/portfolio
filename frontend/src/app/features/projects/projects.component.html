@@ -15,6 +15,14 @@
     </ul>
   </div>
 
+  @if (uploadedProjects.length > 0 && !isLoading) { @for (item of uploadedProjects; track item.slug + $index) {
+  <app-project-item [project]="item"  class="project"/>
+  } } @else if (isLoading) {
+  <app-project-loader />
+  } @else {
+  <app-project-error [errorMsg]="this.error.msg" />
+  }
+
   <div
     class="flex h-[40vh] rounded-3xl px-2 py-4 gap-5 text-neutral-950 text-8xl delay-100 bg-white overflow-hidden select-none band"
   >
@@ -30,12 +38,4 @@
       }
     </ul>
   </div>
-
-  @if (uploadedProjects.length > 0 && !isLoading) { @for (item of uploadedProjects; track item.slug + $index) {
-  <app-project-item [project]="item" />
-  } } @else if (isLoading) {
-  <app-project-loader />
-  } @else {
-  <app-project-error [errorMsg]="this.error.msg" />
-  }
 </div>

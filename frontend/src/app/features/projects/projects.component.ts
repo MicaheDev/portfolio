@@ -1,33 +1,18 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import {
-  remixArrowLeftWideLine,
-  remixArrowRightUpLine,
-  remixArrowRightWideLine,
-  remixExternalLinkLine,
-} from '@ng-icons/remixicon';
+import { remixArrowLeftWideLine, remixArrowRightWideLine, remixExternalLinkLine } from '@ng-icons/remixicon';
 import { InfiniteBandComponent } from '../../shared/components/infinite-band/infinite-band.component';
 import { SanityService } from '../../shared/services/sanity.service';
 import { adaptProjects } from './adapters/all-projects.adapter';
-import { ProjectLoaderComponent } from './components/project-loader/project-loader.component';
-import { ProjectErrorComponent } from './components/project-error/project-error.component';
-import { ProjectItemComponent } from './components/project-item/project-item.component';
+import { ProjectErrorComponent, ProjectItemComponent, ProjectLoaderComponent } from './components';
+import { Projects } from './models/Projects';
+import gsap from 'gsap';
 
 type BandItem = {
   name: string;
   styles: string;
-};
-
-export type Project = {
-  title: string;
-  date: Date;
-  category: string[];
-  desc: string;
-  slug: string;
-  preview: string;
-  color: string;
 };
 
 @Component({
@@ -51,13 +36,18 @@ export type Project = {
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
+  encapsulation: ViewEncapsulation.None
+
 })
 export class ProjectsComponent implements OnInit {
-  //@ViewChild('ProjectContainer', { static: false }) ProjectContainer!: ElementRef;
+  isBrowser: boolean;
+  @ViewChild('container', { static: false }) container!: ElementRef;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, public sanity: SanityService) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, public sanity: SanityService) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
-  uploadedProjects: Project[] = [];
+  uploadedProjects: Projects = [];
   error: any = { isError: false, msg: '' };
   isLoading = false;
 
@@ -65,11 +55,33 @@ export class ProjectsComponent implements OnInit {
     this.loadProjects();
   }
 
+  loadAnimation() {
+    if (this.isBrowser) {
+      gsap.to(['.project'], {
+        opacity: 1,
+        duration: 0.5,
+        translateY: 0,
+        stagger: 0.2,
+      });
+    }
+  }
+
   async loadProjects(): Promise<void> {
     this.isLoading = true;
     try {
-      const query = '*[_type == "project"] | order(date desc)';
-
+      const query = `*[_type == "project"] | order(date desc) {
+        title,
+        date,
+        categories,
+        description,
+        slug,
+        preview {
+          asset->{
+            url
+          }
+        },
+        color
+      }`;
       const projects = await this.sanity.get(query);
       this.uploadedProjects = adaptProjects(projects, this.sanity);
     } catch (error) {
@@ -77,49 +89,11 @@ export class ProjectsComponent implements OnInit {
       this.error = { isError: true, msg: 'Sorry, We have a error, try again.' };
     } finally {
       this.isLoading = false;
+      setTimeout(() => {
+        this.loadAnimation();
+      }, 1000);
     }
   }
-
-  projects: Project[] = [
-    {
-      title: 'EZ-JPN',
-      date: new Date(),
-      category: ['UI/UX Design'],
-      desc: '',
-      slug: 'ez_jpn',
-      preview: '/project1.png',
-      color: '#5254',
-    },
-    {
-      title: 'Sort',
-      date: new Date(),
-      category: ['Web Application'],
-      desc: '',
-      slug: 'sort',
-      preview: '/project2.png',
-      color: '#4852',
-    },
-
-    {
-      title: 'Humble',
-      date: new Date(),
-      category: ['Web Application'],
-      desc: '',
-      slug: 'sort',
-      preview: '/project2.jpg',
-      color: '#4822',
-    },
-
-    {
-      title: 'Street Devs',
-      date: new Date(),
-      category: ['Web Application'],
-      desc: '',
-      slug: 'street_devs',
-      preview: '/project3.png',
-      color: '#8563',
-    },
-  ];
 
   texts: BandItem[] = [
     {
