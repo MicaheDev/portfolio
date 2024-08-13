@@ -36,12 +36,14 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const slug = params['slug'];
-      if (slug) {
-        this.loadProjectBySlug(slug);
-      }
-    });
+    if(this.isBrowser){
+      this.route.params.subscribe(params => {
+        const slug = params['slug'];
+        if (slug) {
+          this.loadProjectBySlug(slug);
+        }
+      });
+    }
   }
 
   loadAnimation() {
