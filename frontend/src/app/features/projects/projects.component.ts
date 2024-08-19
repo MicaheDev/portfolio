@@ -2,7 +2,7 @@ import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild, ViewEnca
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { remixArrowLeftWideLine, remixArrowRightWideLine, remixExternalLinkLine } from '@ng-icons/remixicon';
+import { remixArrowLeftLine, remixArrowLeftWideLine, remixArrowRightWideLine, remixExternalLinkLine } from '@ng-icons/remixicon';
 import { InfiniteBandComponent } from '../../shared/components/infinite-band/infinite-band.component';
 import { SanityService } from '../../shared/services/sanity.service';
 import { adaptProjects } from './adapters/all-projects.adapter';
@@ -32,6 +32,7 @@ type BandItem = {
       remixArrowRightWideLine,
       remixArrowLeftWideLine,
       remixExternalLinkLine,
+      remixArrowLeftLine
     }),
   ],
   templateUrl: './projects.component.html',

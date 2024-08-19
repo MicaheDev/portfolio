@@ -15,6 +15,7 @@ module.exports = {
       },
       animation: {
         'infinite-regular': 'scroll 120s linear infinite',
+        'infinite-regular-15': 'scroll 15s linear infinite',
         'infinite-reverse': 'scroll 15s  reverse linear  infinite',
       },
       backgroundImage: {

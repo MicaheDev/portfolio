@@ -1,3 +1,11 @@
 .band:hover ul {
   animation-play-state: paused;
 }
+
+.curve-l {
+  box-shadow: -10px 10px 0 #0a0a0a;
+}
+
+.curve-r {
+  box-shadow: 10px 10px 0 #0a0a0a;
+}

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 
 import { ThreeRenderComponent } from '../../shared/components/three-render/three-render.component';
 import { ProfileComponent } from '../profile/profile.component';
-import { ProjectsComponent } from '../projects/projects.component';
-import { InfiniteBandComponent } from '../../shared/components/infinite-band/infinite-band.component';
 import { CommonModule } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { remixArrowRightUpLine, remixDownloadLine } from '@ng-icons/remixicon';
 import { NavigationComponent } from '../../shared';
+import { RouterModule } from '@angular/router';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
 
 type BandItem = {
   name: string;
@@ -19,11 +19,11 @@ type BandItem = {
   imports: [
     ThreeRenderComponent,
     ProfileComponent,
-    ProjectsComponent,
-    InfiniteBandComponent,
     CommonModule,
     NgIconComponent,
     NavigationComponent,
+    RouterModule,
+    FooterComponent
   ],
   providers: [
     provideIcons({

@@ -2,7 +2,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AfterViewChecked, AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
 
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { remixCloseFill, remixExternalLinkLine, remixGithubLine, remixLinkedinBoxLine,remixMenuLine, remixProfileLine } from '@ng-icons/remixicon';
+import { remixArrowRightUpLine, remixCloseFill, remixExternalLinkLine, remixGithubLine, remixLinkedinBoxLine,remixMenuLine, remixProfileLine } from '@ng-icons/remixicon';
 import { RouterModule } from '@angular/router';
 import gsap from 'gsap';
 @Component({
@@ -18,7 +18,8 @@ import gsap from 'gsap';
       remixExternalLinkLine,
       remixGithubLine,
       remixLinkedinBoxLine,
-      remixProfileLine
+      remixProfileLine,
+      remixArrowRightUpLine
     }),
   ],
 })
@@ -77,10 +78,10 @@ export class NavigationComponent implements AfterViewInit, AfterViewChecked {
           ease: 'power4.inOut',
         })
         .to('.menu', {
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          clipPath: 'circle(150% at 100% 0%)',
           duration: 0.5,
         })
-        .to(['.me', '.menu-items', '.link'], {
+        .to([ '.link', '.me'], {
           opacity: 1,
           duration: 0.3,
           stagger: 0.1,

@@ -1,41 +1,22 @@
-<div class="font-clash flex flex-col gap-4">
+<a
+  routerLink="/"
+  class="fixed flex justify-center border border-neutral-700 items-center group overflow-hidden group z-20 text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[100px] max-md:p-0 h-[100px] bottom-0 left-0 m-5 max-md:m-2 rounded-full bg-white p-8 text-neutral-950"
+>
+  <ng-icon name="remixArrowLeftLine" />
+
   <div
-    class="flex h-[40vh] rounded-3xl px-2 capitalize py-4 gap-5 text-neutral-950 text-8xl delay-100 bg-violet-200 overflow-hidden select-none band"
+    class="absolute top-0 bottom-0 w-full z-30 h-full bg-neutral-950 transition-transform rounded-3xl -translate-x-[100%] group-hover:translate-x-0 text-white flex justify-center items-center text-4xl max-md:text-2xl"
   >
-    <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse">
-      @for (item of services; track item.name + 'original' + $index) {
-      <li [ngClass]="item.styles">{{ item.name }}</li>
-      }
-    </ul>
-    <ul aria-hidden="true" class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse">
-      @for (item of services; track item.name + $index) {
-      <li [ngClass]="item.styles">{{ item.name }}</li>
-
-      }
-    </ul>
+    <ng-icon name="remixArrowLeftLine" />
   </div>
+</a>
 
+<div class="flex flex-col gap-4">
   @if (uploadedProjects.length > 0 && !isLoading) { @for (item of uploadedProjects; track item.slug + $index) {
-  <app-project-item [project]="item"  class="project"/>
+  <app-project-item [project]="item" class="project" />
   } } @else if (isLoading) {
   <app-project-loader />
   } @else {
   <app-project-error [errorMsg]="this.error.msg" />
   }
-
-  <div
-    class="flex h-[40vh] rounded-3xl px-2 py-4 gap-5 text-neutral-950 text-8xl delay-100 bg-white overflow-hidden select-none band"
-  >
-    <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular">
-      @for (item of texts; track item.name) {
-      <li [ngClass]="item.styles">{{ item.name }}</li>
-      }
-    </ul>
-    <ul aria-hidden="true" class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular">
-      @for (item of texts; track item.name + $index) {
-      <li [ngClass]="item.styles">{{ item.name }}</li>
-
-      }
-    </ul>
-  </div>
 </div>

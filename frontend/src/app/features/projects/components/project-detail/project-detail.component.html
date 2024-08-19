@@ -1,6 +1,6 @@
 <a
   routerLink="/projects"
-  class="fixed flex justify-center border border-neutral-700 items-center group overflow-hidden group z-20 text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[100px] max-md:p-0 h-[100px] bottom-0 left-0 m-5 max-md:m-2 rounded-3xl bg-white p-8 text-neutral-950"
+  class="fixed flex justify-center border border-neutral-700 items-center group overflow-hidden group z-20 text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[100px] max-md:p-0 h-[100px] bottom-0 left-0 m-5 max-md:m-2 rounded-full bg-white p-8 text-neutral-950"
 >
   <ng-icon name="remixArrowLeftLine" />
 
@@ -92,25 +92,13 @@
         <p class="text-white text-2xl">{{ currentProject.detail }}</p>
       </div>
       @if (currentProject.technologies) {
-      <div class="bg-noise w-full h-[20vh] overflow-hidden rounded-3xl select-none band">
-        <div
-          class="w-full h-full flex uppercase font-extrabold bg-opacity-90 bg-neutral-900 px-2 py-4 gap-5 text-white text-8xl delay-100"
-        >
-          <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse">
-            @for (item of currentProject.technologies; track item) {
-            <li>{{ item }}</li>
-            }
-          </ul>
-          <ul
-            aria-hidden="true"
-            class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-reverse"
-          >
-            @for (item of currentProject.technologies; track item + $index) {
-            <li>{{ item }}</li>
 
-            }
-          </ul>
-        </div>
+      <h2 class="text-white uppercase font-thin text-4xl">Stack</h2>
+      <div class="flex justify-between items-center flex-wrap gap-4 text-white uppercase font-extrabold">
+        @for (item of currentProject.technologies; track item) {
+
+        <div class="border border-white rounded-2xl p-8 text-4xl">{{ item }}</div>
+        }
       </div>
       }
     </div>

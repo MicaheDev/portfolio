@@ -3,13 +3,13 @@
 
   <div class="h-4 bg-neutral-950 w-full fixed top-0 z-10"></div>
   <div
-    class="z-10 fixed mt-4 mr-4 bg-white w-[100px] h-[100px] bg-opacity-0 content-normal top-0 right-0 rounded-se-3xl curve-r"
+    class="z-20 fixed float-curve mt-4 mr-4 bg-white w-[100px] h-[100px] bg-opacity-0 content-normal top-0 right-0 rounded-se-3xl curve-r"
   ></div>
 
   <div
-    class="h-[80px] mt-4 fixed z-10 bg-neutral-950 text-white top-0 w-[100px] inline-flex justify-center items-center text-2xl rounded-ee-3xl"
+    class="h-[80px] w-[80px] mt-4 fixed z-20 bg-neutral-950 text-white top-0  inline-flex justify-center items-center text-2xl rounded-ee-3xl"
   >
-    <img class="w-full object-cover pb-2 pr-2 rounded-3xl z-10 h-full" src="/logo.png" alt="" />
+    <img class="w-full object-cover pb-2 pr-2 rounded-3xl  h-full" src="/logo.png" alt="" />
 
     <div
       class="absolute bg-white w-[50px] h-[50px] bg-opacity-0 content-normal top-[100%] left-0 rounded-xl curve-l"
@@ -21,7 +21,7 @@
 
   <button
     (click)="toggleMenu()"
-    class="fixed w-auto border h-[60px] border-neutral-700 z-50 top-0 right-0 m-8 bg-neutral-900 text-white p-2 rounded-2xl inline-flex justify-center items-center gap-4"
+    class="fixed w-auto border float-btn h-[60px] border-neutral-700 z-50 top-0 right-0 m-8 bg-neutral-900 text-white p-2 rounded-2xl inline-flex justify-center items-center gap-4"
   >
     <div class="bg-white overflow-hidden w-[40px] h-[40px] rounded-xl">
       <div class="slider w-full h-full relative">
@@ -49,78 +49,78 @@
     <span class="text-2xl px-4 font-extrabold uppercase">Menu</span>
   </button>
 
-  <div class="bg-noise menu fixed w-full h-full inset-0 z-40">
-    <menu class="w-full h-full bg-neutral-950 bg-opacity-90  flex p-4 gap-4 max-md:flex-col-reverse">
+  <menu class="w-full h-full bg-neutral-950 menu fixed inset-0 z-40 p-4">
+    <div class="w-full h-full max-w-[1400px] bg-noise rounded-3xl m-auto overflow-hidden">
       <div
-        class="flex-1 max-md:h-[100px] max-md:flex-auto h-full grid grid-rows-3 grid-cols-1 gap-4 text-5xl max-md:text-3xl max-sm:text-2xl font-extrabold uppercase max-md:grid-rows-1 max-md:grid-cols-3"
+        class="w-full h-full bg-violet-400 bg-opacity-90 text-white m-auto flex flex-col justify-center items-center"
       >
-        <a
-          href="https://github.com/MicaheDev"
-          target="_blank"
-          class="me overflow-hidden relative group bg-transparent border border-neutral-700 rounded-3xl max-md:rounded-2xl text-white flex justify-center items-center"
-        >
-          <div
-            class="absolute w-full h-full flex justify-center transition-transform items-center bg-neutral-900 top-0 left-0 -translate-x-[100%] group-hover:translate-x-0 duration-500 rounded-3xl max-md:rounded-2xl"
+        <div >
+          @for (item of menuItems; track $index) {
+          <a
+            (click)="toggleMenu()"
+            [routerLink]="item.path"
+            class="text-8xl w-full px-10 max-md:text-5xl max-md:justify-center max-md:first-of-type:border-t-0 flex justify-center items-center transition-colors duration-150 font-extrabold uppercase link hover:text-neutral-950"
           >
-            <div class="text-8xl max-md:text-4xl aboslute bottom-0 right-0">
-              <ng-icon name="remixExternalLinkLine" />
-            </div>
+            {{ item.label }}
+          </a>
+          }
+        </div>
+        <div class="flex items-center gap-4 me">
+          <div class="inline-flex items-center gap-2">
+            <h3 class="text-4xl max-md:text-sm font-extrabold uppercase">Github</h3>
+
+            <a
+              href="https://github.com/MicaheDev"
+              target="_blank"
+              class="relative cursor-pointer flex justify-center items-center group overflow-hidden text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[50px] max-md:p-0 h-[50px] top-0 right-0 rounded-3xl text-white p-0 bg-neutral-950"
+            >
+              <ng-icon name="remixArrowRightUpLine" />
+
+              <div
+                class="absolute top-0 bottom-0 w-full h-full text-neutral-950 transition-transform rounded-3xl -translate-x-[100%] group-hover:translate-x-0 bg-white flex justify-center items-center text-4xl max-md:text-2xl"
+              >
+                <ng-icon name="remixArrowRightUpLine" />
+              </div>
+            </a>
           </div>
-          <span class="flex max-md:hidden"> Github </span>
-  
-          <div class="hidden max-md:flex">
-            <ng-icon class="text-4xl" name="remixGithubLine" />
+
+          <div class="inline-flex items-center gap-2 me">
+            <h3 class="text-4xl max-md:text-sm font-extrabold uppercase">Linkedin</h3>
+
+            <a
+              href="https://www.linkedin.com/in/michellcastillo29"
+              target="_blank"
+              class="relative cursor-pointer flex justify-center items-center group overflow-hidden text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[50px] max-md:p-0 h-[50px] top-0 right-0 rounded-3xl text-white p-0 bg-neutral-950"
+            >
+              <ng-icon name="remixArrowRightUpLine" />
+
+              <div
+                class="absolute top-0 bottom-0 w-full h-full text-neutral-950 transition-transform rounded-3xl -translate-x-[100%] group-hover:translate-x-0 bg-white flex justify-center items-center text-4xl max-md:text-2xl"
+              >
+                <ng-icon name="remixArrowRightUpLine" />
+              </div>
+            </a>
           </div>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/michellcastillo29"
-          target="_blank"
-          class="me overflow-hidden relative group bg-white text-neutral-950 rounded-3xl max-md:rounded-2xl flex justify-center items-center"
-        >
-          <div
-            class="absolute w-full h-full flex justify-center transition-transform items-center bg-neutral-300 top-0 left-0 translate-y-[100%] group-hover:translate-y-0 duration-500 rounded-3xl max-md:rounded-2xl"
-          >
-            <div class="text-8xl max-md:text-4xl aboslute bottom-0 right-0">
-              <ng-icon name="remixExternalLinkLine" />
-            </div>
+
+          <div class="inline-flex items-center gap-2 me">
+            <h3 class="text-4xl max-md:text-sm font-extrabold uppercase">Resume</h3>
+
+            <a
+              href="https://media.licdn.com/dms/document/media/D4D2DAQGnezNN68aEdg/profile-treasury-document-pdf-analyzed/0/1721664219043?e=1724284800&v=beta&t=hNT0IrPMPdUlt3bT5XKGktI91sB4lJ3_7cdxYumehdI"
+              target="_blank"
+              class="relative cursor-pointer flex justify-center items-center group overflow-hidden text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[50px] max-md:p-0 h-[50px] top-0 right-0 rounded-3xl text-white p-0 bg-neutral-950"
+            >
+              <ng-icon name="remixArrowRightUpLine" />
+
+              <div
+                class="absolute top-0 bottom-0 w-full h-full text-neutral-950 transition-transform rounded-3xl -translate-x-[100%] group-hover:translate-x-0 bg-white flex justify-center items-center text-4xl max-md:text-2xl"
+              >
+                <ng-icon name="remixArrowRightUpLine" />
+              </div>
+            </a>
           </div>
-          <span class="flex max-md:hidden">Linkedin</span>
-          <div class="hidden max-md:flex">
-            <ng-icon class="text-4xl" name="remixLinkedinBoxLine" />
-          </div>
-        </a>
-        <a
-          href="https://media.licdn.com/dms/document/media/D4D2DAQGnezNN68aEdg/profile-treasury-document-pdf-analyzed/0/1721664219043?e=1724284800&v=beta&t=hNT0IrPMPdUlt3bT5XKGktI91sB4lJ3_7cdxYumehdI"
-          target="_blank"
-          class="me overflow-hidden relative group bg-violet-500 text-white rounded-3xl max-md:rounded-2xl flex justify-center items-center"
-        >
-          <div
-            class="absolute w-full h-full flex justify-center transition-transform items-center bg-violet-600 top-0 left-0 translate-x-[100%] group-hover:translate-x-0 duration-500 rounded-3xl max-md:rounded-2xl"
-          >
-            <div class="text-8xl max-md:text-4xl aboslute bottom-0 right-0">
-              <ng-icon name="remixExternalLinkLine" />
-            </div>
-          </div>
-          <span class="flex max-md:hidden"> Resume </span>
-          <div class="hidden max-md:flex">
-            <ng-icon class="text-4xl" name="remixProfileLine" />
-          </div>
-        </a>
+        </div>
       </div>
-  
-      <div
-        class="w-2/3 max-md:w-full max-md:h-full max-md:items-center max-md:p-8 h-full flex flex-col justify-center items-center border border-neutral-700 rounded-3xl menu-items"
-      >
-        @for (item of menuItems; track $index) {
-        <a
-          (click)="toggleMenu()"
-          [routerLink]="item.path"
-          class="text-8xl w-full first-of-type:border-t first-of-type:border-t-neutral-700 px-10 border-b border-b-neutral-700 max-md:text-5xl max-md:justify-center max-md:first-of-type:border-t-0 flex justify-end items-center transition-colors duration-300 text-white font-extrabold uppercase link hover:text-violet-500"
-        >
-          {{ item.label }}
-        </a>
-        }
-      </div>
-    </menu>
-  </div>
+    </div>
+  </menu>
 </nav>
