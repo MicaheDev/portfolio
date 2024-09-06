@@ -1,212 +1,48 @@
-<div class="flex flex-col gap-4">
-  <div class="h-[85vh] w-full bg-noise rounded-bl-3xl max-md:rounded-bl-none rounded-tl-3xl overflow-hidden">
-    <div class="w-full h-full relative bg-violet-400 bg-opacity-95">
-      <!-- solapa -->
-      <div
-        class="absolute bottom-0 right-0 bg-neutral-950 z-20 rounded-tl-3xl max-md:px-4 max-md:pr-0 max-md:w-full max-md:pt-4 px-10 pt-10 flex flex-col gap-4"
-      >
-        <div>
-          <h1 class="text-5xl  font-extrabold uppercase text-white">
-            <span class="inline-flex items-center gap-2"
-              >I'M 
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="none" viewBox="0 0 200 200">
-                <path
-                  fill="url(#paint0_linear_104_151)"
-                  fill-rule="evenodd"
-                  d="M199.06 140.014c.545 5.496-3.985 9.986-9.508 9.986h-36.25c-5.523 0-9.882-4.537-11.129-9.917-4.492-19.385-21.869-33.833-42.62-33.833-20.752 0-38.13 14.448-42.622 33.833-1.247 5.38-5.606 9.917-11.129 9.917H9.552C4.03 150-.5 145.51.045 140.014 5.055 89.474 47.694 50 99.552 50c51.858 0 94.497 39.474 99.508 90.014Z"
-                  clip-rule="evenodd"
-                ></path>
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_104_151"
-                    x1="156.795"
-                    x2="111.742"
-                    y1="66"
-                    y2="157.282"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop offset=".051" stop-color="#FFB6E1"></stop>
-                    <stop offset="1" stop-color="#FBE3EA"></stop>
-                  </linearGradient>
-                </defs></svg
-            > </span>
-            {{" "}}
-
-            <span class="text-violet-500 inline-flex item-center gap-2"
-              >Michell Castillo
-              <svg
-                class="hover:-rotate-45 transition-transform max-md:hidden"
-                xmlns="http://www.w3.org/2000/svg"
-                width="50"
-                height="50"
-                fill="none"
-                viewBox="0 0 200 200"
-              >
-                <g clip-path="url(#clip0_133_2)">
-                  <path
-                    fill="url(#paint0_linear_133_2)"
-                    fill-rule="evenodd"
-                    d="M50.714 0h-50v50c0 25.462 19.033 46.479 43.647 49.6C19.401 102.402 0 123.578 0 149.286v50h50c25.462 0 46.479-19.033 49.6-43.647 2.802 24.96 23.978 44.361 49.686 44.361h50v-50c0-25.462-19.033-46.479-43.647-49.6C180.599 97.598 200 76.422 200 50.714v-50h-50c-25.462 0-46.479 19.033-49.6 43.647C97.598 19.401 76.422 0 50.714 0Z"
-                    clip-rule="evenodd"
-                  ></path>
-                </g>
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_133_2"
-                    x1="27.5"
-                    x2="149"
-                    y1="19"
-                    y2="174.5"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stop-color="#FFD9A0"></stop>
-                    <stop offset="1" stop-color="#FFF5F1"></stop>
-                  </linearGradient>
-                  <clipPath id="clip0_133_2"><path fill="#fff" d="M0 0h200v200H0z"></path></clipPath>
-                </defs></svg
-            ></span>
-          </h1>
-          <h2 class="text-2xl max-md:text-lg font-semibold uppercase text-neutral-200 relative">
-            Developer / Designer / Artist <span></span>
-          </h2>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <h3 class="text-white">Watch Projects</h3>
-          <a
-            routerLink="/projects"
-            class="relative cursor-pointer flex justify-center items-center group overflow-hidden text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[50px] max-md:p-0 h-[50px] top-0 right-0 rounded-3xl text-white p-0 bg-neutral-950"
-          >
-            <ng-icon name="remixArrowRightUpLine" />
-
-            <div
-              class="absolute top-0 bottom-0 w-full h-full text-neutral-950 transition-transform rounded-3xl -translate-x-[100%] group-hover:translate-x-0 bg-white flex justify-center items-center text-4xl max-md:text-2xl"
-            >
-              <ng-icon name="remixArrowRightUpLine" />
-            </div>
-          </a>
-        </div>
-
-        <div
-          class="absolute bg-white w-[50px] h-[50px] bg-opacity-0 content-normal bottom-0 right-[100%] rounded-br-[30px] curve-r"
-        ></div>
-        <div
-          class="absolute bg-white w-[50px] h-[50px] bg-opacity-0 content-normal bottom-[100%] right-0 rounded-br-[30px] curve-r"
-        ></div>
-      </div>
-      <div
-        class="flex h-[40vh] absolute inset-0 rounded-3xl px-2 font-extrabold uppercase py-4 gap-5 text-white text-[300px] max-md:text-6xl delay-100 bg-transparent overflow-hidden select-none band"
-      >
-        <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular-15">
-          <li>Welcome</li>
-          <li></li>
-          <li>To</li>
-          <li></li>
-          <li>My</li>
-          <li></li>
-          <li>Portfolio</li>
-          <li></li>
-        </ul>
-        <ul
-          aria-hidden="true"
-          class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular-15"
-        >
-          <li>Welcome</li>
-          <li></li>
-          <li>To</li>
-          <li></li>
-          <li>My</li>
-          <li></li>
-          <li>Portfolio</li>
-          <li></li>
-        </ul>
-      </div>
-      <div class="absolute w-full h-full inset-0">
-        <app-three-render urlBase="computer" [scale]="{ x: 1.6, y: 1.6, z: 1.6 }" [position]="{ x: 0, y: -8, z: 0 }" />
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="flex h-[10vh] relative rounded-2xl capitalize py-4 gap-5 text-white text-2xl delay-100 bg-transparent overflow-hidden select-none band"
-  >
-    <div
-      class="content-normal absolute lef-0 top-0 h-full w-[200px] bg-gradient-to-r from-neutral-950 to-transparent z-10"
-    ></div>
-    <div
-      class="content-normal absolute right-0 top-0 h-full w-[200px] bg-gradient-to-l from-neutral-950 to-transparent z-10"
-    ></div>
-    <ul class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular">
-      @for (item of services; track item.name + 'original' + $index) {
-      <li [ngClass]="item.styles">{{ item.name }}</li>
-      }
-    </ul>
-    <ul aria-hidden="true" class="shrink-0 flex justify-between items-center gap-5 min-w-full animate-infinite-regular">
-      @for (item of services; track item.name + $index) {
-      <li [ngClass]="item.styles">{{ item.name }}</li>
-
-      }
-    </ul>
-  </div>
-  <div class="flex items-center justify-between gap-2">
-    <h1
-      class="text-8xl max-md:text-2xl inline-flex justify-center items-center max-md:h-[50px] uppercase font-extrabold flex-1 bg-yellow-100 text-neutral-950 px-8 rounded-2xl"
-    >
-      ABOUT ME
+<section class="w-full h-[90vh] border-x-2 border-black relative overflow-hidden">
+  <!-- principal titles of header section in the center -->
+  <div class="w-[95%] h-full mx-auto flex flex-col justify-center items-center">
+    <h1 class="text-[4rem] text-outline text-white uppercase font-extrabold" style="line-height: 4rem">
+      Michell Castillo
     </h1>
+    <h2 class="text-[6rem] font-extrabold" style="line-height: 6rem">UI/UX DEDIGNER</h2>
+    <h2 class="text-[10rem] font-extrabold" style="line-height: 10rem">
+      FULL <span class="text-white text-outline">{{ '{Stack}' }}</span>
+    </h2>
+    <h2 class="text-[15rem] font-extrabold" style="line-height: 15rem">DEVELOPER</h2>
 
-    <div class="flex items-center gap-5">
-      <svg
-        class="hover:rotate-180 transition-transform duration-300 max-md:h-[50px] max-md:w-[50px]"
-        xmlns="http://www.w3.org/2000/svg"
-        width="100"
-        height="100"
-        fill="none"
-        viewBox="0 0 200 200"
-      >
-        <path
-          fill="url(#paint0_linear_104_171)"
-          fill-rule="evenodd"
-          d="M50 100c27.614 0 50-22.386 50-50 0 27.614 22.386 50 50 50-27.614 0-50 22.386-50 50 0-27.614-22.386-50-50-50Zm0 0c-27.614 0-50 22.386-50 50s22.386 50 50 50 50-22.386 50-50c0 27.614 22.386 50 50 50s50-22.386 50-50-22.386-50-50-50c27.614 0 50-22.386 50-50S177.614 0 150 0s-50 22.386-50 50c0-27.614-22.386-50-50-50S0 22.386 0 50s22.386 50 50 50Z"
-          clip-rule="evenodd"
-        ></path>
-        <defs>
-          <linearGradient id="paint0_linear_104_171" x1="14" x2="179" y1="26" y2="179.5" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#E9B8FF"></stop>
-            <stop offset="1" stop-color="#F9ECFF"></stop>
-          </linearGradient>
-        </defs>
-      </svg>
-      <svg
-        class="max-md:h-[50px] max-md:w-[50px]"
-        xmlns="http://www.w3.org/2000/svg"
-        width="100"
-        height="100"
-        fill="none"
-        viewBox="0 0 200 200"
-      >
-        <path
-          fill="url(#paint0_linear_104_231)"
-          fill-rule="evenodd"
-          d="M100 0H0v100h100v100h100V100H100V0Z"
-          clip-rule="evenodd"
-        ></path>
-        <defs>
-          <linearGradient
-            id="paint0_linear_104_231"
-            x1="177"
-            x2="39.5"
-            y1="0"
-            y2="152.5"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#B0B9FF"></stop>
-            <stop offset="1" stop-color="#E7E9FF"></stop>
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
+    <p class="w-1/2 mx-auto">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam qui, tempora incidunt voluptatum impedit, labore
+      velit explicabo quam dolores magni nostrum sit doloribus quae quos accusantium vel molestias expedita amet?
+    </p>
   </div>
-  <app-profile />
-  <app-footer />
-</div>
+
+  <!-- date and welcome on top right-->
+  <div class="home_info">
+    <p class="home_date">{{ date }}</p>
+    <p class="home_welcome">こんにちは</p>
+    <p class="home_welcome">WELCOME</p>
+  </div>
+
+  <!-- float dev decorations with parallax-->
+  <div class="text-neutral-400 text-[10rem] absolute bottom-[10%] left-[10%] rotate-45 parallax-item" data-value="6">
+    +
+  </div>
+  <div class="text-neutral-400 text-[10rem] absolute bottom-[50%] left-[10%] -rotate-45 parallax-item" data-value="-4">
+    {{ '{}' }}
+  </div>
+  <div class="text-neutral-400 text-[10rem] absolute bottom-[80%] left-[20%] -rotate-45 parallax-item" data-value="-6">
+    ""
+  </div>
+
+  <div class="text-neutral-400 text-[10rem] absolute bottom-[80%] right-[20%] rotate-45 parallax-item" data-value="-4">
+    *
+  </div>
+  <div class="text-neutral-400 text-[10rem] absolute bottom-[50%] right-[10%] rotate-45 parallax-item" data-value="-3">
+    ()
+  </div>
+  <div class="text-neutral-400 text-[10rem] absolute bottom-[10%] right-[10%] rotate-45 parallax-item" data-value="5">
+    []
+  </div>
+</section>
+<app-profile />
+<app-projects />

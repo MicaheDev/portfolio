@@ -8,7 +8,6 @@ export type Project = {
     url: string;
     alt: string;
   };
-  color: string;
   projectUrl?: string | null
 };
 
@@ -25,4 +24,7 @@ export type ProjectDetails = Project & {
   } | null;
   detail?: string ; 
   technologies?: string[]; 
+  problem: string,
+  solution: string,
+  impact: string
 };

@@ -26,11 +26,12 @@ export function adaptProject(project: any, sanity: SanityService): ProjectDetail
             alt: project.image2?.altText || 'Imagen secundaria'
           }
         : null,
-      color: project.color.rgb 
-        ? `rgba(${project.color.rgb.r}, ${project.color.rgb.g}, ${project.color.rgb.b}, ${project.color.rgb.a})` 
-        : '#4852',
+
       detail: project.detail,
       technologies: project.technologies,
+      problem: project.problem,
+      solution: project.solution,
+      impact: project.impact
     };
   }
   

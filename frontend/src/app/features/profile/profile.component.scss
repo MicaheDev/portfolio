@@ -1,11 +1,7 @@
-.curve-l {
-  box-shadow: -10px 10px 0 #0a0a0a;
+
+
+.text-vertical{
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
-.curve-r {
-  box-shadow: 20px 20px 0 #0a0a0a;
-}
-
-.band:hover ul {
-  animation-play-state: paused;
-}

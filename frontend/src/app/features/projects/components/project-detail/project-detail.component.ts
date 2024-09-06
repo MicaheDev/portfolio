@@ -4,10 +4,8 @@ import { SanityService } from '../../../../shared/services/sanity.service';
 import { adaptProject } from '../../adapters/project-detail.adapter';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import gsap from 'gsap';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { remixArrowLeftLine, remixArrowRightUpLine } from '@ng-icons/remixicon';
-import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-project-detail',
@@ -46,16 +44,6 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
 
-  loadAnimation() {
-    if (this.isBrowser) {
-      gsap.to(['.preview', '.info'], {
-        opacity: 1,
-        duration: 0.5,
-        translateY: 0,
-        stagger: 0.2,
-      });
-    }
-  }
 
   async loadProjectBySlug(slug: string): Promise<void> {
     this.isLoading = true;
@@ -83,7 +71,10 @@ export class ProjectDetailComponent implements OnInit {
         },
         color,
         detail,
-        technologies
+        technologies,
+        problem,
+        solution,
+        impact
       }`;
 
       const project = await this.sanity.get(query, { slug });
@@ -93,9 +84,7 @@ export class ProjectDetailComponent implements OnInit {
       this.error = { isError: true, msg: 'Sorry, We have an error, try again.' };
     } finally {
       this.isLoading = false;
-      setTimeout(() => {
-        this.loadAnimation();
-      }, 1000);
+ 
     }
   }
 }

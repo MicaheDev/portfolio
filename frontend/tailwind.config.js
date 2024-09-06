@@ -2,24 +2,12 @@
 module.exports = {
   content: ['./src/**/*.{html,ts}'],
   theme: {
-    fontFamily: {
-      clash: ['Clash Display', 'sans-serif'],
-    },
     extend: {
-      keyframes: {
-        'scroll': {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(calc(-100% - 20px))' },
-        },
-
+      fontFamily: {
+        terminal: ['Terminal Grotesque', 'sans-serif'],
       },
-      animation: {
-        'infinite-regular': 'scroll 120s linear infinite',
-        'infinite-regular-15': 'scroll 15s linear infinite',
-        'infinite-reverse': 'scroll 15s  reverse linear  infinite',
-      },
-      backgroundImage: {
-        'noise': "url('/noise.gif')",
+      transitionTimingFunction: {
+        'custom-bezier': 'cubic-bezier(0.75, 0, 0.24, 1)',
       },
     },
   },

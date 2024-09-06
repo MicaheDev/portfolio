@@ -1,132 +1,64 @@
-<a
-  routerLink="/projects"
-  class="fixed flex justify-center border border-neutral-700 items-center group overflow-hidden group z-20 text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[100px] max-md:p-0 h-[100px] bottom-0 left-0 m-5 max-md:m-2 rounded-full bg-white p-8 text-neutral-950"
->
-  <ng-icon name="remixArrowLeftLine" />
-
-  <div
-    class="absolute top-0 bottom-0 w-full z-30 h-full bg-neutral-950 transition-transform rounded-3xl -translate-x-[100%] group-hover:translate-x-0 text-white flex justify-center items-center text-4xl max-md:text-2xl"
-  >
-    <ng-icon name="remixArrowLeftLine" />
-  </div>
-</a>
-
-<div class="font-clash flex flex-col gap-4">
-  @if (currentProject && !isLoading) {
-  <div class="h-[85vh] w-full bg-noise rounded-3xl overflow-hidden preview opacity-0 translate-y-10 max-md:h-[60vh]">
-    <div class="w-full h-full p-8 relative" [style]="{ background: currentProject.color }" #container>
-      <img
-        width="1920"
-        height="1080"
-        class="w-full object-contain h-full"
-        [src]="currentProject.preview.url"
-        #image
-        [alt]="currentProject.preview.alt"
-      />
-
-      @if (currentProject.projectUrl) {
-      <a
-        [routerLink]="currentProject.projectUrl"
-        class="absolute flex justify-center items-center group overflow-hidden text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[100px] max-md:p-0 h-[100px] bottom-0 right-0 m-5 max-md:m-2 rounded-3xl text-white p-8 bg-neutral-950"
-      >
-        <ng-icon name="remixArrowRightUpLine" />
-
-        <div
-          class="absolute top-0 bottom-0 w-full h-full text-neutral-950 transition-transform rounded-3xl -translate-x-[100%] group-hover:translate-x-0 bg-white flex justify-center items-center text-4xl max-md:text-2xl"
-        >
-          <ng-icon name="remixArrowRightUpLine" />
-        </div>
-      </a>
-      }
+@if (isLoading) {
+<div>Loading</div>
+}@else{
+<article class="project">
+  <header class="project_media">
+    <div class="project_principal">
+      <img [src]="currentProject?.preview?.url" [alt]="currentProject?.preview?.alt" />
+      <h1 class="project_title">{{ currentProject?.title }}</h1>
     </div>
-  </div>
-
-  <div class="flex flex-col gap-4 info opacity-0 translate-y-10 max-md:gap-2">
-    <h1 class="text-8xl max-md:text-4xl uppercase font-extrabold text-white py-4 max-md:py-0">
-      {{ currentProject.title }}
-    </h1>
-    <div class="flex gap-4 projects-center text-white max-md:flex-col max-md:projects-start max-md:gap-0">
-      <div class="py-8 max-md:py-0">
-        <p class="text-white truncated-text text-2xl">
-          {{ currentProject.desc }}
-        </p>
+    <div class="project_secondaries">
+      <div class="first_image">
+        <img [src]="currentProject?.image?.url" [alt]="currentProject?.image?.alt" />
       </div>
-      <div class="flex flex-col py-8 w-full gap-4">
-        <h4 class="text-nowrap text-right text-2xl">{{ currentProject.date | date : 'short' }}</h4>
-        <div class="flex gap-2 justify-end projects-center">
-          @for (category of currentProject.category.slice(0,3); track $index) {
-          <span
-            class="px-8 max-md:max-w-[300px] max-md:px-2 max-md:overflow-hidden max-md:overflow-ellipsis text-nowrap py-2 rounded-lg bg-neutral-700 text-white"
-            >{{ category }}</span
-          >
-          }
-        </div>
+      <div class="second_image">
+        <img [src]="currentProject?.image2?.url" [alt]="currentProject?.image2?.alt" />
       </div>
     </div>
+  </header>
 
-    <div class="w-full flex flex-col justify-between items-start gap-4">
-      @if(currentProject.image && currentProject.image2){
-      <div class="flex items-center gap-4 h-[60vh] max-md:flex-col">
-        <div class="rounded-3xl h-full flex justify-center items-center" [style]="{ background: currentProject.color }">
-          <img
-            width="1920"
-            height="1080"
-            class="w-3/4 m-auto h-full object-contain bg-transparent"
-            [src]="currentProject.image.url"
-            [alt]="currentProject.image.alt"
-          />
-        </div>
-        <div class="rounded-3xl h-full flex justify-center items-center" [style]="{ background: currentProject.color }">
-          <img
-            width="1920"
-            height="1080"
-            class="w-3/4 m-auto h-full object-contain bg-transparent"
-            [src]="currentProject.image2.url"
-            [alt]="currentProject.image2.alt"
-          />
-        </div>
-      </div>
-      }
+  <main class="project_content">
+    <header class="project_info">
+      <div class="categories">
+        @for (category of currentProject?.category; track $index) {
 
-      <div class="my-8">
-        <p class="text-white text-2xl">{{ currentProject.detail }}</p>
-      </div>
-      @if (currentProject.technologies) {
-
-      <h2 class="text-white uppercase font-thin text-4xl">Stack</h2>
-      <div class="flex justify-between items-center flex-wrap gap-4 text-white uppercase font-extrabold">
-        @for (item of currentProject.technologies; track item) {
-
-        <div class="border border-white rounded-2xl p-8 text-4xl">{{ item }}</div>
+        <span>
+          {{ category }}
+        </span>
         }
       </div>
-      }
-    </div>
-  </div>
 
-  } @else if (isLoading) {
-  <div class="h-[85vh] w-full bg-transparent rounded-3xl overflow-hidden">
-    <div class="w-full flex justify-center items-center h-full p-8 relative">
-      <div class="w-[40px] h-[40px] bg-white rounded-full animate-bounce duration-75"></div>
-    </div>
-  </div>
+      <div class="technologies">
+        @for (technology of currentProject?.technologies; track $index) {
+        <span>
+          {{ technology }}
+        </span>
+        }
+      </div>
+    </header>
 
-  }@else {
-  <div class="h-[85vh] w-full bg-noise rounded-3xl overflow-hidden preview opacity-0 translate-y-10">
-    <div class="w-full h-full p-8 relative bg-neutral-500 bg-opacity-90" #container>
-      <img
-        class="w-full object-contain h-full hover:scale-75 hover:rotate-2 duration-300 transition-transform"
-        src="/notload.png"
-        width="1920"
-        height="1080"
-        #image
-        alt="error image or not found sad face"
-      />
-    </div>
-  </div>
-  <h1 class="text-8xl opacity-0 translate-y-10 max-md:text-4xl info uppercase font-extrabold text-white py-4">
-    Sorry, Try Again more later.
-  </h1>
+    <div class="footer">
+      <p class="desc">{{ currentProject?.desc }}</p>
 
-  }
-</div>
+      <div class="details">
+        @if(currentProject?.problem){
+        <div>
+          <h3>Problem</h3>
+          <p>{{ currentProject?.problem }}</p>
+        </div>
+        } @if(currentProject?.solution){
+        <div>
+          <h3>Solution</h3>
+          <p>{{ currentProject?.problem }}</p>
+        </div>
+        } @if(currentProject?.impact){
+        <div>
+          <h3>Impact</h3>
+          <p>{{ currentProject?.impact }}</p>
+        </div>
+        }
+      </div>
+    </div>
+  </main>
+</article>
+}

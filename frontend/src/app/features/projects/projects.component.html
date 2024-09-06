@@ -1,22 +1,39 @@
-<a
-  routerLink="/"
-  class="fixed flex justify-center border border-neutral-700 items-center group overflow-hidden group z-20 text-4xl max-md:text-2xl duration-300 max-md:w-[50px] max-md:h-[50px] w-[100px] max-md:p-0 h-[100px] bottom-0 left-0 m-5 max-md:m-2 rounded-full bg-white p-8 text-neutral-950"
+<section
+  class="w-full min-h-[100vh] border-x-2 border-black relative overflow-hidden py-3 flex justify-center items-center flex-col"
 >
-  <ng-icon name="remixArrowLeftLine" />
+  <h2 class="text-[30vw] uppercase" style="line-height: 30vw">Works</h2>
 
-  <div
-    class="absolute top-0 bottom-0 w-full z-30 h-full bg-neutral-950 transition-transform rounded-3xl -translate-x-[100%] group-hover:translate-x-0 text-white flex justify-center items-center text-4xl max-md:text-2xl"
-  >
-    <ng-icon name="remixArrowLeftLine" />
+  <div class="w-[90%] h-full m-auto flex flex-col">
+    @for (project of uploadedProjects; track project.slug; let index = $index ) {
+
+    <article
+      class="w-full p-8 flex flex-col gap-3 border-t-2 border-x-2 border-black last-of-type:border-b-2 group"
+      [routerLink]="'/projects/' + project.slug"
+      (mouseenter)="onMouseEnter(index)"
+      (mouseleave)="onMouseLeave(index)"
+    >
+      <header class="flex justify-between items-center gap-3">
+        <h2 class="text-2xl font-extrabold text-nowrap uppercase">
+          {{ project.title }}
+        </h2>
+        <div class="w-full h-1 bg-black content-normal transition-all ease-custom-bezier duration-500 group-hover:w-1/2 group-hover:opacity-50"></div>
+        <time [dateTime]="project.date" >{{ project.date | date : 'MM/YYYY' }}</time>
+      </header>
+
+      <main>
+        <p class="desc">{{ project.desc }}</p>
+      </main>
+
+      <footer class="flex justify-between items-center">
+        <div class="flex">
+          @for (category of project.category; track $index) {
+          <p class="py-3 px-5 bg-black text-white ">{{ category }}</p>
+          }
+        </div>
+      </footer>
+    </article>
+    }
+
+    <app-modal [modalState]="modalState" [projects]="uploadedProjects" [isRendered]="isLoading" />
   </div>
-</a>
-
-<div class="flex flex-col gap-4">
-  @if (uploadedProjects.length > 0 && !isLoading) { @for (item of uploadedProjects; track item.slug + $index) {
-  <app-project-item [project]="item" class="project" />
-  } } @else if (isLoading) {
-  <app-project-loader />
-  } @else {
-  <app-project-error [errorMsg]="this.error.msg" />
-  }
-</div>
+</section>
