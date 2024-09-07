@@ -1,3 +1,6 @@
+@import 'lenis/dist/lenis.css';
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,6 +10,11 @@
   src: url('/fonts/TerminalGrotesque.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+
+body {
+  overflow: hidden;
 }
 
 .text-outline {

@@ -1,4 +1,4 @@
-const Configuration = {
+module.exports = {
     extends: ['@commitlint/config-conventional'],
     parserPreset: 'conventional-changelog-conventionalcommits',
     prompt: {
@@ -111,4 +111,3 @@ const Configuration = {
     },
   }
   
-  module.exports = Configuration

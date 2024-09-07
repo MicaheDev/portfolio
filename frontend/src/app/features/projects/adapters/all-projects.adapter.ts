@@ -12,6 +12,7 @@ export function adaptProjects(projects: any[], sanity: SanityService): Projects 
       url: sanity.getImageUrlBuilder(project.preview).url(),
       alt: project.preview?.altText || project.title || 'Imagen de proyecto' 
     },
-    projectUrl: project.projectUrl || null 
+    projectUrl: project.projectUrl || null,
+    technologies: project.technologies,
   }));
 }

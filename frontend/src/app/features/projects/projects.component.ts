@@ -66,7 +66,8 @@ export class ProjectsComponent implements OnInit {
             url
           }
         },
-        color
+        color,
+        technologies
       }`;
       const projects = await this.sanity.get(query);
       this.uploadedProjects = adaptProjects(projects, this.sanity);

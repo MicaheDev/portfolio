@@ -16,7 +16,7 @@
         <h2 class="text-2xl font-extrabold text-nowrap uppercase">
           {{ project.title }}
         </h2>
-        <div class="w-full h-1 bg-black content-normal transition-all ease-custom-bezier duration-500 group-hover:w-1/2 group-hover:opacity-50"></div>
+        <div class="w-full h-[2px] bg-black content-normal transition-all ease-custom-bezier duration-500 group-hover:w-1/2 group-hover:opacity-50"></div>
         <time [dateTime]="project.date" >{{ project.date | date : 'MM/YYYY' }}</time>
       </header>
 
@@ -29,6 +29,12 @@
           @for (category of project.category; track $index) {
           <p class="py-3 px-5 bg-black text-white ">{{ category }}</p>
           }
+        </div>
+
+        <div class="flex border border-black">
+          @for (technology of project.technologies; track $index) {
+            <p class="py-2 px-5 bg-white text-black ">{{ technology }}</p>
+            }
         </div>
       </footer>
     </article>

@@ -35,16 +35,7 @@ export class HomeComponent implements AfterViewInit {
       var moving_value: any = move.getAttribute('data-value');
       var x = (e.clientX * moving_value) / 250;
       var y = (e.clientY * moving_value) / 250;
- // Extraer la rotación de las clases de Tailwind
- let rotation = 0;
- if (move.classList.contains('rotate-45')) {
-   rotation = 45;
- } else if (move.classList.contains('-rotate-45')) {
-   rotation = -45;
- }
-
- // Aplica tanto la traslación como la rotación
- move.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${rotation}deg)`;
+      move.style.transform = `translateX(${x}px) translateY(${y}px)`;
     });
   }
 }

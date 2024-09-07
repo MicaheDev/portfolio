@@ -9,6 +9,7 @@ export type Project = {
     alt: string;
   };
   projectUrl?: string | null
+  technologies?: string[]; 
 };
 
 export type Projects = Project[];
@@ -23,7 +24,6 @@ export type ProjectDetails = Project & {
     alt: string;
   } | null;
   detail?: string ; 
-  technologies?: string[]; 
   problem: string,
   solution: string,
   impact: string
