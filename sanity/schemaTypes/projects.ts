@@ -37,16 +37,21 @@ export default defineType({
       name: 'projectUrl',
       title: 'Project URL',
       type: 'url',
-      validation: (Rule) => Rule.uri({
-        scheme: ['http', 'https']
-      })
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https'],
+        }),
     }),
     defineField({
       name: 'date',
       title: 'Date',
-      type: 'datetime',
+      type: 'date',
+      options: {
+        dateFormat: 'MM/YYYY',
+      },
       validation: (Rule) => Rule.required(),
     }),
+    
     defineField({
       name: 'preview',
       title: 'Preview',
@@ -101,14 +106,22 @@ export default defineType({
         },
       ],
     }),
+
     defineField({
-      name: 'color',
-      title: 'Color',
-      type: 'color',
+      name: 'problem',
+      title: 'Problem Description',
+      type: 'text',
+      validation: (Rule) => Rule.min(10),
     }),
     defineField({
-      name: 'detail',
-      title: 'Details Description',
+      name: 'solution',
+      title: 'Solution Description',
+      type: 'text',
+      validation: (Rule) => Rule.min(10),
+    }),
+    defineField({
+      name: 'impact',
+      title: 'Impact Description',
       type: 'text',
       validation: (Rule) => Rule.min(10),
     }),
