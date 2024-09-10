@@ -32,8 +32,8 @@ export class PixelBackgroundComponent implements AfterViewInit {
     // Animación de desvanecimiento de cada .block
     gsap.to('.block', {
       opacity: 0,
-      delay: .3,
-      duration: .002,
+      delay: .8,
+      duration: .1,
       stagger: { amount: 0.9, from: 'random' },
       onComplete: () => {
         // Opcionalmente puedes ocultar el fondo completamente después de la animación

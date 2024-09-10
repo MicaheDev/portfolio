@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import gsap from 'gsap';
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -8,10 +9,57 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
-export class ProfileComponent {
+export class ProfileComponent implements AfterViewInit {
+  @ViewChild('container', { static: true }) container!: ElementRef<HTMLDivElement>;
   isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) public platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
+  }
+
+  ngAfterViewInit(): void {
+    if (this.isBrowser) {
+      const scrollTriggerSettings = {
+        trigger: this.container.nativeElement,
+        start: 'top center',
+      };
+
+      gsap.context(() => {
+        gsap.set('.image-container', {
+          x: 900,
+          y: 200,
+          rotate: 45,
+          opacity: 0
+        });
+
+        gsap.set('.desc', {
+          y: 900,
+          opacity: 0,
+        })
+
+        gsap.set(['.about-container', '.me'], {
+          x: -900,
+          y: -200,
+          rotate: -45,
+          opacity: 0
+        })
+
+
+        gsap.to('.desc', {
+          y: 0,
+          opacity: 1,
+          scrollTrigger: scrollTriggerSettings
+        })
+
+        gsap.to(['.image-container', '.about-container', '.me'], {
+          x: 0,
+          y: 0,
+          rotate: 0,
+          opacity: 1,
+          stagger: .1,
+          scrollTrigger: scrollTriggerSettings,
+        });
+      }, this.container.nativeElement);
+    }
   }
 }

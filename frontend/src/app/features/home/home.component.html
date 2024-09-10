@@ -1,16 +1,16 @@
-<section class="relative h-[90vh] w-full overflow-hidden border-x-2 border-black">
+<section #container class="relative h-[90vh] w-full overflow-hidden border-x-2 border-black">
   <!-- principal titles of header section in the center -->
   <div class="mx-auto flex h-full w-[95%] flex-col items-center justify-center">
-    <h1 class="text-outline text-[4rem] font-extrabold uppercase text-white" style="line-height: 4rem">
+    <h1 class="name text-outline text-[4rem] font-extrabold uppercase text-white" style="line-height: 4rem">
       Michell Castillo
     </h1>
-    <h2 class="text-[6rem] font-extrabold" style="line-height: 6rem">UI/UX DEDIGNER</h2>
-    <h2 class="text-[10rem] font-extrabold" style="line-height: 10rem">
-      FULL <span class="text-outline text-white">{{ '{Stack}' }}</span>
+    <h2 class=" ui text-[6rem] font-extrabold" style="line-height: 6rem">UI/UX DEDIGNER</h2>
+    <h2 class="full text-[10rem] font-extrabold" style="line-height: 10rem">
+      FULL <span class="text-outline stack text-white">{{ '{Stack}' }}</span>
     </h2>
-    <h2 class="text-[15rem] font-extrabold" style="line-height: 15rem">DEVELOPER</h2>
+    <h2 class="dev text-[15rem] font-extrabold" style="line-height: 15rem">DEVELOPER</h2>
 
-    <p class="mx-auto w-1/2">
+    <p class="desc mx-auto w-1/2">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam qui, tempora incidunt voluptatum impedit, labore
       velit explicabo quam dolores magni nostrum sit doloribus quae quos accusantium vel molestias expedita amet?
     </p>
@@ -24,15 +24,18 @@
   </div>
 
   <!-- float dev decorations with parallax-->
-  <div class="parallax-item absolute bottom-[10%] left-[10%] text-[10rem] text-neutral-400" data-value="6">+</div>
-  <div class="parallax-item absolute bottom-[50%] left-[10%] text-[10rem] text-neutral-400" data-value="-4">
+  <div class="decoration-item absolute bottom-[10%] left-[10%] text-[10rem] text-neutral-400" data-value="6">+</div>
+  <div class="decoration-item absolute bottom-[50%] left-[10%] text-[10rem] text-neutral-400" data-value="-4">
     {{ '{}' }}
   </div>
-  <div class="parallax-item absolute bottom-[80%] left-[20%] text-[10rem] text-neutral-400" data-value="-6">""</div>
+  <div class="decoration-item absolute bottom-[80%] left-[20%] text-[10rem] text-neutral-400" data-value="-6">""</div>
 
-  <div class="parallax-item absolute bottom-[80%] right-[20%] text-[10rem] text-neutral-400" data-value="-4">*</div>
-  <div class="parallax-item absolute bottom-[50%] right-[10%] text-[10rem] text-neutral-400" data-value="-3">()</div>
-  <div class="parallax-item absolute bottom-[10%] right-[10%] text-[10rem] text-neutral-400" data-value="5">[]</div>
+  <div class="decoration-item absolute bottom-[80%] right-[20%] text-[10rem] text-neutral-400" data-value="-4">*</div>
+  <div class="decoration-item absolute bottom-[50%] right-[10%] text-[10rem] text-neutral-400" data-value="-3">()</div>
+  <div class="decoration-item absolute bottom-[10%] right-[10%] text-[10rem] text-neutral-400" data-value="5">[]</div>
 </section>
 <app-profile />
 <app-projects />
+<app-certifications/>
+<app-contact/>
+<app-footer/>

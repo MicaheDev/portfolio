@@ -1,5 +1,5 @@
 import { SanityService } from '../../../shared/services/sanity.service';
-import { ProjectDetails } from '../models/Projects';
+import { ProjectDetails } from '../../projects/models/Projects';
 
 export function adaptProject(project: any, sanity: SanityService): ProjectDetails {
     return {

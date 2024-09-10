@@ -1,43 +1,53 @@
 <section
-  class="w-full min-h-[100vh] border-x-2 border-black relative overflow-hidden py-3 flex justify-center items-center flex-col"
+  #container
+  class="relative flex min-h-[100vh] w-full flex-col items-center justify-center overflow-hidden border-x-2 border-black py-3"
 >
-  <h2 class="text-[30vw] uppercase" style="line-height: 30vw">Works</h2>
+  <h2 class="title text-[30vw] font-extrabold uppercase" style="line-height: 30vw">Works</h2>
 
-  <div class="w-[90%] h-full m-auto flex flex-col">
-    @for (project of uploadedProjects; track project.slug; let index = $index ) {
+  <div class="m-auto flex h-full w-[90%] flex-col">
+    @if (!isLoading) {
+      @for (project of uploadedProjects; track project.slug; let index = $index) {
+        <article
+          class="group flex w-full flex-col gap-3 border-x-2 border-t-2 border-black p-8 last-of-type:border-b-2"
+          [routerLink]="'/projects/' + project.slug"
+          (mouseenter)="onMouseEnter(index)"
+          (mouseleave)="onMouseLeave(index)"
+        >
+          <header class="flex items-center justify-between gap-3">
+            <h2 class="text-nowrap text-2xl font-extrabold uppercase">
+              {{ project.title }}
+            </h2>
+            <div
+              class="h-[2px] w-full content-normal bg-black transition-all duration-500 ease-custom-bezier group-hover:w-1/2 group-hover:opacity-50"
+            ></div>
+            <time [dateTime]="project.date">{{ project.date | date: 'MM/YYYY' }}</time>
+          </header>
 
-    <article
-      class="w-full p-8 flex flex-col gap-3 border-t-2 border-x-2 border-black last-of-type:border-b-2 group"
-      [routerLink]="'/projects/' + project.slug"
-      (mouseenter)="onMouseEnter(index)"
-      (mouseleave)="onMouseLeave(index)"
-    >
-      <header class="flex justify-between items-center gap-3">
-        <h2 class="text-2xl font-extrabold text-nowrap uppercase">
-          {{ project.title }}
-        </h2>
-        <div class="w-full h-[2px] bg-black content-normal transition-all ease-custom-bezier duration-500 group-hover:w-1/2 group-hover:opacity-50"></div>
-        <time [dateTime]="project.date" >{{ project.date | date : 'MM/YYYY' }}</time>
-      </header>
+          <main>
+            <p class="desc">{{ project.desc }}</p>
+          </main>
 
-      <main>
-        <p class="desc">{{ project.desc }}</p>
-      </main>
+          <footer class="flex items-center justify-between">
+            <div class="flex">
+              @for (category of project.category; track $index) {
+                <p class="bg-black px-5 py-3 text-white">{{ category }}</p>
+              }
+            </div>
 
-      <footer class="flex justify-between items-center">
-        <div class="flex">
-          @for (category of project.category; track $index) {
-          <p class="py-3 px-5 bg-black text-white ">{{ category }}</p>
-          }
-        </div>
-
-        <div class="flex border border-black">
-          @for (technology of project.technologies; track $index) {
-            <p class="py-2 px-5 bg-white text-black ">{{ technology }}</p>
-            }
-        </div>
-      </footer>
-    </article>
+            <div class="flex border border-black">
+              @for (technology of project.technologies; track $index) {
+                <p class="bg-white px-5 py-2 text-black">{{ technology }}</p>
+              }
+            </div>
+          </footer>
+        </article>
+      }
+    } @else {
+      <div class="w-full h-full flex justify-center items-center">
+        <h1 class="text-4xl">
+          Loading...
+        </h1>
+      </div>
     }
 
     <app-modal [modalState]="modalState" [projects]="uploadedProjects" [isRendered]="isLoading" />

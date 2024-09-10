@@ -1,1 +1,15 @@
-<p>certifications works!</p>
+<section class="relative h-[100vh] w-full overflow-hidden border-x-2 border-black">
+  <div class="mx-auto flex h-full w-[90%] items-center justify-center gap-5">
+    <div class="flex w-full flex-wrap justify-around gap-5">
+      @for (item of certifications; track $index) {
+        <div class="flex h-[350px] relative w-[500px] items-center justify-center  border-2 border-black p-2">
+          <img class="w-full" [src]="item.preview.url" [alt]="item.preview.alt" />
+          <h3 class="text-vertical absolute bottom-0 right-[100%] rotate-180">{{ item.title }}</h3>
+        </div>
+      }
+    </div>
+    <div class="flex h-full w-[10%] items-center justify-center">
+      <h2 class="-rotate-90 text-[6rem] font-extrabold uppercase" style="line-height: 6rem">Certifications</h2>
+    </div>
+  </div>
+</section>

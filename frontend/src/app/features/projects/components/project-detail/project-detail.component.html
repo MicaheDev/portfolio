@@ -1,64 +1,73 @@
-@if (isLoading) {
-<div>Loading</div>
-}@else{
-<article class="project">
-  <header class="project_media">
-    <div class="project_principal">
-      <img [src]="currentProject?.preview?.url" [alt]="currentProject?.preview?.alt" />
-      <h1 class="project_title">{{ currentProject?.title }}</h1>
+<article class="min-h-[100vh] w-full border-x-2 border-b-2 border-black">
+  <div class="items-center] relative flex h-[80vh] justify-center border-b-2 border-black">
+    <a
+      class="absolute left-5 top-5 z-10 inline-flex h-[80px] w-[80px] cursor-pointer items-center justify-center rounded-full bg-black text-white"
+      routerLink="/projects"
+    >
+      <ng-icon class="text-5xl" name="remixArrowLeftLine" />
+    </a>
+    <div
+      class="relative flex h-full w-3/4 flex-col items-start justify-center border-r-2 border-black"
+      [ngClass]="{
+        'border-l-2': !(currentProject?.image && currentProject?.image2),
+      }"
+    >
+      <img class="m-auto w-[80%]" [src]="currentProject?.preview?.url" [alt]="currentProject?.preview?.alt" />
+
+      <p class="absolute right-10 top-10">{{ currentProject?.date | date: 'MM/YYYY' }}</p>
     </div>
-    <div class="project_secondaries">
-      <div class="first_image">
-        <img [src]="currentProject?.image?.url" [alt]="currentProject?.image?.alt" />
-      </div>
-      <div class="second_image">
-        <img [src]="currentProject?.image2?.url" [alt]="currentProject?.image2?.alt" />
-      </div>
-    </div>
-  </header>
 
-  <main class="project_content">
-    <header class="project_info">
-      <div class="categories">
-        @for (category of currentProject?.category; track $index) {
-
-        <span>
-          {{ category }}
-        </span>
-        }
-      </div>
-
-      <div class="technologies">
-        @for (technology of currentProject?.technologies; track $index) {
-        <span>
-          {{ technology }}
-        </span>
-        }
-      </div>
-    </header>
-
-    <div class="footer">
-      <p class="desc">{{ currentProject?.desc }}</p>
-
-      <div class="details">
-        @if(currentProject?.problem){
-        <div>
-          <h3>Problem</h3>
-          <p>{{ currentProject?.problem }}</p>
+    @if (currentProject?.image && currentProject?.image2) {
+      <div class="flex h-full w-1/3 flex-col justify-between">
+        <div class="flex h-1/2 w-full items-center justify-center border-b-2 border-black">
+          <img class="w-[80%]" [src]="currentProject?.image?.url" [alt]="currentProject?.image?.alt" />
         </div>
-        } @if(currentProject?.solution){
-        <div>
-          <h3>Solution</h3>
-          <p>{{ currentProject?.problem }}</p>
+        <div class="flex h-1/2 w-full items-center justify-center">
+          <img class="w-[80%]" [src]="currentProject?.image2?.url" [alt]="currentProject?.image2?.alt" />
         </div>
-        } @if(currentProject?.impact){
-        <div>
-          <h3>Impact</h3>
-          <p>{{ currentProject?.impact }}</p>
+      </div>
+    }
+  </div>
+
+  <div class="p-8">
+    <div class="flex w-full items-start justify-between">
+      <h1 class="text-wrap text-[10rem] uppercase" style="line-height: 10rem">
+        {{currentProject?.title}}
+      </h1>
+
+      <div class="flex flex-col items-end gap-4 justify-self-end">
+        <div class="flex flex-nowrap gap-4 bg-black px-8 py-4 uppercase text-white">
+          @for (category of currentProject?.category; track category) {
+            <p class="text-nowrap">{{ category }}</p>
+          }
         </div>
-        }
+
+        <div class="flex w-min flex-nowrap gap-4 border-2 border-black bg-white px-8 py-4 uppercase text-black">
+          @for (item of currentProject?.technologies; track item) {
+            <p class="text-nowrap">{{ item }}</p>
+          }
+        </div>
       </div>
     </div>
-  </main>
+    <p>{{ currentProject?.desc }}</p>
+  </div>
+
+  @if (currentProject?.problem && currentProject?.solution && currentProject?.impact) {
+    <div class="flex flex-col gap-4 p-8">
+      <div class="border-b-2 border-black">
+        <h2>Problem</h2>
+        <p>{{ currentProject?.problem }}</p>
+      </div>
+
+      <div class="border-b-2 border-black">
+        <h2>Solution</h2>
+        <p>{{ currentProject?.solution }}</p>
+      </div>
+
+      <div class="border-b-2 border-black">
+        <h2>Impact</h2>
+        <p>{{ currentProject?.impact }}</p>
+      </div>
+    </div>
+  }
 </article>
-}
