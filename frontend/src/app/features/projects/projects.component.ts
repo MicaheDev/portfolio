@@ -1,10 +1,21 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SanityService } from '../../shared/services/sanity.service';
 import { adaptProjects } from './adapters/all-projects.adapter';
 import { Projects } from './models/Projects';
 import { ModalComponent } from './components/modal/modal.component';
+import { TransitionRefService } from '../../shared/services/transition-ref.service';
+import { animatePageOut } from '../../shared/utils/animation';
 
 @Component({
   selector: 'app-projects',
@@ -13,7 +24,7 @@ import { ModalComponent } from './components/modal/modal.component';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
-export class ProjectsComponent implements OnInit, AfterViewInit {
+export class ProjectsComponent implements OnInit {
   @ViewChild('container', { static: false }) container!: ElementRef<HTMLDivElement>;
   isBrowser: boolean;
 
@@ -24,14 +35,31 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    public sanity: SanityService
+    public sanity: SanityService,
+    protected router: Router,
+    protected refService: TransitionRefService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
+  // Verifica el tamaño de pantalla cuando se redimensiona
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    if (this.isBrowser && window.innerWidth < 768) {
+      this.modalState.active = false; // Desactiva la modal si el tamaño es menor a 768px
+    }
+  }
+
   setModalState(newState: { active: boolean; index: number }) {
-    this.modalState = newState;
-    console.log('Modal State:', this.modalState);
+    if (window.innerWidth >= 768) {
+      // Solo permite activar la modal si la pantalla es grande
+
+      this.modalState = newState;
+    }
   }
 
   uploadedProjects: Projects = [];
@@ -40,31 +68,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.loadProjects();
-  }
-
-  ngAfterViewInit(): void {
-    if (this.isBrowser) {
-      /*
-      const scrollTriggerSettings = {
-        trigger: this.container.nativeElement,
-        start: 'top top',
-        toggleActions: 'play reverse play reverse', // Control de reproducción y reversa
-      };
-
-      gsap.context(() => {
-        gsap.set('.title', {
-          y: 900,
-          opacity: 0,
-        });
-
-        gsap.to('.title', {
-          y: 0,
-          opacity: 1,
-          scrollTrigger: scrollTriggerSettings,
-        });
-      }, this.container.nativeElement);
-      */
-    }
+    this.checkScreenSize(); // Verifica el tamaño de pantalla cuando el componente se inicializa
   }
 
   onMouseEnter(index: number) {
@@ -92,12 +96,25 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
         technologies
       }`;
       const projects = await this.sanity.get(query);
+
       this.uploadedProjects = adaptProjects(projects, this.sanity);
     } catch (error) {
       console.error('Error loading projects:', error);
       this.error = { isError: true, msg: 'Sorry, We have a error, try again.' };
     } finally {
       this.isLoading = false;
+    }
+  }
+
+  transitionClick(href: string) {
+    if (this.router.url !== href) {
+      console.log(this.router.url === href);
+      const context = this.refService.contextRef;
+      if (!this.refService.isMenuOpen) {
+        animatePageOut(context, href, this.router);
+      } else {
+        this.router.navigate([href]);
+      }
     }
   }
 }

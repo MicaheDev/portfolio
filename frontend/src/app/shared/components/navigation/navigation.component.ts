@@ -1,16 +1,19 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterViewChecked, AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { remixArrowRightUpLine, remixCloseFill, remixMenuLine, remixReactjsFill } from '@ng-icons/remixicon';
-import { RouterModule } from '@angular/router';
+import { remixArrowRightUpLine, remixCloseFill, remixMenuLine } from '@ng-icons/remixicon';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { TransitionLinkComponent } from '../transition-link/transition-link.component';
+import { TransitionRefService } from '../../services/transition-ref.service';
+import { animatePageOut } from '../../utils/animation';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
-  imports: [NgIconComponent, RouterModule, CommonModule],
+  imports: [NgIconComponent, RouterModule, CommonModule, TransitionLinkComponent],
   providers: [
     provideIcons({
       remixCloseFill,
@@ -19,8 +22,13 @@ import { RouterModule } from '@angular/router';
     }),
   ],
 })
-export class NavigationComponent implements AfterViewInit, AfterViewChecked {
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+export class NavigationComponent {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    protected route: ActivatedRoute,
+    protected router: Router,
+    protected refService: TransitionRefService
+  ) {}
 
   menuItems = [
     {
@@ -48,7 +56,19 @@ export class NavigationComponent implements AfterViewInit, AfterViewChecked {
     },
   ];
 
-  ngAfterViewInit(): void {}
+  transitionClick(href: string) {
+    if (this.router.url !== href) {
+      console.log(this.router.url === href);
+      const context = this.refService.contextRef;
+      if (!this.refService.isMenuOpen) {
+        animatePageOut(context, href, this.router);
+      } else {
+          this.router.navigate([href]);
+      }
+    }
+  }
 
-  ngAfterViewChecked(): void {}
+  isActive(href: string) {
+    return this.router.url === href;
+  }
 }

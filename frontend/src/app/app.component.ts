@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './shared';
 import { PixelBackgroundComponent } from './shared/components/pixel-background/pixel-background.component';
@@ -14,7 +14,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit{
   lenis!: Lenis;
   isBrowser: boolean;
 

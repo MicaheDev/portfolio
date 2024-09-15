@@ -1,55 +1,64 @@
 <section
   #container
-  class="relative flex min-h-[100vh] w-full flex-col items-center justify-center overflow-hidden border-x-2 border-black py-3"
+  class="relative flex h-[100vh] w-full flex-col items-center justify-center overflow-hidden border-x-2 border-black py-3 max-md:h-auto max-md:py-20"
 >
-  <h2 class="title text-[30vw] font-extrabold uppercase" style="line-height: 30vw">Works</h2>
+  <h2
+    class="title text-[20rem] font-extrabold uppercase leading-[20rem] max-lg:text-9xl max-lg:leading-normal max-md:text-8xl"
+  >
+    Works
+  </h2>
 
-  <div class="m-auto flex h-full w-[90%] flex-col">
+  <div class="mx-auto flex w-[90%] flex-col">
     @if (!isLoading) {
       @for (project of uploadedProjects; track project.slug; let index = $index) {
         <article
-          class="group flex w-full flex-col gap-3 border-x-2 border-t-2 border-black p-8 last-of-type:border-b-2"
-          [routerLink]="'/projects/' + project.slug"
+          class="group relative flex h-[6rem] w-full cursor-pointer flex-col gap-3 overflow-hidden border-b-2 border-black max-md:h-auto"
+          (click)="transitionClick('/projects/' + project.slug)"
           (mouseenter)="onMouseEnter(index)"
           (mouseleave)="onMouseLeave(index)"
         >
-          <header class="flex items-center justify-between gap-3">
-            <h2 class="text-nowrap text-2xl font-extrabold uppercase">
-              {{ project.title }}
-            </h2>
-            <div
-              class="h-[2px] w-full content-normal bg-black transition-all duration-500 ease-custom-bezier group-hover:w-1/2 group-hover:opacity-50"
-            ></div>
-            <time [dateTime]="project.date">{{ project.date | date: 'MM/YYYY' }}</time>
-          </header>
-
-          <main>
-            <p class="desc">{{ project.desc }}</p>
-          </main>
-
-          <footer class="flex items-center justify-between">
-            <div class="flex">
-              @for (category of project.category; track $index) {
-                <p class="bg-black px-5 py-3 text-white">{{ category }}</p>
-              }
-            </div>
-
-            <div class="flex border border-black">
-              @for (technology of project.technologies; track $index) {
-                <p class="bg-white px-5 py-2 text-black">{{ technology }}</p>
-              }
-            </div>
-          </footer>
+          <h1
+            class="translate-y-0 text-center text-[6rem] font-extrabold uppercase leading-[6rem] transition-all duration-500 ease-custom-bezier group-hover:-translate-y-[6rem] max-md:text-3xl max-md:leading-normal max-md:group-hover:-translate-y-0"
+          >
+            {{ project.title }}
+          </h1>
+          <h1
+            aria-hidden="true"
+            class="absolute inset-0 translate-y-[6rem] text-center text-[6rem] font-extrabold uppercase leading-[6rem] text-blue-500 transition-all duration-500 ease-custom-bezier group-hover:translate-y-0 max-md:hidden"
+          >
+            {{ project.title }}
+          </h1>
         </article>
       }
     } @else {
-      <div class="w-full h-full flex justify-center items-center">
-        <h1 class="text-4xl">
-          Loading...
-        </h1>
+      <div class="flex h-full w-full items-center justify-center">
+        <h1 class="text-4xl">Loading...</h1>
       </div>
     }
 
     <app-modal [modalState]="modalState" [projects]="uploadedProjects" [isRendered]="isLoading" />
   </div>
+
+  <svg
+    class="absolute inset-0 -z-[1] m-auto animate-pulse max-md:w-[300px] max-md:h-[300px]"
+    xmlns="http://www.w3.org/2000/svg"
+    id="Capa_1"
+    x="0"
+    y="0"
+    version="1.1"
+    viewBox="0 0 511.999 511.999"
+    width="800"
+    height="800"
+  >
+    <path
+      d="M498.523 246.291c37.941-67.923-8.514-149.499-85.88-157.204l-28.232-2.813c-20.59-2.053-38.982-10.974-54.263-28.128-53.185-59.695-152.219-44.954-184.82 26.764-7.94 17.466-22.298 31.438-40.428 39.344l-39.773 17.34c-63.399 27.64-84.894 104.334-44.848 159.183l25.236 34.563c5.481 7.508 9.482 15.807 11.893 24.666l12.532 46.073c17.167 63.115 88.755 97.22 151.241 70.693l5.35-2.271c15.901-6.751 33.992-8.387 50.932-4.616l82.048 18.269c79.933 17.798 150.39-51.574 132.54-127.825l-10.384-44.351c-4.203-17.953-1.524-36.78 7.544-53.012l9.312-16.675z"
+      fill='url("#SvgjsLinearGradient1038")'
+    ></path>
+    <defs>
+      <linearGradient id="SvgjsLinearGradient1038">
+        <stop stop-color="#f7f7f7" offset="0"></stop>
+        <stop stop-color="#83c3ff" offset="1"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
 </section>

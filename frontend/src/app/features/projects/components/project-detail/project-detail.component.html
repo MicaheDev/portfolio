@@ -1,11 +1,11 @@
 <article class="min-h-[100vh] w-full border-x-2 border-b-2 border-black">
-  <div class="items-center] relative flex h-[80vh] justify-center border-b-2 border-black">
-    <a
-      class="absolute left-5 top-5 z-10 inline-flex h-[80px] w-[80px] cursor-pointer items-center justify-center rounded-full bg-black text-white"
-      routerLink="/projects"
+  <div class="items-center] relative flex h-[80vh] justify-center border-b-2 border-black max-md:h-[50vh]">
+    <app-transition-link
+      class="absolute left-5 top-5 z-10 inline-flex h-[80px] w-[80px] cursor-pointer items-center justify-center rounded-full bg-black text-white max-md:h-[50px] max-md:w-[50px]"
+      href="/projects"
     >
-      <ng-icon class="text-5xl" name="remixArrowLeftLine" />
-    </a>
+      <ng-icon class="text-5xl max-md:text-sm" name="remixArrowLeftLine" />
+    </app-transition-link>
     <div
       class="relative flex h-full w-3/4 flex-col items-start justify-center border-r-2 border-black"
       [ngClass]="{
@@ -30,19 +30,23 @@
   </div>
 
   <div class="p-8">
-    <div class="flex w-full items-start justify-between">
-      <h1 class="text-wrap text-[10rem] uppercase" style="line-height: 10rem">
-        {{currentProject?.title}}
+    <div class="flex w-full items-start justify-between max-md:flex-col">
+      <h1
+        class="text-wrap text-[10rem] font-extrabold uppercase leading-[10rem] max-lg:text-8xl max-lg:leading-normal max-md:text-nowrap max-md:text-4xl"
+      >
+        {{ currentProject?.title }}
       </h1>
 
-      <div class="flex flex-col items-end gap-4 justify-self-end">
-        <div class="flex flex-nowrap gap-4 bg-black px-8 py-4 uppercase text-white">
+      <div class="max-md:text-md flex flex-col items-end gap-4 justify-self-end max-md:items-start">
+        <div class="flex flex-nowrap gap-4 bg-black px-8 py-4 uppercase text-white  max-md:p-2">
           @for (category of currentProject?.category; track category) {
             <p class="text-nowrap">{{ category }}</p>
           }
         </div>
 
-        <div class="flex w-min flex-nowrap gap-4 border-2 border-black bg-white px-8 py-4 uppercase text-black">
+        <div
+          class="flex w-min flex-nowrap gap-4 border-2 border-black bg-white px-8 py-4 uppercase text-black  max-md:p-2"
+        >
           @for (item of currentProject?.technologies; track item) {
             <p class="text-nowrap">{{ item }}</p>
           }

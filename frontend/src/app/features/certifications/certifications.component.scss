@@ -1,4 +1,10 @@
 .text-vertical {
   writing-mode: vertical-rl;
   text-orientation: mixed;
+
+
+  @media screen and (max-width: 768px) {
+      writing-mode: horizontal-tb;
+      text-orientation: initial;
+  }
 }

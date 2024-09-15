@@ -25,40 +25,22 @@ export class ProfileComponent implements AfterViewInit {
       };
 
       gsap.context(() => {
-        gsap.set('.image-container', {
-          x: 900,
-          y: 200,
-          rotate: 45,
-          opacity: 0
-        });
+     
 
-        gsap.set('.desc', {
+        gsap.set(['.desc'], {
           y: 900,
           opacity: 0,
         })
 
-        gsap.set(['.about-container', '.me'], {
-          x: -900,
-          y: -200,
-          rotate: -45,
-          opacity: 0
-        })
+  
 
-
-        gsap.to('.desc', {
+        gsap.to(['.desc'], {
           y: 0,
           opacity: 1,
-          scrollTrigger: scrollTriggerSettings
-        })
-
-        gsap.to(['.image-container', '.about-container', '.me'], {
-          x: 0,
-          y: 0,
-          rotate: 0,
-          opacity: 1,
-          stagger: .1,
           scrollTrigger: scrollTriggerSettings,
-        });
+          stagger: .4
+        })
+
       }, this.container.nativeElement);
     }
   }

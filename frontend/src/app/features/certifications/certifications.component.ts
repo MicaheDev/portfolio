@@ -1,13 +1,13 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { SanityService } from '../../shared/services/sanity.service';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { adaptCertifications } from './adapters/all-certifications.dapater';
 import { Certifications } from './models/Certifications';
 
 @Component({
   selector: 'app-certifications',
   standalone: true,
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './certifications.component.html',
   styleUrl: './certifications.component.scss',
 })

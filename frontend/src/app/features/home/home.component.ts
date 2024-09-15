@@ -47,12 +47,12 @@ export class HomeComponent implements AfterViewInit {
           y: yValues[1],
         });
 
-        gsap.set(['.name', '.ui', '.full', '.dev', '.desc'], {
+        gsap.set(['.name', '.role', '.motto'], {
           y: 100,
           opacity: 0
         })
 
-        gsap.to(['.name', '.ui', '.full', '.dev', '.desc'], {
+        gsap.to(['.name', '.role', '.motto'], {
           y: 0,
           opacity: 1,
           duration: .3,

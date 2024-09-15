@@ -6,11 +6,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { remixArrowLeftLine, remixArrowRightUpLine } from '@ng-icons/remixicon';
+import { TransitionLinkComponent } from "../../../../shared/components/transition-link/transition-link.component";
 
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, NgIconComponent],
+  imports: [CommonModule, RouterModule, NgIconComponent, TransitionLinkComponent],
   providers: provideIcons({
     remixArrowLeftLine,
     remixArrowRightUpLine,

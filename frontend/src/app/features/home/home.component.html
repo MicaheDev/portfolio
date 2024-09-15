@@ -1,41 +1,38 @@
-<section #container class="relative h-[90vh] w-full overflow-hidden border-x-2 border-black">
+<section
+  #container
+  class="relative flex h-[90vh] max-md:h-auto max-md:py-20 w-full items-center justify-center overflow-hidden border-x-2 border-black"
+>
   <!-- principal titles of header section in the center -->
-  <div class="mx-auto flex h-full w-[95%] flex-col items-center justify-center">
-    <h1 class="name text-outline text-[4rem] font-extrabold uppercase text-white" style="line-height: 4rem">
-      Michell Castillo
-    </h1>
-    <h2 class=" ui text-[6rem] font-extrabold" style="line-height: 6rem">UI/UX DEDIGNER</h2>
-    <h2 class="full text-[10rem] font-extrabold" style="line-height: 10rem">
-      FULL <span class="text-outline stack text-white">{{ '{Stack}' }}</span>
-    </h2>
-    <h2 class="dev text-[15rem] font-extrabold" style="line-height: 15rem">DEVELOPER</h2>
-
-    <p class="desc mx-auto w-1/2">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam qui, tempora incidunt voluptatum impedit, labore
-      velit explicabo quam dolores magni nostrum sit doloribus quae quos accusantium vel molestias expedita amet?
-    </p>
+  <svg
+    class="absolute inset-0 m-auto animate-pulse max-md:w-[300px] max-md:h-[300px]"
+    xmlns="http://www.w3.org/2000/svg"
+    id="Teardrop"
+    width="800"
+    height="800"
+    viewBox="0 0 200 200"
+  >
+    <path
+      id="icon_25_"
+      d="M12 17v83c0 49.3 40.5 89.1 90.1 88 46.8-1.1 85-39.4 85.9-86.2.5-25-9.5-47.7-25.8-64C146.3 21.9 124.3 12 100 12H17c-2.7 0-5 2.3-5 5z"
+      fill='url("#SvgjsLinearGradient1048")'
+    ></path>
+    <defs>
+      <linearGradient id="SvgjsLinearGradient1048">
+        <stop stop-color="#a1c4fd" offset="0"></stop>
+        <stop stop-color="#c2e9fb" offset="1"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+  <div class="relative m-auto flex w-[80%] max-md:w-full flex-col items-start justify-center max-md:items-center max-md:text-center">
+    <h2 class="name -rotate-3 border-2 border-black bg-blue-300 px-8 py-4 text-4xl max-md:text-2xl uppercase max-md:font-extrabold max-md:px-4">Michell Castillo</h2>
+    <h1 class="role text-6xl max-md:text-3xl max-md:text-wrap font-extrabold uppercase">UI/UX DESIGNER & FULL STACK DEVELOPER</h1>
+    <h3 class="motto text-outline text-9xl max-md:text-5xl max-md:text-wrap font-extrabold uppercase text-white">
+      Everything you want, <span class="text-black">how you like it</span>
+    </h3>
   </div>
-
-  <!-- date and welcome on top right-->
-  <div class="home_info">
-    <p class="home_date">{{ date }}</p>
-    <p class="home_welcome">こんにちは</p>
-    <p class="home_welcome">WELCOME</p>
-  </div>
-
-  <!-- float dev decorations with parallax-->
-  <div class="decoration-item absolute bottom-[10%] left-[10%] text-[10rem] text-neutral-400" data-value="6">+</div>
-  <div class="decoration-item absolute bottom-[50%] left-[10%] text-[10rem] text-neutral-400" data-value="-4">
-    {{ '{}' }}
-  </div>
-  <div class="decoration-item absolute bottom-[80%] left-[20%] text-[10rem] text-neutral-400" data-value="-6">""</div>
-
-  <div class="decoration-item absolute bottom-[80%] right-[20%] text-[10rem] text-neutral-400" data-value="-4">*</div>
-  <div class="decoration-item absolute bottom-[50%] right-[10%] text-[10rem] text-neutral-400" data-value="-3">()</div>
-  <div class="decoration-item absolute bottom-[10%] right-[10%] text-[10rem] text-neutral-400" data-value="5">[]</div>
 </section>
 <app-profile />
 <app-projects />
-<app-certifications/>
-<app-contact/>
-<app-footer/>
+<app-certifications />
+<app-contact />
+<app-footer />
