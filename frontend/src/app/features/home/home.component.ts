@@ -42,23 +42,11 @@ export class HomeComponent implements AfterViewInit {
       const yValues = [100, -150, -400];
 
       gsap.context(() => {
-        gsap.set('.decoration-item', {
+        /*
+ gsap.set('.decoration-item', {
           opacity: 0,
           y: yValues[1],
         });
-
-        gsap.set(['.name', '.role', '.motto'], {
-          y: 100,
-          opacity: 0
-        })
-
-        gsap.to(['.name', '.role', '.motto'], {
-          y: 0,
-          opacity: 1,
-          duration: .3,
-          delay: 1.5,
-          stagger: .1
-        })
 
         gsap.to('.decoration-item', {
           opacity: 1,
@@ -66,6 +54,30 @@ export class HomeComponent implements AfterViewInit {
           delay: 1.5,
           duration: .3,
           stagger: .1,
+        });
+
+       */
+
+        gsap.set('.stain', {
+          scale: 0
+        })
+
+        gsap.to('.stain', {
+          scale: 1,
+          duration: 0.5,
+          delay: 1.3,
+        })
+        gsap.set(['.name', '.role', '.motto'], {
+          y: 100,
+          opacity: 0,
+        });
+
+        gsap.to(['.name', '.role', '.motto'], {
+          y: 0,
+          opacity: 1,
+          duration: 0.3,
+          delay: 1.5,
+          stagger: 0.1,
         });
       }, this.container.nativeElement);
     }
