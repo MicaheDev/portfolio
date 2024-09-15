@@ -1,18 +1,29 @@
-<section class="relative h-[100vh] max-md:h-auto max-md:py-20 w-full overflow-hidden border-x-2 border-black">
+<section class="relative h-auto py-20 w-full overflow-hidden border-x-2 border-black ">
   <div class="mx-auto flex h-full w-[90%] items-center justify-center gap-5 max-md:flex-col-reverse">
     <div class="flex w-full flex-wrap justify-around gap-5">
       @for (item of certifications; track $index) {
-        <div class="relative flex h-[350px] w-[500px] aspect-video max-md:h-auto max-md:w-[300px] items-center justify-center border-2 border-black p-2 max-md:p-4 bg-white">
+        <div
+          class="relative flex aspect-video h-[350px] w-[500px] items-center justify-center border-2 border-black bg-white p-2 max-md:h-auto max-md:w-[300px] max-md:p-4"
+        >
           <img class="w-full max-md:object-contain" [ngSrc]="item.preview.url" fill [alt]="item.preview.alt" />
-          <h3 class="text-vertical absolute bottom-0 right-[100%] max-md:right-0 rotate-180 max-md:rotate-0 max-md:bg-white">{{ item.title }}</h3>
+          <h3
+            class="text-vertical absolute bottom-0 right-[100%] rotate-180 max-md:right-0 max-md:rotate-0 max-md:bg-white"
+          >
+            {{ item.title }}
+          </h3>
         </div>
       }
     </div>
-    <div class="flex h-full w-[10%] max-md:w-full items-center justify-center">
-      <h2 class="-rotate-90 max-md:rotate-0 text-[6rem] leading-[6rem] max-md:text-5xl max-md:leading-normal font-extrabold uppercase" >Certifications</h2>
+    <div class="flex h-full w-[10%] items-center justify-center max-md:w-full">
+      <h2
+        class="-rotate-90 text-[6rem] font-extrabold uppercase leading-[6rem] max-md:rotate-0 max-md:text-5xl max-md:leading-normal"
+      >
+        Certifications
+      </h2>
     </div>
   </div>
 
+  <!--
   <svg
     class="absolute -bottom-[20%] -left-[20%] -z-[1]"
     xmlns="http://www.w3.org/2000/svg"
@@ -34,4 +45,50 @@
     </defs>
   </svg>
 
+  -->
+
+  <svg
+    class="absolute -bottom-[20%] -left-[20%] -z-[1]"
+    xmlns="http://www.w3.org/2000/svg"
+    width="800"
+    height="800"
+    fill="none"
+    viewBox="0 0 200 200"
+  >
+    <path
+      fill="url(#paint0_linear_105_666)"
+      fill-rule="evenodd"
+      d="M100 22c0-12.15-9.85-22-22-22H22C9.85 0 0 9.85 0 22v56.72c0 12.15 9.85 21.999 22 21.999h56c12.15 0 22 9.85 22 22V178c0 12.15 9.85 22 22 22h56c12.15 0 22-9.85 22-22v-56.72c0-12.15-9.85-22-22-22h-56c-12.15 0-22-9.85-22-22V22Z"
+      clip-rule="evenodd"
+    ></path>
+    <defs>
+      <linearGradient id="paint0_linear_105_666" x1="14" x2="179" y1="26" y2="179.5" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#E9B8FF"></stop>
+        <stop offset="1" stop-color="#F9ECFF"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <svg
+    class="absolute -right-[10%] -top-[10%] -z-[1] rotate-90"
+    xmlns="http://www.w3.org/2000/svg"
+    id="Layer_1"
+    x="0"
+    y="0"
+    version="1.1"
+    viewBox="0 0 494.148 494.148"
+    width="500"
+    height="500"
+  >
+    <path
+      d="M405.284 201.188 130.804 13.28C118.128 4.596 105.356 0 94.74 0 74.216 0 61.52 16.472 61.52 44.044v406.124c0 27.54 12.68 43.98 33.156 43.98 10.632 0 23.2-4.6 35.904-13.308l274.608-187.904c17.66-12.104 27.44-28.392 27.44-45.884.004-17.48-9.664-33.764-27.344-45.864z"
+      fill='url("#SvgjsLinearGradient1059")'
+    ></path>
+    <defs>
+      <linearGradient id="SvgjsLinearGradient1059">
+        <stop stop-color="#a1c4fd" offset="0"></stop>
+        <stop stop-color="#c2e9fb" offset="1"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
 </section>

@@ -1,6 +1,6 @@
 <section
   #container
-  class="relative flex h-[100vh] w-full flex-col items-center justify-center overflow-hidden border-x-2 border-black py-3 max-md:h-auto max-md:py-20"
+  class="relative flex h-[100vh] w-full flex-col items-center justify-center overflow-hidden border-x-2 border-b-2 border-black py-3 max-md:h-auto max-md:py-20"
 >
   <h2
     class="title text-[20rem] font-extrabold uppercase leading-[20rem] max-lg:text-9xl max-lg:leading-normal max-md:text-8xl"
@@ -12,21 +12,20 @@
     @if (!isLoading) {
       @for (project of uploadedProjects; track project.slug; let index = $index) {
         <article
-          class="group relative flex h-[6rem] w-full cursor-pointer flex-col gap-3 overflow-hidden border-b-2 border-black max-md:h-auto"
+          class="group flex w-full cursor-pointer flex-col gap-3 overflow-hidden border-b-2 border-black max-md:h-auto"
           (click)="transitionClick('/projects/' + project.slug)"
           (mouseenter)="onMouseEnter(index)"
           (mouseleave)="onMouseLeave(index)"
         >
           <h1
-            class="translate-y-0 text-center text-[6rem] font-extrabold uppercase leading-[6rem] transition-all duration-500 ease-custom-bezier group-hover:-translate-y-[6rem] max-md:text-3xl max-md:leading-normal max-md:group-hover:-translate-y-0"
+            class="relative overflow-hidden text-center text-[6rem] max-lg:text-5xl max-md:text-2xl max-lg:leading-normal font-extrabold uppercase leading-[6rem] text-black"
           >
             {{ project.title }}
-          </h1>
-          <h1
-            aria-hidden="true"
-            class="absolute inset-0 translate-y-[6rem] text-center text-[6rem] font-extrabold uppercase leading-[6rem] text-blue-500 transition-all duration-500 ease-custom-bezier group-hover:translate-y-0 max-md:hidden"
-          >
-            {{ project.title }}
+
+            <span
+              class="absolute inset-0 translate-y-[100%] bg-black text-white transition-transform duration-500 ease-custom-bezier group-hover:translate-y-0"
+              >{{ project.title }}</span
+            >
           </h1>
         </article>
       }
@@ -40,7 +39,7 @@
   </div>
 
   <svg
-    class="absolute inset-0 -z-[1] m-auto animate-pulse max-md:w-[300px] max-md:h-[300px]"
+    class="absolute inset-0 -z-[1] m-auto animate-pulse max-md:h-[300px] max-md:w-[300px]"
     xmlns="http://www.w3.org/2000/svg"
     id="Capa_1"
     x="0"
