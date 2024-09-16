@@ -1,12 +1,10 @@
-import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, Inject, PLATFORM_ID} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './shared';
 import { PixelBackgroundComponent } from './shared/components/pixel-background/pixel-background.component';
 import { isPlatformBrowser } from '@angular/common';
-import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,8 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements AfterViewInit{
-  lenis!: Lenis;
+export class AppComponent implements AfterViewInit {
   isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) protected platformId: Object) {
@@ -24,22 +21,15 @@ export class AppComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {
-      this.initializeLenis();
+      this.initializeScrolling();
     }
   }
 
-  initializeLenis(): void {
+  initializeScrolling(): void {
     gsap.registerPlugin(ScrollTrigger);
 
-    this.lenis = new Lenis();
+    gsap.ticker.add(time => {});
 
-    this.lenis.on('scroll', ScrollTrigger.update);
-
-    // Sincroniza con GSAP
-    gsap.ticker.add(time => {
-      this.lenis.raf(time * 1000); // Multiplica por 1000 para convertir a milisegundos
-    });
-
-    gsap.ticker.lagSmoothing(0); // Evita el lag en la animación de GSAP
+    gsap.ticker.lagSmoothing(0);
   }
 }

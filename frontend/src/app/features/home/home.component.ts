@@ -39,34 +39,7 @@ export class HomeComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {
-      const yValues = [100, -150, -400];
-
       gsap.context(() => {
-        /*
- gsap.set('.decoration-item', {
-          opacity: 0,
-          y: yValues[1],
-        });
-
-        gsap.to('.decoration-item', {
-          opacity: 1,
-          y: 0,
-          delay: 1.5,
-          duration: .3,
-          stagger: .1,
-        });
-
-       */
-
-        gsap.set('.stain', {
-          scale: 0
-        })
-
-        gsap.to('.stain', {
-          scale: 1,
-          duration: 0.5,
-          delay: 1.3,
-        })
         gsap.set(['.name', '.role', '.motto'], {
           y: 100,
           opacity: 0,
@@ -80,6 +53,21 @@ export class HomeComponent implements AfterViewInit {
           stagger: 0.1,
         });
       }, this.container.nativeElement);
+
+      document.addEventListener('mousemove', this.parallax.bind(this));
     }
+  }
+
+  parallax(e: MouseEvent) {
+    document.querySelectorAll('.parallax-item').forEach((move: any) => {
+      var moving_value: any = move.getAttribute('data-value');
+      var x = (e.clientX * moving_value) / 250;
+      var y = (e.clientY * moving_value) / 250;
+
+      gsap.to(move, {
+        x: x,
+        y: y,
+      });
+    });
   }
 }

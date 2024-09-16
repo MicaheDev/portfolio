@@ -42,19 +42,5 @@ export class PixelBackgroundComponent implements AfterViewInit {
       });
     }
   }
-  private animateBackground() {
-    // Primero asegúrate de que el fondo esté visible
 
-    // Animación de desvanecimiento de cada .block
-    gsap.to('.block', {
-      opacity: 0,
-      delay: .8,
-      duration: .1,
-      stagger: { amount: 0.9, from: 'random' },
-      onComplete: () => {
-        // Opcionalmente puedes ocultar el fondo completamente después de la animación
-        gsap.set('.background', { display: 'none' });
-      }
-    });
-  }
 }

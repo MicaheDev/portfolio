@@ -1,12 +1,8 @@
-/* styles.css o el archivo de estilos en tu proyecto */
-.decoration-item:nth-child(6),
-.decoration-item:nth-child(7),
-.decoration-item:nth-child(8) {
-  rotate: 45deg;
-}
 
-.decoration-item:nth-child(3),
-.decoration-item:nth-child(4),
-.decoration-item:nth-child(5) {
-  rotate: -45deg;
+
+.parallax-item{
+  transform-style: preserve-3d;
+  perspective: 1000px;
+
+
 }
