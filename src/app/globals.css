@@ -2,20 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  @font-face {
+    font-family: "victor-mono";
+    src: url("/fonts/victor-mono.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "vina-sans";
+    src: url("/fonts/vina-sans.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "terminal-grotesque";
+    src: url("/fonts/terminal-grotesque.ttf") format("truetype");
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-100% - 20px));
+  }
+}
+
+@layer utilities {
+  .marquee {
+    border-block: 1px solid black;
+    padding-block: 8px;
+    @apply text-white gap-[60px] flex overflow-hidden select-none;
+
+    ul {
+      @apply flex list-none justify-between gap-[60px] items-center shrink-0 min-w-full;
+      animation: scroll 100s linear infinite;
+    }
+  }
+
+  .reverse-marquee {
+    border-block: 1px solid black;
+    padding-block: 8px;
+    @apply text-white gap-[60px] flex overflow-hidden select-none;
+
+    ul {
+      @apply flex list-none justify-between gap-[60px] items-center shrink-0 min-w-full;
+      animation: scroll 100s linear infinite reverse;
+    }
+  }
+
+  .btn {
+    @apply py-4 px-6 max-md:py-2 inline-flex items-center gap-2 rounded-full uppercase text-black bg-white font-terminal-grotesque font-bold;
+  }
+
+  .floating-menu {
+    @apply w-min h-[60px] overflow-hidden flex items-center fixed bottom-10 inset-x-0 z-50;
+  }
+
+  .project-card {
+    @apply relative outline outline-4 outline-black w-full flex h-[600px] max-lg:h-auto max-lg:flex-col bg-white hover:-translate-y-4 hover:translate-x-4 max-lg:hover:translate-x-0 transition-all ease-in-out duration-300;
+  }
+
+  .service-card {
+    @apply flex flex-col gap-4 p-8 justify-between relative h-full w-full hover:-translate-y-4 hover:translate-x-4 max-lg:hover:translate-x-0 transition-all ease-in-out duration-300;
+  }
+
+  .special-title {
+    @apply font-terminal-grotesque uppercase font-black text-8xl max-lg:text-5xl max-md:text-3xl;
+  }
+
+  .title {
+    @apply font-terminal-grotesque font-black text-5xl max-xl:text-4xl max-lg:text-3xl uppercase text-nowrap;
+  }
+}
+
+.indicator-line {
+  @apply h-2 w-2  bg-black transition-all duration-200 ease-in-out;
+}
+
+.indicator-line.active {
+  animation: indicator-line 0.5s ease infinite;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+}
+
+@keyframes indicator-line {
+  0% {
+    height: 4px;
+    transform: translateY(-0px);
+  }
+  50% {
+    height: 16px;
+    transform: translateY(-4px);
+  }
+  100% {
+    height: 4px;
+    transform: translateY(-0px);
+  }
+}
+
+img,
+svg {
+  image-rendering: pixelated;
+}
+
+.text-outline {
+  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+    -1px -1px 0 #000;
 }

@@ -8,9 +8,18 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        "victor-mono": ["victor-mono", "mono"],
+        "vina-sans": ["vina-sans", "sans-serif"],
+        "terminal-grotesque": ["terminal-grotesque"]
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        red: {
+          300: "#FF4747",
+        },
+        gray: {
+          300: "#1E1E1E",
+        },
       },
     },
   },
