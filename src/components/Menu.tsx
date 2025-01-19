@@ -1,6 +1,6 @@
 import useSound from "@/hooks/useSound";
 import { HomeIcon, MailIcon, ProfileIcon, ProjectsIcon, XIcon } from "pixicons";
-import { Dispatch } from "react";
+import { Dispatch, useEffect } from "react";
 import gsap from "gsap";
 import Link from "next/link";
 
@@ -45,18 +45,20 @@ export default function Menu({
     },
   ];
 
-  gsap.from(".links", {
-    y: "100%",
-    scale: 0,
-    opacity: 0,
-  });
+  useEffect(() => {
+    gsap.from(".links", {
+      y: "100%",
+      scale: 0,
+      opacity: 0,
+    });
 
-  gsap.to(".links", {
-    y: 0,
-    scale: 1,
-    opacity: 1,
-    stagger: 0.05,
-  });
+    gsap.to(".links", {
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      stagger: 0.05,
+    });
+  }, [isOpen]);
   return (
     <>
       <menu
