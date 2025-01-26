@@ -9,9 +9,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        "victor-mono": ["victor-mono", "mono"],
-        "vina-sans": ["vina-sans", "sans-serif"],
-        "terminal-grotesque": ["terminal-grotesque"]
+        "departure-mono": ["departure-mono", "mono"],
+        "m42": ["m42"]
       },
       colors: {
         red: {

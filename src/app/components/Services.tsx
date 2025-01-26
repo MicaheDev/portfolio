@@ -89,7 +89,7 @@ export default function Services() {
               <p>{service.description}</p>
 
               <div className="flex justify-between">
-                <h4 className="uppercase font-terminal-grotesque text-4xl max-lg:text-xl">
+                <h4 className="uppercase font-m42 text-base max-lg:text-xl">
                   {service.status}
                 </h4>
 

@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="border-4 border-black max-w-screen-2xl mx-auto font-victor-mono text-base max-md:text-sm">
+        <div className="border-4 border-black max-w-screen-2xl mx-auto font-departure-mono text-base max-md:text-sm">
           <Background/>
           <Navbar />
           {children}

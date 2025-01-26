@@ -45,14 +45,14 @@ export default function ProjectDetail() {
             <time>{project.date}</time>
           </div>
         </div>
-        <h2 className="font-terminal-grotesque uppercase text-8xl font-black max-md:text-4xl">
+        <h2 className="font-m42 uppercase text-8xl font-black max-md:text-4xl">
           {project.name}
         </h2>
 
         <p>{project.description}</p>
 
         <div className="flex justify-between items-center w-full">
-          <h4 className="font-terminal-grotesque uppercase text-3xl font-bold">
+          <h4 className="font-m42 uppercase text-3xl font-bold">
             {project.category}
           </h4>
 

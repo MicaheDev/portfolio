@@ -88,7 +88,7 @@ export default function Menu({
                 onClick={() => clickPlayer(() => setIsOpen(false))}
               >
                 {l.icon}
-                <span className="text-6xl max-xl:text-4xl text-black font-terminal-grotesque font-black uppercase group-hover:text-white">
+                <span className="text-6xl max-xl:text-4xl text-black font-m42 font-black uppercase group-hover:text-white">
                   {l.label}
                 </span>
               </Link>

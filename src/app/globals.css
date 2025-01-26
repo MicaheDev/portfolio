@@ -7,19 +7,20 @@ html {
 }
 
 @layer base {
-  @font-face {
-    font-family: "victor-mono";
-    src: url("/fonts/victor-mono.ttf") format("truetype");
-  }
 
   @font-face {
-    font-family: "vina-sans";
-    src: url("/fonts/vina-sans.ttf") format("truetype");
+    font-family: 'departure-mono';
+    src: url('/fonts/departure-mono.ttf') format("truetype");
   }
 
   @font-face {
     font-family: "terminal-grotesque";
     src: url("/fonts/terminal-grotesque.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "m42";
+    src: url("/fonts/m42.ttf") format("truetype");
   }
 }
 
@@ -53,7 +54,7 @@ html {
   }
 
   .btn {
-    @apply py-4 px-6 max-md:py-2 inline-flex items-center gap-2 rounded-full uppercase text-black bg-white font-terminal-grotesque font-bold;
+    @apply py-4 px-6 max-md:py-2 inline-flex items-center gap-2 rounded-full uppercase text-black bg-white font-departure-mono font-bold;
   }
 
   .floating-menu {
@@ -69,11 +70,11 @@ html {
   }
 
   .special-title {
-    @apply font-terminal-grotesque uppercase font-black text-8xl max-lg:text-5xl max-md:text-3xl;
+    @apply font-m42 uppercase font-black text-5xl leading-normal max-lg:text-3xl max-md:text-2xl;
   }
 
   .title {
-    @apply font-terminal-grotesque font-black text-5xl max-xl:text-4xl max-lg:text-3xl uppercase text-nowrap;
+    @apply font-m42 font-black text-xl max-xl:text-lg max-lg:text-sm uppercase text-nowrap;
   }
 }
 

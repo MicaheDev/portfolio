@@ -9,7 +9,7 @@ export default function InifiniteBand({
 }: InifiteBandProps) {
   return (
     <div
-      className={`bg-black marquee font-terminal-grotesque uppercase ${containerClass}`}
+      className={`bg-black marquee font-m42 uppercase ${containerClass}`}
     >
       <ul>
         {listOfParagraphs.map((p) => (
