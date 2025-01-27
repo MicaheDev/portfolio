@@ -64,14 +64,14 @@ export default function Footer() {
         <div className="flex gap-8 font-black max-md:justify-center">
           <div className="flex flex-col gap-2 font-m42 border-r-2 border-black/50 px-4 max-md:p-0">
             {navigationLinks.map((l) => (
-              <a key={l.label} href={l.path} className="inline-flex text-6xl max-md:text-2xl gap-2 uppercase">
+              <a key={l.label} href={l.path} className="inline-flex text-2xl max-md:text-2xl gap-2 uppercase">
                 {l.label} <ArrowRightTopIcon className="w-10 h-10" />
               </a>
             ))}
           </div>
           <div className="flex flex-col gap-2 font-m42 border-r-2 border-black/50 px-4 max-md:p-0">
             {socialMedia.map((s) => (
-              <a key={s.label} href={s.url} className="inline-flex text-6xl max-md:text-2xl gap-2 uppercase">
+              <a key={s.label} href={s.url} className="inline-flex text-2xl max-md:text-2xl gap-2 uppercase">
                 {s.label} <ArrowRightTopIcon className="w-10 h-10" />
               </a>
             ))}
@@ -87,7 +87,7 @@ export default function Footer() {
         </div>
       </div>
      
-      <h2 className="text-[300px] max-xl:text-[200px] max-md:text-6xl font-m42 font-black uppercase leading-[200px]">
+      <h2 className="text-8xl max-xl:text-[200px] max-md:text-6xl font-m42 font-black uppercase leading-[200px]">
         MicaheDev
       </h2>
     </footer>

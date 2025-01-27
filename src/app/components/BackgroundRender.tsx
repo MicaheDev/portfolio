@@ -23,7 +23,7 @@ const BackgroundRender = ({containerClassname}: {containerClassname: string}) =>
   const [loading, setLoading] = useState<boolean>(true)
   const refRenderer = useRef<THREE.WebGLRenderer | null>(null)
   
-  const urlDogGLB =  '/dog.glb'
+  const urlDogGLB =  '/untitled.glb'
 
   const handleWindowResize = useCallback(() => {
     const renderer = refRenderer.current
@@ -124,7 +124,7 @@ const BackgroundRender = ({containerClassname}: {containerClassname: string}) =>
   }, [handleWindowResize])
 
   return (
-    <div ref={refContainer} className={containerClassname}>
+    <div ref={refContainer} className={containerClassname} >
       {loading && <div>Loading...</div>}
     </div>
   )

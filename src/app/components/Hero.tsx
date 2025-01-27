@@ -5,7 +5,7 @@ import BackgroundRender from "./BackgroundRender";
 
 export default function Hero() {
   return (
-    <header className="h-dvh w-full flex flex-col justify-between relative overflow-hidden">
+    <header className="h-dvh w-full flex flex-col justify-between relative overflow-hidden bg-black">
       <InifiniteBand
         listOfParagraphs={[
           "Frontend Development: Crafting responsive and engaging user interfaces.",
@@ -23,12 +23,17 @@ export default function Hero() {
 
       <div className="flex justify-center relative h-full">
 
-        <div className="absolute w-full h-full inset-0 -z-[1] object-cover flex justify-center items-center">
+        <div className="absolute w-full h-full inset-0 -z-[0] object-cover flex justify-center items-center">
 
-          <BackgroundRender containerClassname="h-[800px] w-[800px]" />
+
+          <div className="w-full h-full flex justify-center items-center">
+
+            <BackgroundRender containerClassname="w-[800px] h-[800px] border-4 border-black bg-gradient-to-r from-violet-300 to-violet-500" />
+
+          </div>
 
         </div>
-        <div className="flex flex-col justify-center items-center gap-8 max-md:gap-4 ">
+        <div className="flex flex-col justify-center items-center gap-8 max-md:gap-4 relative z-[1] pointer-events-none">
           <div className="flex flex-col items-center">
             <Logo className="w-12 h-12 text-white" />
             <h4 className="font-departure-mono text-2xl max-md:text-xl text-outline text-white">
@@ -42,18 +47,6 @@ export default function Hero() {
               with code and art
             </h1>
           </div>
-
-
-          {/*
-          <p className="font-departure-mono text-black w-1/2 text-center max-lg:w-full">
-            I am a passionate{" "}
-            <strong>self-taught full stack web developer</strong> with a strong
-            commitment to creating effective solutions for businesses. My
-            journey in web development has allowed me to tackle diverse
-            challenges and deliver results that enhance user experience and
-            drive efficiency.
-          </p>
-          */}
 
           <div className="flex items-center gap-2">
             <a href="#projects" className="btn !bg-black !text-white">

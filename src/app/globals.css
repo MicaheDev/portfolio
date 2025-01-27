@@ -54,7 +54,7 @@ html {
   }
 
   .btn {
-    @apply py-4 px-6 max-md:py-2 inline-flex items-center gap-2 rounded-full uppercase text-black bg-white font-departure-mono font-bold;
+    @apply py-4 px-6 max-md:py-2 inline-flex items-center gap-2 uppercase text-black bg-white font-departure-mono font-bold;
   }
 
   .floating-menu {
