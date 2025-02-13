@@ -1,11 +1,10 @@
 import { ArrowRightTopIcon } from "pixicons";
 import InifiniteBand from "../../components/InifiniteBand";
-import Logo from "../../components/Logo";
 import BackgroundRender from "./BackgroundRender";
 
 export default function Hero() {
   return (
-    <header className="h-dvh w-full flex flex-col justify-between relative overflow-hidden bg-black">
+    <header className="h-dvh w-full flex flex-col justify-between relative overflow-hidden">
       <InifiniteBand
         listOfParagraphs={[
           "Frontend Development: Crafting responsive and engaging user interfaces.",
@@ -22,24 +21,13 @@ export default function Hero() {
       />
 
       <div className="flex justify-center relative h-full">
-
-        <div className="absolute w-full h-full inset-0 -z-[0] object-cover flex justify-center items-center">
-
-
-          <div className="w-full h-full flex justify-center items-center">
-
-            <BackgroundRender containerClassname="w-[800px] h-[800px] border-4 border-black bg-gradient-to-r from-violet-300 to-violet-500" />
-
+        <div className="absolute w-full h-full inset-0 -z-[1] object-cover flex justify-center items-center">
+          <div className="w-full h-full flex justify-center items-center bg-gradient-to-r from-indigo-200 to-indigo-400">
+            <BackgroundRender containerClassname="w-[800px] h-[800px] " />
           </div>
-
         </div>
-        <div className="flex flex-col justify-center items-center gap-8 max-md:gap-4 relative z-[1] pointer-events-none">
-          <div className="flex flex-col items-center">
-            <Logo className="w-12 h-12 text-white" />
-            <h4 className="font-departure-mono text-2xl max-md:text-xl text-outline text-white">
-              HI, I&apos;m <i className="font-bold">Michell Castillo</i>
-            </h4>
-          </div>
+        <div className="flex flex-col justify-center items-center gap-8 max-md:gap-4 relative z-[1]">
+         
           <div className="flex flex-col justify-center items-center special-title">
             <h1 className="text-outline text-white">
               Develop the future

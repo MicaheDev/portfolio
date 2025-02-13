@@ -1,5 +1,6 @@
 import { ArrowRightTopIcon } from "pixicons";
 import Logo from "./Logo";
+import Image from "next/image";
 
 type FooterLinks = {
   path: string;
@@ -79,10 +80,12 @@ export default function Footer() {
         </div>
 
         <div className="w-full h-full">
-          <img
+          <Image
             src="/footer.png"
             className="w-[100%] h-[300px] object-cover border-4 rounded-2xl border-white"
             alt=""
+            width={1280}
+            height={720}
           />
         </div>
       </div>

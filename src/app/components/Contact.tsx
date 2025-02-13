@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 
 export default function Contact() {
   return (
-    <div className="min-h-dvh h-auto w-full border-t-4 border-black flex flex-col justify-center items-center gap-4 px-4 py-8" id="contact">
+    <div className="min-h-dvh h-auto w-full sticky top-0 mt-[200px] border-t-4 border-black flex flex-col justify-center items-center gap-4 px-4 py-8" id="contact">
       <h2 className="special-title">Send me a message</h2>
       <form className="flex flex-col gap-4 w-3/4 text-2xl max-lg:w-full">
         <input

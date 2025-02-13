@@ -24,6 +24,22 @@ export default function Services() {
       status: `+ 2 Years of exp`,
     },
 
+
+    {
+      title: `Game Developement`,
+      description: (
+        <>
+          Learning <strong>game development</strong> has actually become my{" "}
+          <i>true passion</i> and the reason I started{" "}
+          <strong>programming</strong>. I&apos;m exploring the fundamental
+          concepts using <strong>Godot</strong> and <strong>.NET</strong>.
+          Excited to bring my ideas to life!
+        </>
+      ),
+      status: `learning`,
+    },
+
+
     {
       title: (
         <>
@@ -37,20 +53,6 @@ export default function Services() {
         </>
       ),
       status: `+ 2 Years of exp`,
-    },
-
-    {
-      title: `Game Developement`,
-      description: (
-        <>
-          Learning <strong>game development</strong> has actually become my{" "}
-          <i>true passion</i> and the reason I started{" "}
-          <strong>programming</strong>. I&apos;m exploring the fundamental concepts
-          using <strong>Godot</strong> and <strong>.NET</strong>. Excited to
-          bring my ideas to life!
-        </>
-      ),
-      status: `learning`,
     },
 
     {
@@ -74,14 +76,18 @@ export default function Services() {
           <div
             key={i}
             className={`
-          min-w-[400px] max-lg:w-full max-md:min-w-[200px]  outline outline-4
-          ${IsPar(i + 1) ? "bg-violet-500 outline-violet-500" : "bg-black outline-black"}
+          min-w-[400px] max-lg:w-full max-md:min-w-[200px] group outline outline-4
+          ${
+            !IsPar(i + 1)
+              ? "bg-indigo-400 outline-indigo-400"
+              : "bg-black outline-black"
+          }
           `}
           >
             <div
               className={`service-card outline outline-4 z-10 hover:z-20 ${
-                IsPar(i + 1)
-                  ? "bg-black text-white outline-black hover:outline-violet-500"
+                !IsPar(i + 1)
+                  ? "bg-black text-white outline-black hover:outline-indigo-500"
                   : "bg-white text-black outline-black"
               }`}
             >
@@ -93,7 +99,13 @@ export default function Services() {
                   {service.status}
                 </h4>
 
-                <h4 className="special-title">{i + 1}</h4>
+                <h4
+                  className={`special-title ${
+                    !IsPar(i + 1) && "group-hover:text-indigo-400"
+                  } transition-colors duration-200`}
+                >
+                  {i + 1}
+                </h4>
               </div>
             </div>
           </div>

@@ -62,11 +62,11 @@ html {
   }
 
   .project-card {
-    @apply relative outline outline-4 outline-black w-full flex h-[600px] max-lg:h-auto max-lg:flex-col bg-white hover:-translate-y-4 hover:translate-x-4 max-lg:hover:translate-x-0 transition-all ease-in-out duration-300;
+    @apply outline outline-4 outline-black w-full flex h-[600px] max-lg:h-auto max-lg:flex-col bg-white ;
   }
 
   .service-card {
-    @apply flex flex-col gap-4 p-8 justify-between relative h-full w-full hover:-translate-y-4 hover:translate-x-4 max-lg:hover:translate-x-0 transition-all ease-in-out duration-300;
+    @apply flex flex-col gap-4 p-8 justify-between relative h-full w-full hover:-translate-y-4 hover:translate-x-4 max-lg:hover:translate-x-0 transition-all ease-in-out duration-500;
   }
 
   .special-title {
@@ -79,7 +79,7 @@ html {
 }
 
 .indicator-line {
-  @apply h-2 w-2  bg-black transition-all duration-200 ease-in-out;
+  @apply h-2 w-1  bg-black transition-all duration-200 ease-in-out;
 }
 
 .indicator-line.active {

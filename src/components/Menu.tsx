@@ -10,7 +10,7 @@ type NavbarLink = {
   icon: React.ReactElement;
 };
 
-const iconClass = "w-24 h-24 max-xl:w-14 max-lg:h-14";
+const iconClass = "w-[200px] h-[200px] max-xl:w-14 max-lg:h-14";
 
 export default function Menu({
   isOpen,
@@ -69,12 +69,13 @@ export default function Menu({
         <audio ref={hoverSoundRef} src="/sounds/hover.wav" preload="auto" />
         <audio ref={clickSoundRef} src="/sounds/hover-2.wav" preload="auto" />
         <button
-          className="absolute top-2 right-2"
-          onClick={() => setIsOpen(false)}
+          className="absolute top-2 right-2 hover:bg-neutral-500/10 p-4 bg-white transition-colors"
+          onClick={() => clickPlayer(() => setIsOpen(false))}
+          onMouseEnter={() => hoverPlayer()}
         >
           <XIcon className="w-20 h-20" />
         </button>
-        <ul className=" flex flex-col w-2/3 gap-8 max-md:gap-2 -rotate-[10deg]">
+        <ul className=" grid grid-cols-2 grid-row-2 w-2/3 gap-8 max-md:gap-2 -rotate-[10deg]">
           {links.map((l) => (
             <li key={l.path}>
               <Link
@@ -88,7 +89,7 @@ export default function Menu({
                 onClick={() => clickPlayer(() => setIsOpen(false))}
               >
                 {l.icon}
-                <span className="text-6xl max-xl:text-4xl text-black font-m42 font-black uppercase group-hover:text-white">
+                <span className="text-4xl max-xl:text-4xl text-black font-m42 font-black uppercase group-hover:text-white">
                   {l.label}
                 </span>
               </Link>
