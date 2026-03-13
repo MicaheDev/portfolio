@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- I used a little Bootstrap, I used utility classes and design classes -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Here I load my own script and styles -->
+    <link href="styles.css" rel="stylesheet" />
+    <script src="/index.js"></script>
+
+    <title>MicaheDev - Contact</title>
+  </head>
+  <body class="o-page-body d-flex flex-column">
+    <header class="c-header">
+      <div
+        class="c-header__container container d-flex justify-content-between align-items-center px-4"
+      >
+        <svg
+          class="c-header__logo"
+          width="80px"
+          viewBox="0 0 102 45"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.34142 16.9199L8.40542 0.119921H13.0374L15.6774 10.7279L20.9574 0.119921H25.6374L23.5734 16.9199H20.6934L22.3254 3.69592L16.6374 14.5199H13.9254L10.8774 3.64792L9.22142 16.9199H6.34142ZM29.1433 16.9199H26.2633L28.3273 0.119921H31.2073L29.1433 16.9199ZM39.7854 17.0639C38.6014 17.0639 37.5454 16.8319 36.6174 16.3679C35.6894 15.8879 34.9054 15.2559 34.2654 14.4719C33.5774 13.7199 33.0734 12.8319 32.7534 11.8079C32.4334 10.7679 32.3534 9.63192 32.5134 8.39992C32.6414 7.26392 32.9774 6.17592 33.5214 5.13592C34.0654 4.09592 34.7534 3.18392 35.5854 2.39992C36.4334 1.64792 37.3694 1.06392 38.3934 0.647921C39.4334 0.215921 40.5134 -7.9155e-05 41.6334 -7.9155e-05C42.8654 -7.9155e-05 44.0014 0.287921 45.0414 0.863921C46.0974 1.42392 47.0334 2.27992 47.8494 3.43192L45.3774 5.25592C44.8174 4.43992 44.2094 3.86392 43.5534 3.52792C42.9134 3.17592 42.2334 2.99992 41.5134 2.99992C40.7614 2.99992 40.0494 3.15192 39.3774 3.45592C38.7054 3.75992 38.1054 4.18392 37.5774 4.72792C37.0334 5.19192 36.5694 5.76792 36.1854 6.45592C35.8174 7.14392 35.5774 7.88792 35.4654 8.68792C35.3854 9.42392 35.4334 10.1119 35.6094 10.7519C35.7854 11.3919 36.0654 11.9839 36.4494 12.5279C36.8974 13.0239 37.4094 13.4079 37.9854 13.6799C38.5774 13.9359 39.2174 14.0639 39.9054 14.0639C40.6894 14.0639 41.4574 13.8799 42.2094 13.5119C42.9774 13.1279 43.7374 12.5279 44.4894 11.7119L46.6494 13.7279C45.5614 14.8799 44.4414 15.7279 43.2894 16.2719C42.1374 16.7999 40.9694 17.0639 39.7854 17.0639ZM60.6221 16.9199H57.7421L58.5821 10.0799H52.3661L51.5261 16.9199H48.6461L50.7101 0.119921H53.5901L52.7021 7.43992H58.9181L59.8061 0.119921H62.6861L60.6221 16.9199ZM72.366 16.9199H63.318L65.382 0.119921H74.43L74.118 2.80792H67.95L67.374 7.48792H72.366L72.054 9.91192H67.062L66.534 14.2319H72.702L72.366 16.9199ZM82.839 16.9199H74.943L77.007 0.119921H79.887L78.183 14.0879H83.199L82.839 16.9199ZM93.1749 16.9199H85.2789L87.3429 0.119921H90.2229L88.5189 14.0879H93.5349L93.1749 16.9199ZM7.51198 44.0639C6.32798 44.0639 5.27198 43.8319 4.34398 43.3679C3.41598 42.8879 2.63198 42.2559 1.99198 41.4719C1.30398 40.7199 0.799979 39.8319 0.479979 38.8079C0.159979 37.7679 0.0799792 36.6319 0.239979 35.3999C0.367979 34.2639 0.703979 33.1759 1.24798 32.1359C1.79198 31.0959 2.47998 30.1839 3.31198 29.3999C4.15998 28.6479 5.09598 28.0639 6.11998 27.6479C7.15998 27.2159 8.23998 26.9999 9.35998 26.9999C10.592 26.9999 11.728 27.2879 12.768 27.8639C13.824 28.4239 14.76 29.2799 15.576 30.4319L13.104 32.2559C12.544 31.4399 11.936 30.8639 11.28 30.5279C10.64 30.1759 9.95998 29.9999 9.23998 29.9999C8.48798 29.9999 7.77598 30.1519 7.10398 30.4559C6.43198 30.7599 5.83198 31.1839 5.30398 31.7279C4.75998 32.1919 4.29598 32.7679 3.91198 33.4559C3.54398 34.1439 3.30398 34.8879 3.19198 35.6879C3.11198 36.4239 3.15998 37.1119 3.33598 37.7519C3.51198 38.3919 3.79198 38.9839 4.17598 39.5279C4.62398 40.0239 5.13598 40.4079 5.71198 40.6799C6.30398 40.9359 6.94398 41.0639 7.63198 41.0639C8.41598 41.0639 9.18398 40.8799 9.93598 40.5119C10.704 40.1279 11.464 39.5279 12.216 38.7119L14.376 40.7279C13.288 41.8799 12.168 42.7279 11.016 43.2719C9.86398 43.7999 8.69598 44.0639 7.51198 44.0639ZM15.3759 43.8959L22.6239 27.1199H26.2479L29.3919 43.8959H26.3439L25.6239 39.8399H20.1759L18.4719 43.8959H15.3759ZM24.0399 30.7199L21.2319 37.3439H25.1919L24.0399 30.7199ZM36.3765 44.1599C35.6405 44.1599 34.9125 44.0479 34.1925 43.8239C33.4885 43.5839 32.8405 43.2639 32.2485 42.8639C31.6565 42.4639 31.1605 42.0239 30.7605 41.5439L33.0885 39.5759C33.5045 40.0719 34.0245 40.4639 34.6485 40.7519C35.2885 41.0399 35.8885 41.1839 36.4485 41.1839C36.9765 41.1839 37.4645 41.0799 37.9125 40.8719C38.3765 40.6479 38.7525 40.3599 39.0405 40.0079C39.3285 39.6399 39.4965 39.2399 39.5445 38.8079C39.6085 38.3439 39.4885 37.9439 39.1845 37.6079C38.8805 37.2559 38.4805 36.9999 37.9845 36.8399C36.5925 36.4559 35.4085 36.0479 34.4325 35.6159C33.4725 35.1839 32.7925 34.6079 32.3925 33.8879C31.9925 33.1679 31.9285 32.1999 32.2005 30.9839C32.5365 29.6239 33.2405 28.6159 34.3125 27.9599C35.3845 27.3039 36.6165 26.9759 38.0085 26.9759C38.8885 26.9759 39.7765 27.1199 40.6725 27.4079C41.5845 27.6799 42.4645 28.1199 43.3125 28.7279L41.1045 30.7679C40.6565 30.5119 40.1765 30.3039 39.6645 30.1439C39.1685 29.9679 38.6405 29.8719 38.0805 29.8559C37.6165 29.8399 37.1605 29.8959 36.7125 30.0239C36.2805 30.1359 35.9045 30.3279 35.5845 30.5999C35.2805 30.8719 35.0885 31.2239 35.0085 31.6559C34.9445 32.0879 35.0165 32.4239 35.2245 32.6639C35.4325 32.9039 35.7445 33.1039 36.1605 33.2639C36.5925 33.4079 37.0885 33.5839 37.6485 33.7919C38.7525 34.0959 39.6805 34.4479 40.4325 34.8479C41.2005 35.2479 41.7525 35.7839 42.0885 36.4559C42.4405 37.1119 42.5445 37.9919 42.4005 39.0959C42.2885 40.0399 41.9445 40.8959 41.3685 41.6639C40.7925 42.4319 40.0645 43.0399 39.1845 43.4879C38.3205 43.9359 37.3845 44.1599 36.3765 44.1599ZM58.0655 29.7599H53.3135L51.5615 43.9199H48.6815L50.4335 29.7599H45.6815L45.9935 27.1199H58.3775L58.0655 29.7599ZM61.3933 43.9199H58.5133L60.5773 27.1199H63.4573L61.3933 43.9199ZM71.9874 43.9199H64.0914L66.1554 27.1199H69.0354L67.3314 41.0879H72.3474L71.9874 43.9199ZM82.3234 43.9199H74.4274L76.4914 27.1199H79.3714L77.6674 41.0879H82.6834L82.3234 43.9199ZM101.101 35.7119C100.957 36.8799 100.613 37.9679 100.069 38.9759C99.5247 39.9839 98.8367 40.8719 98.0047 41.6399C97.1727 42.3919 96.2447 42.9839 95.2207 43.4159C94.1967 43.8319 93.1247 44.0399 92.0047 44.0399C90.8367 44.0399 89.7727 43.8159 88.8127 43.3679C87.8687 42.9199 87.0607 42.2959 86.3887 41.4959C85.7327 40.6959 85.2527 39.7759 84.9487 38.7359C84.6447 37.6959 84.5647 36.5919 84.7087 35.4239C84.8527 34.2719 85.1967 33.1919 85.7407 32.1839C86.3007 31.1599 86.9967 30.2639 87.8287 29.4959C88.6767 28.7119 89.6127 28.1039 90.6367 27.6719C91.6767 27.2239 92.7487 26.9999 93.8527 26.9999C94.9887 26.9999 96.0287 27.2319 96.9727 27.6959C97.9327 28.1439 98.7407 28.7679 99.3967 29.5679C100.069 30.3679 100.557 31.2959 100.861 32.3519C101.165 33.4079 101.245 34.5279 101.101 35.7119ZM98.1727 35.4239C98.3007 34.3999 98.1807 33.4639 97.8127 32.6159C97.4607 31.7679 96.9247 31.0959 96.2047 30.5999C95.5007 30.0879 94.6847 29.8319 93.7567 29.8319C93.0207 29.8319 92.3007 29.9919 91.5967 30.3119C90.9087 30.6159 90.2847 31.0479 89.7247 31.6079C89.1647 32.1519 88.7007 32.7759 88.3327 33.4799C87.9647 34.1839 87.7327 34.9279 87.6367 35.7119C87.5247 36.7199 87.6447 37.6399 87.9967 38.4719C88.3647 39.3039 88.9087 39.9679 89.6287 40.4639C90.3487 40.9599 91.1727 41.2079 92.1007 41.2079C93.0927 41.2079 94.0287 40.9439 94.9087 40.4159C95.7887 39.8879 96.5167 39.1839 97.0927 38.3039C97.6847 37.4239 98.0447 36.4639 98.1727 35.4239Z"
+            fill="currentColor"
+          />
+        </svg>
+
+        <div class="c-header__menu js-menu gap-4">
+          <nav class="c-header__nav">
+            <ul class="c-header__list">
+              <li class="c-header__item">
+                <a href="/index.html" class="c-header__link">
+                  <span class="c-header__index">01</span>
+                  home
+                </a>
+              </li>
+
+              <li>
+                <span class="c-header__separator">/</span>
+              </li>
+
+              <li class="c-header__item">
+                <a href="/about.html" class="c-header__link">
+                  <span class="c-header__index">02</span>
+                  about
+                </a>
+              </li>
+
+              <li>
+                <span class="c-header__separator">/</span>
+              </li>
+
+              <li class="c-header__item">
+                <a href="/projects.html" class="c-header__link">
+                  <span class="c-header__index">03</span>
+                  projects
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <span class="c-header__separator c-header__separator--dark">/</span>
+
+          <div
+            class="c-header__actions d-flex justify-content-center align-items-center gap-2"
+          >
+            <a href="/contact.html" class="c-button text-uppercase pe-4">
+              <i class="c-icon bi bi-arrow-right-short"></i>
+              contact me
+            </a>
+
+            <button
+              class="js-theme-toggle c-icon-button c-icon-button--inverted"
+            >
+              <i class="c-icon bi bi-moon-stars-fill"></i>
+            </button>
+          </div>
+
+          <button
+            class="js-close-btn c-icon-button c-icon-button--close-btn d-lg-none d-block"
+          >
+            <i class="c-icon fs-1 bi bi-x-lg"></i>
+          </button>
+        </div>
+
+        <button class="js-menu-toggle c-icon-button d-lg-none d-block">
+          <i class="c-icon bi bi-list"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="o-main-container o-slice pt-5">
+      <div class="c-contact container d-flex flex-column px-4 py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <h1 class="c-main-title text-center mb-5">
+              <span class="text-secondary">04</span> Contact Me
+            </h1>
+
+            <div class="row">
+              <div class="col-md-7 mb-4">
+                <h2 class="c-contact__subtitle h4">Send Me a Direct Message</h2>
+                <p class="c-contact__description">
+                  Fill out the form below. Your default email application will
+                  open to send the data.
+                  <span class="c-contact__highlight fw-bold"
+                    >P.S. Remember to hit SEND in your email client!</span
+                  >
+                </p>
+
+                <form
+                  action="mailto:webdev.michell@gmail.com"
+                  method="post"
+                  enctype="text/plain"
+                  class="c-form p-4"
+                >
+                  <div class="c-form__group mb-3">
+                    <label for="name" class="c-form__label form-label"
+                      >Your Name</label
+                    >
+                    <input
+                      type="text"
+                      class="c-form__input form-control"
+                      id="name"
+                      name="Name"
+                      required
+                    />
+                  </div>
+                  <div class="c-form__group mb-3">
+                    <label for="email" class="c-form__label form-label"
+                      >Your Email Address</label
+                    >
+                    <input
+                      type="email"
+                      class="c-form__input form-control"
+                      id="email"
+                      name="Email"
+                      required
+                    />
+                  </div>
+                  <div class="c-form__group mb-3">
+                    <label for="subject" class="c-form__label form-label"
+                      >Subject</label
+                    >
+                    <input
+                      type="text"
+                      class="c-form__input form-control"
+                      id="subject"
+                      name="Subject"
+                      value="Inquiry from your website"
+                      required
+                    />
+                  </div>
+                  <div class="c-form__group mb-3">
+                    <label for="message" class="c-form__label form-label"
+                      >Message</label
+                    >
+                    <textarea
+                      class="c-form__textarea form-control"
+                      id="message"
+                      name="Message"
+                      rows="4"
+                      required
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="c-button">
+                    <i class="c-icon bi bi-envelope-fill me-2"></i> Open and
+                    Send
+                  </button>
+                </form>
+              </div>
+
+              <div class="col-md-5 mb-4">
+                <h2 class="c-contact__subtitle h4">Quick Contact</h2>
+                <p class="c-contact__description">
+                  I prefer direct communication. Use these links for a faster
+                  response:
+                </p>
+
+                <ul class="c-quick-contact list-group list-group-flush">
+                  <li
+                    class="c-quick-contact__item list-group-item d-flex align-items-center"
+                  >
+                    <a
+                      href="https://wa.me/+56938758312"
+                      target="_blank"
+                      class="c-quick-contact__link c-quick-contact__link--whatsapp d-flex align-items-center text-decoration-none"
+                    >
+                      <i class="bi bi-whatsapp c-quick-contact__icon me-3"></i>
+                      <div class="c-quick-contact__details">
+                        <strong class="c-quick-contact__title d-block"
+                          >WhatsApp</strong
+                        >
+                        <small class="c-quick-contact__info"
+                          >+56 (9) 3875 8312</small
+                        >
+                      </div>
+                    </a>
+                  </li>
+
+                  <li
+                    class="c-quick-contact__item list-group-item d-flex align-items-center"
+                  >
+                    <a
+                      href="https://www.linkedin.com/in/micahedev"
+                      target="_blank"
+                      class="c-quick-contact__link c-quick-contact__link--linkedin d-flex align-items-center text-decoration-none"
+                    >
+                      <i class="bi bi-linkedin c-quick-contact__icon me-3"></i>
+                      <div class="c-quick-contact__details">
+                        <strong class="c-quick-contact__title d-block"
+                          >LinkedIn</strong
+                        >
+                        <small class="c-quick-contact__info"
+                          >Let's connect professionally</small
+                        >
+                      </div>
+                    </a>
+                  </li>
+
+                  <li
+                    class="c-quick-contact__item list-group-item d-flex align-items-center"
+                  >
+                    <a
+                      href="mailto:webdev.michell@gmail.com"
+                      class="c-quick-contact__link c-quick-contact__link--email d-flex align-items-center text-decoration-none"
+                    >
+                      <i
+                        class="bi bi-envelope-fill c-quick-contact__icon me-3"
+                      ></i>
+                      <div class="c-quick-contact__details">
+                        <strong class="c-quick-contact__title d-block"
+                          >Email</strong
+                        >
+                        <small class="c-quick-contact__info"
+                          >webdev.michell@gmail.com</small
+                        >
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
