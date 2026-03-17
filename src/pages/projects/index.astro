@@ -1,0 +1,295 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout title="MicaheDev - Projects">
+  <!-- main content, here i show my projects -->
+  <main class="o-main-container o-slice">
+    <!-- Container to limit the component's expansion and prevent it from using the entire screen -->
+    <div
+      class="c-projects container d-flex justify-content-center align-items-center flex-column px-4"
+    >
+      <!-- SVG shape like a pencil stroke for more style -->
+      <svg
+        class="c-projects__figure"
+        viewBox="0 0 733 729"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M118.868 189.08L261.391 97.1639L57.4909 364.65L458.838 61.6756L82.8587 555.479L674.394 57.5152L173.482 670.106L648.425 292.674L399.826 642.114L646.745 487.987"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="80"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+
+      <h1 class="c-main-title">
+        <span class="text-secondary fw-bolder">03</span> My Projects
+      </h1>
+
+      <!-- Grid layout -->
+      <div class="c-projects__grid-container">
+        <!-- First project card -->
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/projects/kana-express.png"
+              alt="Design of a cross-platform application to easily learn Japanese"
+            />
+          </div>
+          <div class="c-card__content p-1">
+            <div class="c-card__info">
+              <h2 class="c-card__title fw-bolder">Kana Express</h2>
+              <h3 class="c-card__subtitle">
+                Education - (Tauri / React / Kotlin)
+              </h3>
+            </div>
+
+            <a
+              href="https://github.com/MicaheDev/kana-express-multiplatform"
+              target="_blank"
+              class="c-card__link"
+            >
+              <i class="c-icon bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <p class="c-card__desc px-2">
+            A high-performance <strong>multiplatform ecosystem</strong> designed to
+            master Hiragana and Katakana. It leverages <strong
+              >Tauri's Rust-based core</strong
+            > for a lightweight desktop experience and <strong>Kotlin</strong> for
+            the mobile version, ensuring seamless synchronization and <strong
+              >optimized memory usage</strong
+            >.
+          </p>
+        </div>
+
+        <!-- Second project card -->
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/projects/yeux.png"
+              alt="Design of desktop application for the health and save your eyes with the
+              20-20-20 rule"
+            />
+          </div>
+          <div class="c-card__content p-1">
+            <div class="c-card__info">
+              <h2 class="c-card__title fw-bolder">Yeux Focus Monitor</h2>
+              <h3 class="c-card__subtitle">Health - (Tauri / React)</h3>
+            </div>
+
+            <a
+              href="https://github.com/MicaheDev/yeux"
+              target="_blank"
+              class="c-card__link"
+            >
+              <i class="c-icon bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <p class="c-card__desc px-2">
+            A specialized <strong>desktop utility</strong> for preventing digital
+            eye strain. Built with <strong>Tauri</strong> to minimize background CPU
+            overhead, it implements a smart <strong
+              >20-20-20 rule notification system</strong
+            > with a focus on non-intrusive UI and <strong
+              >low-level system integration</strong
+            >.
+          </p>
+        </div>
+
+        <!-- Second project card -->
+
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/projects/lingo-hands.png"
+              alt="LingoHands - Sign Language Learning Platform"
+            />
+          </div>
+          <div class="c-card__content p-1">
+            <div class="c-card__info">
+              <h2 class="c-card__title fw-bolder">LingoHands</h2>
+              <h3 class="c-card__subtitle">
+                EdTech - (Flask / React / Three.js)
+              </h3>
+            </div>
+
+            <a
+              href="https://lingo-hands.onrender.com/"
+              target="_blank"
+              class="c-card__link"
+            >
+              <i class="c-icon bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <p class="c-card__desc px-2">
+            A <strong>Duolingo-inspired</strong> platform for learning ASL. It features
+            a
+            <strong>custom 3D dummy</strong> integrated with <strong
+              >React Three Fiber</strong
+            >, showcasing hand animations crafted in <strong>Blender</strong>.
+            Powered by
+            <strong>Flask</strong> and <strong>Supabase (PostgreSQL)</strong> for
+            gamified progress tracking.
+          </p>
+        </div>
+        <!-- Last project card -->
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/projects/lidar-3d-platform.png"
+              alt="3D LiDAR Point Cloud Visualization Platform"
+            />
+          </div>
+          <div class="c-card__content p-1">
+            <div class="c-card__info">
+              <h2 class="c-card__title fw-bolder">LIDAR 3D Platform</h2>
+              <h3 class="c-card__subtitle">Full Stack — (MERN / Three.js)</h3>
+            </div>
+
+            <a
+              href="/projects/lidar3dplatform"
+              target="_blank"
+              class="c-card__link"
+            >
+              <i class="c-icon bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <p class="c-card__desc px-2">
+            Advanced visualization platform for
+            <strong>LiDAR (.LAS)</strong> data. Developed high-performance 3D rendering
+            with <strong>Three.js</strong> and efficient large-scale data storage
+            using <strong>MongoDB GridFS</strong>.
+          </p>
+        </div>
+
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/projects/ai_assistant_hub.png"
+              alt="AI Chat Assistant with PDF and Audio processing"
+            />
+          </div>
+          <div class="c-card__content p-1">
+            <div class="c-card__info">
+              <h2 class="c-card__title fw-bolder">AI Assistant Hub</h2>
+              <h3 class="c-card__subtitle">Cloud & AI — (Angular / Azure)</h3>
+            </div>
+
+            <a
+              href="/projects/aiassistanthub"
+              target="_blank"
+              class="c-card__link"
+            >
+              <i class="c-icon bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <p class="c-card__desc px-2">
+            An intelligent chat platform integrated with
+            <strong>Azure AI</strong>. Features include
+            <strong>Speech-to-Text</strong> for voice notes and automated
+            <strong>PDF text extraction</strong> to enhance context-aware AI interactions.
+          </p>
+        </div>
+
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/projects/flappyBird.png"
+              alt="Flappy Bird Clone developed in Godot Engine"
+            />
+          </div>
+          <div class="c-card__content p-1">
+            <div class="c-card__info">
+              <h2 class="c-card__title fw-bolder">FlappyBird Clone</h2>
+              <h3 class="c-card__subtitle">Game - (Godot / C#)</h3>
+            </div>
+
+            <a
+              href="https://github.com/MicaheDev/FlappyBirdClone"
+              target="_blank"
+              class="c-card__link"
+            >
+              <i class="c-icon bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <p class="c-card__desc px-2">
+            A faithful recreation of the classic Flappy Bird, built to explore
+            game physics, state management, and object-oriented programming
+            using <strong>C#</strong> within the
+            <strong>Godot Engine</strong>.
+          </p>
+        </div>
+
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/projects/icons.png"
+              alt="Design of an application for colab."
+            />
+          </div>
+          <div class="c-card__content p-1">
+            <div class="c-card__info">
+              <h2 class="c-card__title fw-bolder">Pixel Icon Pack</h2>
+              <h3 class="c-card__subtitle">Open Source — (React / SVG)</h3>
+            </div>
+
+            <a
+              href="https://www.npmjs.com/package/pixicons"
+              target="_blank"
+              class="c-card__link"
+            >
+              <i class="c-icon bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <p class="c-card__desc px-2">
+            A custom-made <strong>Pixel Art</strong> icon library for React applications.
+            Focused on lightweight performance and seamless integration for retro-style
+            web interfaces.
+          </p>
+        </div>
+        <!-- Last project card -->
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/projects/street-devs.png"
+              alt="Design of an application for colab."
+            />
+          </div>
+          <div class="c-card__content p-1">
+            <div class="c-card__info">
+              <h2 class="c-card__title fw-bolder">Street Devs</h2>
+              <h3 class="c-card__subtitle">Design - (Figma)</h3>
+            </div>
+
+            <a
+              href="https://streetdevs.cl/"
+              target="_blank"
+              class="c-card__link"
+            >
+              <i class="c-icon bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <p class="c-card__desc px-2">
+            A design created by me to collaborate with a community of devs in
+            Chile.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

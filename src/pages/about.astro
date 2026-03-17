@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="MicaheDev - About">
+  <!-- main content, in this case the hero section with the who I am introduction -->
+  <main class="o-main-container">
+    <!-- Container to limit the component's expansion and prevent it from using the entire screen -->
+    <section
+      class="c-about container d-flex justify-content-lg-between justify-content-center align-items-center px-4"
+    >
+      <div class="c-about__bio">
+        <h2 class="c-main-title text-center text-lg-start">
+          <span class="text-secondary fs-1 fw-bolder">02</span>Who I Am?
+        </h2>
+        <h1 class="c-about__title c-about__title--small fw-bold">
+          Michell D. Castillo Hernandez
+        </h1>
+        <h3 class="c-about__subtitle fs-6">
+          Full Stack Developer & UI/UX Designer
+        </h3>
+        <p class="c-about__desc">
+          I am a Full Stack Developer passionate about building digital
+          solutions that meaningfully impact people's lives. With over 3 years
+          of experience in the
+          <strong>Angular</strong> and <strong>MERN</strong> ecosystems, I’ve had
+          the privilege of tackling high-stakes projects: from migrating large-scale
+          corporate platforms in Chile to visualizing 3D LiDAR point clouds for the
+          mining industry. <br /><br />
+          Currently pursuing a degree in Computer Engineering in Venezuela, I combine
+          academic rigor with a constant drive to master modern technologies like
+          <strong>Rust</strong> and <strong>Tauri</strong>. My focus is on clean
+          architecture, optimized performance, and crafting user experiences
+          that feel natural and seamless. When I’m not debugging, you’ll find me
+          exploring the art of papercrafting or designing tools for digital
+          health.
+        </p>
+      </div>
+
+      <img
+        class="c-about__profile-img"
+        src="/profile.png"
+        alt="Photo of me wearing glasses and posing for the camera"
+      />
+    </section>
+
+    <section class="c-hobbies container">
+      <h2 class="c-main-title text-center">My Hobbies</h2>
+
+      <div class="c-hobbies__grid-container">
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/hobbies/anime.png"
+              alt="Collage of anime series like Kaguyasama Love is War, Dr.Stone, Vinland Saga, etc."
+            />
+          </div>
+          <div class="c-card__content">
+            <h2 class="c-card__title text-center w-100">Watch Anime</h2>
+          </div>
+        </div>
+
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/hobbies/draw.png"
+              alt="Sketchbook with draw hands"
+            />
+          </div>
+          <div class="c-card__content">
+            <h2 class="c-card__title text-center w-100">Draw</h2>
+          </div>
+        </div>
+
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/hobbies/papercraft.png"
+              alt="A paper airplane"
+            />
+          </div>
+          <div class="c-card__content">
+            <h2 class="c-card__title text-center w-100">
+              Papercrafting and origami
+            </h2>
+          </div>
+        </div>
+
+        <div class="c-card">
+          <div class="c-card__clipping-mask">
+            <img
+              class="c-card__img"
+              src="/hobbies/code.png"
+              alt="Programming code (C programming language with basic structure)"
+            />
+          </div>
+          <div class="c-card__content">
+            <h2 class="c-card__title text-center w-100">Code for fun</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

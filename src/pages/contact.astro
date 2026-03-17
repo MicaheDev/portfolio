@@ -1,0 +1,161 @@
+---
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="MicaheDev - Contact">
+  <main class="o-main-container o-slice pt-5">
+    <div class="c-contact container d-flex flex-column px-4 py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <h1 class="c-main-title text-center mb-5">
+            <span class="text-secondary">04</span> Contact Me
+          </h1>
+
+          <div class="row">
+            <div class="col-md-7 mb-4">
+              <h2 class="c-contact__subtitle h4">Send Me a Direct Message</h2>
+              <p class="c-contact__description">
+                Fill out the form below. Your default email application will
+                open to send the data.
+                <span class="c-contact__highlight fw-bold"
+                  >P.S. Remember to hit SEND in your email client!</span
+                >
+              </p>
+
+              <form
+                action="mailto:webdev.michell@gmail.com"
+                method="post"
+                enctype="text/plain"
+                class="c-form p-4"
+              >
+                <div class="c-form__group mb-3">
+                  <label for="name" class="c-form__label form-label"
+                    >Your Name</label
+                  >
+                  <input
+                    type="text"
+                    class="c-form__input form-control"
+                    id="name"
+                    name="Name"
+                    required
+                  />
+                </div>
+                <div class="c-form__group mb-3">
+                  <label for="email" class="c-form__label form-label"
+                    >Your Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="c-form__input form-control"
+                    id="email"
+                    name="Email"
+                    required
+                  />
+                </div>
+                <div class="c-form__group mb-3">
+                  <label for="subject" class="c-form__label form-label"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    class="c-form__input form-control"
+                    id="subject"
+                    name="Subject"
+                    value="Inquiry from your website"
+                    required
+                  />
+                </div>
+                <div class="c-form__group mb-3">
+                  <label for="message" class="c-form__label form-label"
+                    >Message</label
+                  >
+                  <textarea
+                    class="c-form__textarea form-control"
+                    id="message"
+                    name="Message"
+                    rows="4"
+                    required></textarea>
+                </div>
+                <button type="submit" class="c-button">
+                  <i class="c-icon bi bi-envelope-fill me-2"></i> Open and Send
+                </button>
+              </form>
+            </div>
+
+            <div class="col-md-5 mb-4">
+              <h2 class="c-contact__subtitle h4">Quick Contact</h2>
+              <p class="c-contact__description">
+                I prefer direct communication. Use these links for a faster
+                response:
+              </p>
+
+              <ul class="c-quick-contact list-group list-group-flush">
+                <li
+                  class="c-quick-contact__item list-group-item d-flex align-items-center"
+                >
+                  <a
+                    href="https://wa.me/+56938758312"
+                    target="_blank"
+                    class="c-quick-contact__link c-quick-contact__link--whatsapp d-flex align-items-center text-decoration-none"
+                  >
+                    <i class="bi bi-whatsapp c-quick-contact__icon me-3"></i>
+                    <div class="c-quick-contact__details">
+                      <strong class="c-quick-contact__title d-block"
+                        >WhatsApp</strong
+                      >
+                      <small class="c-quick-contact__info"
+                        >+58 422 005 5698</small
+                      >
+                    </div>
+                  </a>
+                </li>
+
+                <li
+                  class="c-quick-contact__item list-group-item d-flex align-items-center"
+                >
+                  <a
+                    href="https://www.linkedin.com/in/micahedev"
+                    target="_blank"
+                    class="c-quick-contact__link c-quick-contact__link--linkedin d-flex align-items-center text-decoration-none"
+                  >
+                    <i class="bi bi-linkedin c-quick-contact__icon me-3"></i>
+                    <div class="c-quick-contact__details">
+                      <strong class="c-quick-contact__title d-block"
+                        >LinkedIn</strong
+                      >
+                      <small class="c-quick-contact__info"
+                        >Let's connect professionally</small
+                      >
+                    </div>
+                  </a>
+                </li>
+
+                <li
+                  class="c-quick-contact__item list-group-item d-flex align-items-center"
+                >
+                  <a
+                    href="mailto:webdev.michell@gmail.com"
+                    class="c-quick-contact__link c-quick-contact__link--email d-flex align-items-center text-decoration-none"
+                  >
+                    <i class="bi bi-envelope-fill c-quick-contact__icon me-3"
+                    ></i>
+                    <div class="c-quick-contact__details">
+                      <strong class="c-quick-contact__title d-block"
+                        >Email</strong
+                      >
+                      <small class="c-quick-contact__info"
+                        >webdev.michell@gmail.com</small
+                      >
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

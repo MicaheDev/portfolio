@@ -1,0 +1,67 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout title="MicaheDev - Home">
+  <!-- main content, in this case the hero section with the who I am introduction -->
+  <main class="o-main-container">
+    <!-- Container to limit the component's expansion and prevent it from using the entire screen -->
+    <div
+      class="c-hero container d-flex justify-content-center align-items-center flex-column px-4"
+    >
+      <!-- SVG shape like a pencil stroke in the background for more style -->
+      <svg
+        class="c-hero__figure"
+        viewBox="0 0 733 729"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M118.868 189.08L261.391 97.1639L57.4909 364.65L458.838 61.6756L82.8587 555.479L674.394 57.5152L173.482 670.106L648.425 292.674L399.826 642.114L646.745 487.987"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="80"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+
+      <!-- Content in the middle -->
+      <div class="c-hero__content">
+        <div class="c-hero__presentation">
+          <h2 class="c-hero__subtitle text-center text-lg-start">
+            <span class="text-secondary fw-bolder">01</span> welcome to my homepage
+          </h2>
+          <h1 class="c-main-title text-center">I'm Michell Castillo</h1>
+          <h2
+            class="c-hero__subtitle c-hero__subtitle--small text-center text-lg-end fw-semibold"
+          >
+            Full Stack Developer & UI/UX Designer
+          </h2>
+        </div>
+
+        <!-- Call to action of the hero section -->
+        <div
+          class="c-hero__actions d-flex align-items-center justify-content-end gap-2"
+        >
+          <!-- Link to contact page, pls hire me :V -->
+          <a href="contact.html" class="c-button text-uppercase pe-4">
+            <i class="c-icon bi bi-arrow-right-short"></i>
+            Work With Me
+          </a>
+
+          <!-- Link to projects page -->
+          <a
+            href="projects.html"
+            class="c-button c-button--secondary text-uppercase pe-4"
+          >
+            <i class="c-icon bi bi-arrow-right-short"></i>
+            See My Projects
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

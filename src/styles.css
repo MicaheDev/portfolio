@@ -385,6 +385,135 @@ button {
   }
 }
 
+/* Detail */
+
+.c-detail {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.c-detail__title {
+  text-align: start;
+  font-style: italic;
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+
+.c-detail__subtitle {
+  font-size: 1rem;
+  width: min-content;
+  text-wrap: nowrap;
+  padding: 5px 20px;
+  border-radius: 40px;
+  color: var(--text-btn-color);
+  background-color: var(--primary-btn-color);
+}
+
+.c-detail__img {
+  position: absolute;
+  /* Positioning the image slightly outside the mask for a visual effect */
+  right: -8%;
+  bottom: -10%;
+
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+
+  object-position: left top;
+
+  border-radius: 20px;
+}
+
+.c-detail__desc {
+  opacity: 80%;
+  text-align: justify;
+}
+
+.c-detail__link {
+  /* Button for the card link, circular design */
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  color: var(--background-color);
+  background-color: var(--foreground-color);
+  border-radius: 50%;
+}
+
+.c-detail__clipping-mask {
+  width: 100%;
+  height: 100%;
+  min-height: 800px;
+  /* Hides content that overflows the rounded border */
+  overflow: hidden;
+  position: relative;
+  background-color: #000;
+  border-radius: 40px;
+  border: 5px solid rgb(33, 33, 33);
+
+  box-shadow: 0px 0px 50px var(--shadow-color);
+}
+
+.c-detail__screenshots {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.c-detail__screenshot {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 50px var(--shadow-color);
+
+  border-radius: 20px;
+  border: 5px solid rgb(33, 33, 33);
+}
+
+@media screen and (max-width: 768px) {
+  .c-detail__clipping-mask {
+    min-height: 200px;
+    border-radius: 20px;
+  }
+
+  .c-detail__title {
+    font-size: 2rem;
+  }
+
+  .c-detail__subtitle {
+    font-size: 0.8rem;
+  }
+
+  .c-detail__img {
+    border-radius: 5px;
+  }
+
+  .c-detail__desc {
+    font-size: 0.6rem;
+  }
+
+  .c-detail {
+    padding: 20px 0;
+    gap: 10px;
+  }
+
+  .c-detail__screenshots {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+
+  .c-detail__screenshot {
+    border-radius: 15px;
+  }
+}
+
 /* Contact page */
 
 .c-contact__title {
@@ -730,7 +859,7 @@ button {
     font-size: 1.5rem;
   }
   .c-card__clipping-mask {
-    height: 200px;
+    min-height: 200px;
     border-radius: 20px;
   }
 }
@@ -766,7 +895,9 @@ button {
 
 .c-icon {
   /* Transition for icons to enable smooth rotation/scaling on hover */
-  transition: transform 150ms linear, scale 150ms linear;
+  transition:
+    transform 150ms linear,
+    scale 150ms linear;
   display: inline-block;
   font-size: var(--font-size-base);
 }
@@ -825,4 +956,18 @@ button {
 .u-menu-show {
   /* Utility class to show the mobile menu (set transform to 0) */
   transform: translateX(0%);
+}
+
+.c-404__figure {
+  max-width: 300px;
+  color: var(--primary-color);
+}
+
+@media screen and (max-width: 768px) {
+ 
+
+  .c-404__figure {
+    max-width: 250px;
+    color: var(--primary-color);
+  }
 }

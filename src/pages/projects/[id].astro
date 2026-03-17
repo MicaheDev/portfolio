@@ -1,0 +1,122 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+
+// Definición de tipos para las capturas
+interface Screenshot {
+  imgUrl: string;
+  imgAlt: string;
+}
+
+export async function getStaticPaths() {
+  // Función interna para no repetir código creando objetos de imagen
+  const buildScreenshots = (
+    name: string,
+    total: number,
+    alt: string,
+  ): Screenshot[] =>
+    Array.from({ length: total }, (_, i) => ({
+      imgUrl: `/projects/screenshots/${name}_${i + 1}.png`,
+      imgAlt: alt,
+    }));
+
+  return [
+    {
+      params: { id: "lidar3dplatform" },
+      props: {
+        title: "LIDAR 3D Platform",
+        subtitle: "Full Stack — (MERN / Three.js)",
+        imgUrl: "/projects/lidar-3d-platform.png",
+        imgAlt: "3D LiDAR Point Cloud Visualization Platform",
+        description: `
+          <strong>Enterprise-grade platform</strong> designed for large-scale geographic data management. 
+          The system features a complex multi-tenant architecture, allowing companies 
+          to manage departments and hierarchical user roles with granular permissions.<br><br>
+
+          <strong>Key Technical Challenges:</strong><br>
+          • <strong>Data Engineering:</strong> Handled massive LiDAR datasets (10GB+) by implementing 
+            a chunked storage strategy using <strong>MongoDB GridFS</strong>.<br>
+          • <strong>3D Optimization:</strong> Engineered a high-performance frontend using <strong>Three.js</strong> 
+            to render and interact with dense point clouds efficiently.<br>
+          • <strong>AI Integration:</strong> Orchestrated communication with specialized <strong>Python AI algorithms</strong> 
+            for Geometric Design (route extraction) and Functional Design (automated anomaly detection 
+            with intelligent color-coding).<br>
+          • <strong>State Management:</strong> Utilized <strong>Redux</strong> to maintain a complex state across 
+            the visualization and historical data processing modules.
+        `,
+        // Genera automáticamente lidar_1 hasta lidar_12
+        screenshots: buildScreenshots(
+          "lidar",
+          12,
+          "3D LiDAR Point Cloud Visualization Platform",
+        ),
+      },
+    },
+    {
+      params: { id: "aiassistanthub" },
+      props: {
+        title: "AI Assistant Hub",
+        subtitle: "Cloud & AI — (Angular / Azure)",
+        imgUrl: "/projects/ai_assistant_hub.png",
+        imgAlt: "AI Chat Assistant",
+        description: `
+          Professional AI interface developed as a <strong>highly portable Web Component</strong> 
+          for corporate environments. I led the frontend architecture, focusing on 
+          seamless integration with cloud-based AI services.<br><br>
+
+          <strong>Key Contributions:</strong><br>
+          • <strong>Multi-modal Features:</strong> Implemented advanced AI capabilities including 
+            <strong>Speech-to-Text</strong> for real-time transcription and a <strong>PDF processing engine</strong> 
+            for automated text extraction.<br>
+          • <strong>Scalability:</strong> Developed as a reusable Web Component, facilitating deployment 
+            across various platforms, specifically <strong>WordPress</strong>.<br>
+          • <strong>Technical Leadership:</strong> Responsible for comprehensive technical documentation 
+            and <strong>video tutorials</strong> for corporate onboarding, ensuring a successful handover.<br>
+          • <strong>Cloud Architecture:</strong> Optimized communication with <strong>Azure Cognitive Services</strong> 
+            to ensure low-latency responses and a fluid experience.
+        `,
+        // Genera ai_1 hasta ai_4
+        screenshots: buildScreenshots("ai", 4, "AI Chat Assistant"),
+      },
+    },
+  ];
+}
+
+const { title, subtitle, imgUrl, imgAlt, description, screenshots } =
+  Astro.props;
+const { id } = Astro.params;
+---
+
+<Layout title={title}>
+  <main class="o-main-container o-slice">
+    <div
+      class="c-detail container d-flex justify-content-start align-items-start flex-column px-4"
+    >
+      <a href="/"><i class="bi bi-arrow-left-short fs-1 c-icon"></i></a>
+
+      <h1 class="c-detail__title">{title}</h1>
+      <p class="c-detail__subtitle"><em>{subtitle}</em></p>
+
+      <div class="c-detail__clipping-mask">
+        <img class="c-detail__img" src={imgUrl} alt={imgAlt} />
+      </div>
+
+      <p class="c-detail__desc" set:html={description} />
+
+      <h2>SCREENSHOTS</h2>
+      <section class="c-detail__screenshots">
+        {
+          screenshots.map((img) => (
+            <img
+              class="c-detail__screenshot"
+              src={img.imgUrl}
+              alt={img.imgAlt}
+              loading="lazy"
+            />
+          ))
+        }
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
