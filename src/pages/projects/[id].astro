@@ -16,7 +16,7 @@ export async function getStaticPaths() {
     alt: string,
   ): Screenshot[] =>
     Array.from({ length: total }, (_, i) => ({
-      imgUrl: `/projects/screenshots/${name}_${i + 1}.png`,
+      imgUrl: `/portfolio/projects/screenshots/${name}_${i + 1}.png`,
       imgAlt: alt,
     }));
 
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
       props: {
         title: "LIDAR 3D Platform",
         subtitle: "Full Stack — (MERN / Three.js)",
-        imgUrl: "/projects/lidar-3d-platform.png",
+        imgUrl: "/portfolio/projects/lidar-3d-platform.png",
         imgAlt: "3D LiDAR Point Cloud Visualization Platform",
         description: `
           <strong>Enterprise-grade platform</strong> designed for large-scale geographic data management. 
@@ -57,7 +57,7 @@ export async function getStaticPaths() {
       props: {
         title: "AI Assistant Hub",
         subtitle: "Cloud & AI — (Angular / Azure)",
-        imgUrl: "/projects/ai_assistant_hub.png",
+        imgUrl: "/portfolio/projects/ai_assistant_hub.png",
         imgAlt: "AI Chat Assistant",
         description: `
           Professional AI interface developed as a <strong>highly portable Web Component</strong> 
