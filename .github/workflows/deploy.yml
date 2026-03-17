@@ -20,11 +20,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 22.12.0
           cache: 'npm' # Esto acelerará tus builds futuros
 
       - name: Install, build, and upload
         uses: withastro/action@v3
+        with:
+          node-version: 22.12.0
         # No necesitas configurar nada más, la acción detecta npm/pnpm/yarn
   deploy:
     needs: build
